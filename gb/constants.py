@@ -24,14 +24,11 @@ Stefan_const = 5.6704e-08
 
 
 
-https://en.wikipedia.org/wiki/BA_2100
+# https://en.wikipedia.org/wiki/BA_2100
 
-65 to 70 tons
-2,250 m^3
-
-4/3*Pi*50^3
-
-523598
-
-
-
+# 65 to 70 tons
+# 2,250 m^3
+#
+# 4/3*Pi*50^3
+#
+# 523598

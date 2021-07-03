@@ -1,16 +1,5 @@
-# manual rewrite, abandoned
-# def P_Rt(R, t, rho):
-#     return (2./3.) * constants.pi * constants.Gval * ((t * rho)**2) * (3 * R + t) / (R + t)
-# def t_RP(R, P, rho):
-#     val = 1.366 * sqrt( P / (2 * constants.Gval * constants.pi)) / rho
-#     for i in range(20):
-#         delta = -1.0 * (P_Rt(R, val, rho) - P) / dPdt_Rt(R, val, rho)
-#         val = val + delta
-#         if abs(delta / val) < 1.0e-6:
-#             break
-#     else:
-#         raise RuntimeError(f'Surpassed iteration limit of t_RP, val: {val}')
-#     return val
+from math import log, sqrt, cos, exp, erf
+
 
 # ' Functions of constants
 def Gval():
@@ -58,8 +47,8 @@ def density_type2(T1, T2):
 
 def density_kra(Tp):
     T = Tp[0].lower()
-    c_array = Array("C", "D", "P", "T", "B", "G", "F")
-    s_array = Array("S", "K", "Q", "V", "R", "A", "E")
+    c_array = ["C", "D", "P", "T", "B", "G", "F"]
+    s_array = ["S", "K", "Q", "V", "R", "A", "E"]
     density_kra = 1300
     m_array = "M"
     for n in range(7):
@@ -69,7 +58,7 @@ def density_kra(Tp):
         if T == s_array[n].lower():
             density_kra = 2710
 
-    if T == LCase(m_array):
+    if T == m_array.lower():
         density_kra = 5320
     return density_kra
 
@@ -99,7 +88,7 @@ def R_N2max(M, rho):
         # '    R_N2max = R_MP(M, 0.21 * atm(), rho) ' first attempt
         dPdRp = dPdR_RM(0, M, rho)
         dPdR2 = (dPdR_RM(0.01, M, rho) - dPdRp) / 0.01
-        R_N2max = Math.Sqr((0.21 * atm() - P_RM(0, M, rho)) * 3 / dPdR2)
+        R_N2max = sqrt((0.21 * atm() - P_RM(0, M, rho)) * 3 / dPdR2)
         while True:
             dPdRp = dPdR_RM(R_N2max, M, rho)
             dPdR2 = (dPdR_RM(R_N2max + 0.01, M, rho) - dPdRp) / 0.01
@@ -125,9 +114,9 @@ def inclined_hoh_avg(a, i):
 
 def inclined_hoh(a, i):
     v1 = hohmann1_mrr(sun_mass(), AU(), a * AU())
-    ve = Math.Sqr(Gval() * sun_mass() / AU())
+    ve = sqrt(Gval() * sun_mass() / AU())
     gv = ve + v1
-    v1p = Math.Sqr(ve ** 2 + gv ** 2 - 2 * gv * ve * Math.Cos(i * Pi() / 180.0))
+    v1p = sqrt(ve ** 2 + gv ** 2 - 2 * gv * ve * cos(i * Pi() / 180.0))
     v2 = hohmann2_mrr(sun_mass(), AU(), a * AU())
     inclined_hoh = v1p + v2
     return inclined_hoh
@@ -136,9 +125,9 @@ def inclined_hoh(a, i):
 def inclined_hoh_min(a, i):
     v1 = hohmann1_mrr(sun_mass(), AU(), a * AU())
     v2 = hohmann2_mrr(sun_mass(), AU(), a * AU())
-    ve = Math.Sqr(Gval() * sun_mass() / (a * AU()))
+    ve = sqrt(Gval() * sun_mass() / (a * AU()))
     gv = ve - v2
-    v2p = Math.Sqr(ve ** 2 + gv ** 2 - 2 * gv * ve * Math.Cos(i * Pi() / 180.0))
+    v2p = sqrt(ve ** 2 + gv ** 2 - 2 * gv * ve * cos(i * Pi() / 180.0))
     inclined_hoh_min = v1 + v2p
     return inclined_hoh_min
 
@@ -170,9 +159,9 @@ def hohmann2_mrr(M, r1, r2):
 # ' def returns the tether mass to payload mass ratio for rotating tether in space
 def tether_rot(v, ss):
     tether_rot = 2  #
-    alpha = v / Math.Sqr(2 * ss)
+    alpha = v / sqrt(2 * ss)
     tether_rot = (
-        Pi() * alpha * Application.WorksheetFunction.Erf(alpha) * Math.Exp(alpha ** 2)
+        Pi() * alpha * erf(alpha) * exp(alpha ** 2)
     )
     return tether_rot
 
@@ -210,7 +199,7 @@ def dia(H):
 
 
 def H_dia(dia):
-    H_dia = -Log(dia * Math.Sqr(0.2) / 1329) / (0.2 * Log(10.0))
+    H_dia = -log(dia * sqrt(0.2) / 1329) / (0.2)
     return H_dia
 
 

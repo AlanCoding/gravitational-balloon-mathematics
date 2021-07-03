@@ -25,7 +25,6 @@ sun_mass = 1.989e+30
 Stefan_const = 5.6704e-08
 
 
-
 # https://en.wikipedia.org/wiki/BA_2100
 
 # 65 to 70 tons

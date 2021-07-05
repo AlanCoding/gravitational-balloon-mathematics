@@ -1,3 +1,4 @@
 notebook
 matplotlib
 scipy
+pytest

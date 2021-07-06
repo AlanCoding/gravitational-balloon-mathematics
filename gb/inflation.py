@@ -65,3 +65,8 @@ def Pt_RM(R, M, rho=constants.rho):
 
 def P_RM(R, M, rho=constants.rho):
     return Pt_RM(R, M, rho)[0]
+
+
+def P_VM(V, M, rho=constants.rho):
+    R = (V * 3. / (4. * pi))**(1./3.)
+    return Pt_RM(R, M, rho)[0]

@@ -1,5 +1,3 @@
-import math
-
 # Constants that don't depend on the scenario
 rho = 1.3
 g = 9.8
@@ -17,7 +15,6 @@ Cd_streamlined = 0.04
 # Methanol	5.60E-04	801
 
 Gval = 6.67384e-11
-pi = math.pi
 AU = 149597871000.
 Skylab = 34400.
 atm = 101325.
@@ -33,3 +30,8 @@ Stefan_const = 5.6704e-08
 # 4/3*Pi*50^3
 #
 # 523598
+
+# # Reference Values
+# r1 = 250
+# r2 = 350
+# delta = 100

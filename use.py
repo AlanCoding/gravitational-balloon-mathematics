@@ -25,20 +25,26 @@ N_points = 200
 
 R0 = (M * 3. / (4. * pi))**(1./3.)
 
-R_values = [(2. / N_points) * i * R0 for i in range(N_points + 1)]
+relative_values = [(2. / N_points) * i for i in range(N_points + 1)]
 
+R_values = [rel * R0 for rel in relative_values]
 P_values = [new_inflation.P_RM(R, M) / new_inflation.P_RM(0., M) for R in R_values]
 
-plt.plot(R_values, P_values)
+plt.plot(relative_values, P_values)
 plt.title('Pressure vs. Inner Radius, constant Mass')
 plt.ylabel('P relative to original core P')
 plt.xlabel('Radius relative to asteroid radius')
 plt.savefig('P_vs_r.png')
+plt.clf()
 
-V_values = [(4./3.)*pi*R**3 for R in R_values]
+V0 = (4./3.)*pi*R0**3
 
-plt.plot(V_values, P_values)
+V_values = [rel * V0 for rel in relative_values]
+PV_values = [new_inflation.P_VM(V, M) / new_inflation.P_VM(0., M) for V in V_values]
+
+plt.plot(relative_values, PV_values)
 plt.title('Volume vs. Inner Radius, constant Mass')
 plt.ylabel('P relative to original core P')
 plt.xlabel('Volume relative to asteroid rock volume')
 plt.savefig('P_vs_V.png')
+plt.clf()

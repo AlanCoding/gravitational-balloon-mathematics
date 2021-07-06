@@ -5,45 +5,34 @@ from scipy.optimize import fsolve
 from math import sqrt, pi
 
 
+# For derivations see post:
+# https://gravitationalballoon.blogspot.com/2021/07/a-more-detailed-run-through-of-pressure.html
+
+
 def M_Rt(R, t, rho=constants.rho):
+    """Authoritative encoding of the mass equation: M = 4/3 pi rho ((R+t)^3 - R^3)"""
     return rho * (4./3.) * pi * ((R + t)**3 - R**3)
 
 
 def P_Rt(R, t, rho=constants.rho):
+    """Authoritative encoding of the pressure equation: P = 2/3 G rho^2 pi t^2 (3 R+t)/(R+t)"""
     scale_term = constants.Gval * rho**2 * pi
     return scale_term * (2./3.) * t**2 * (3 * R + t) / (R + t)
 
 
 class LimitCases:
     @staticmethod
-    def t_P_core_term(P, rho=constants.rho):
-        """Solves P = G rho^2 pi t^2 for t"""
-        return sqrt(P / (2 * constants.Gval * pi)) / rho
-
-    @staticmethod
     def t_P_small_large(P, rho=constants.rho):
-        """Solves for t in terms of P
+        """Gives approximations for t in terms of P
+        Solves for t in terms of P
         P = G rho^2 pi (2/3) t^2 (3 R+t)/(R+t)
         for R << t (small),      and then R >> t, resolving to
         P = G rho^2 pi (2/3) t^2 and P = G rho^2 pi 2 t^2
         """
-        core_term = LimitCases.t_P_core_term(P, rho)
+        core_term = sqrt(P / (2 * constants.Gval * pi)) / rho
         return (
             core_term / sqrt(2./3.),  # small
             core_term / sqrt(2),      # large
-        )
-
-    @staticmethod
-    def t_RM_small_large(R, M, rho=constants.rho):
-        """Solves for t in terms of R and M
-        M = 4/3 pi ((R+t)^3 - R^3)
-        for R << t (small),     and then R >> t (large)
-        M = 4/3 pi t^3          M = 4/3 pi t R^2
-        """
-        core_term = M * 3. / (4. * pi)
-        return (
-            core_term**(1./3.),  # small
-            core_term / (R**2 + 1),  # large
         )
 
 
@@ -66,11 +55,8 @@ def Pt_RM(R, M, rho=constants.rho):
             P - P_Rt(R, t, rho=rho)
         )
 
-    # t_small, t_large = LimitCases.t_RM_small_large(R, M, rho=rho)
+    # guess made using numbers from uninflated case: M = 4/3 pi rho t^3
     R0 = (M * 3. / (4. * pi))**(1./3.)
-    # P_small = P_Rt(R, t_small)
-    # P_large = P_Rt(R, t_large)
-    # guess_vector = (0.5 * (P_small + P_large), 0.5 * (t_small + t_large))
     guess_vector = (P_Rt(R, R0, rho=rho), R0)
 
     result = fsolve(residuals, guess_vector)

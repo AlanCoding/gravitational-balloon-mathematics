@@ -1,11 +1,11 @@
-from math import log
+from math import log, exp
 
 
 # Thermal hydraulic functions
 def c_f(Re):
     b = -0.05
     kappa = 0.41
-    f_min = Exp(-2 * b * kappa - log(Re**2 / 2))
+    f_min = exp(-2 * b * kappa - log(Re**2 / 2))
     f_max = ((log(10) + 1) / (2 * log(Re / 2.51)))**2
     n = 0
 
@@ -57,13 +57,13 @@ def Colebrook2(Rr, Re):
 
         Colebrook2 = f
         if n > 100:
-            Colebrook2 = CVErr(xlErrNA)
+            Colebrook2 = -2
             break
     return Colebrook2
 
 
 def Colebrook(Re, a, b):
-    aa = 1 / (Re**2 * Exp(2 * b / a))
+    aa = 1 / (Re**2 * exp(2 * b / a))
     bb = (a + Re)**2 / (Re**2 * (a + b)**2)
     n = 0
     while True:
@@ -83,6 +83,7 @@ def Colebrook(Re, a, b):
         if n > 100:
             Colebrook = -2
             break
+    return Colebrook
 
 
 def g_Colebrook(f, Re, a, b):

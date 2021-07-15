@@ -1,8 +1,19 @@
-# Constants that don't depend on the scenario
 rho = 1.3 * 1000.
 g = 9.8
 
+kB = 1.3806488e-23  # boltzmann constant
+amu = 1.66053892e-27  # in kg
+
 Cd_streamlined = 0.04
+
+# Air properties
+T_air = 293.0  # Kelvin
+FM_air = 28.97  # average formula mass
+Rsp_air = 287.058  # book value of Rsp in air
+
+# Pressure references
+Skylab = 34400.
+atm = 101325.
 
 # Experiment scaling
 # 	mu	rho
@@ -16,8 +27,6 @@ Cd_streamlined = 0.04
 
 Gval = 6.67384e-11
 AU = 149597871000.
-Skylab = 34400.
-atm = 101325.
 Stefan_const = 5.6704e-08
 
 example_masses = dict(

@@ -1,0 +1,194 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Import your laminar wedge model & geometry
+from positional_250 import (
+    N_SHELLS,
+    R,          # radii of shells (inner radius of each shell)
+    C,          # clearances per gap (len = N_SHELLS-1)
+    MU,
+    U_rel,      # relative speeds per gap (len = N_SHELLS-1)
+    L,          # axial length
+    total_fluid_forces,
+)
+
+# ----------------------------------------------------
+# Mass model: each friction-buffer shell gets a mass
+# ≈ 1/4 of the air mass in its inner annulus
+# ----------------------------------------------------
+
+rho_air = 1.2  # kg/m^3
+
+# Air mass in each annulus (gap between shell i and i+1)
+gap_masses = np.zeros(N_SHELLS - 1)
+for i in range(N_SHELLS - 1):
+    R_inner = R[i]
+    R_outer = R[i+1]
+    volume = np.pi * (R_outer**2 - R_inner**2) * L   # exact annulus volume
+    gap_masses[i] = rho_air * volume
+
+# Moving shells: 1..N_SHELLS-2 (hull 0 fixed, outer stator N_SHELLS-1 fixed)
+moving_indices = list(range(1, N_SHELLS - 1))
+n_move = len(moving_indices)
+
+# Assign each moving shell a mass = 1/4 of the air mass in its *inner* annulus
+shell_masses = np.zeros(n_move)
+for j, s in enumerate(moving_indices):
+    shell_masses[j] = 0.25 * gap_masses[s - 1]
+
+# Small isotropic damping for each shell (to keep things from ringing forever)
+C_DAMP = 3e4  # N·s/m; set >0 if you want some damping
+
+
+# ----------------------------------------------------
+# Dynamics: state = [positions(2*n_move), velocities(2*n_move)]
+# ----------------------------------------------------
+
+def deriv(state):
+    """
+    Compute time derivative of the state for all moving shells.
+
+    state shape: (4 * n_move,)
+      - first 2*n_move entries: [x_1, y_1, x_2, y_2, ..., x_{N-2}, y_{N-2}]
+      - next  2*n_move entries: [vx_1, vy_1, vx_2, vy_2, ..., vx_{N-2}, vy_{N-2}]
+    """
+    pos = state[:2*n_move].reshape((n_move, 2))
+    vel = state[2*n_move:].reshape((n_move, 2))
+
+    # Build global positions q for all shells
+    q_global = np.zeros(2 * N_SHELLS)
+    # hull (0) fixed at (0,0)
+    # outer stator (N_SHELLS-1) fixed at (0,0)
+    for j, s in enumerate(moving_indices):
+        q_global[2*s:2*s+2] = pos[j]
+
+    # Fluid wedge forces on all shells
+    F_global = total_fluid_forces(q_global, C, MU, U_rel, L)
+
+    # Accelerations for moving shells
+    acc = np.zeros_like(pos)
+    for j, s in enumerate(moving_indices):
+        Fx, Fy = F_global[2*s:2*s+2]
+        m = shell_masses[j]
+        acc[j, 0] = (Fx - C_DAMP * vel[j, 0]) / m
+        acc[j, 1] = (Fy - C_DAMP * vel[j, 1]) / m
+
+    dpos = vel
+    dvel = acc
+
+    return np.concatenate([dpos.reshape(-1), dvel.reshape(-1)])
+
+
+def rk4_step(state, dt):
+    k1 = deriv(state)
+    k2 = deriv(state + 0.5 * dt * k1)
+    k3 = deriv(state + 0.5 * dt * k2)
+    k4 = deriv(state + dt * k3)
+    return state + (dt / 6.0) * (k1 + 2*k2 + 2*k3 + k4)
+
+
+# ----------------------------------------------------
+# Time simulation
+# ----------------------------------------------------
+
+def main():
+    # Initial conditions:
+    # - Start with all shells concentric,
+    #   except give the first friction buffer (shell 1) a small x-offset.
+    pos0 = np.zeros((n_move, 2))
+    pos0[0, 0] = 0.1  # shell 1 offset 0.1 m in +x
+
+    vel0 = np.zeros((n_move, 2))
+
+    state = np.concatenate([pos0.reshape(-1), vel0.reshape(-1)])
+
+    # Time integration parameters
+    DT = 0.05        # s, timestep
+    T_FINAL = 5000  # s, total simulation time
+    N_STEPS = int(T_FINAL / DT)
+
+    times = np.zeros(N_STEPS + 1)
+    # Store positions for a subset of shells to avoid too much clutter
+    track_shells = [1, 5, 10, 15]  # shell indices to monitor (if exist)
+    track_shells = [s for s in track_shells if 1 <= s <= N_SHELLS - 2]
+
+    # Map these to moving-shell indices
+    track_idx = [moving_indices.index(s) for s in track_shells]
+
+    xs = {s: np.zeros(N_STEPS + 1) for s in track_shells}
+    ys = {s: np.zeros(N_STEPS + 1) for s in track_shells}
+
+    # Record initial positions
+    for s, j in zip(track_shells, track_idx):
+        xs[s][0] = pos0[j, 0]
+        ys[s][0] = pos0[j, 1]
+
+    t = 0.0
+    n_last = 0  # last valid index
+
+    try:
+        for n in range(1, N_STEPS + 1):
+            # One RK4 step; this is where we can hit e >= C and raise ValueError
+            state = rk4_step(state, DT)
+            t += DT
+
+            times[n] = t
+            n_last = n
+
+            pos = state[:2*n_move].reshape((n_move, 2))
+
+            for s, j in zip(track_shells, track_idx):
+                xs[s][n] = pos[j, 0]
+                ys[s][n] = pos[j, 1]
+
+    except ValueError as exc:
+        # We hit the "offset e >= clearance c" condition somewhere in the RK4 stages
+        print(f"\nSimulation aborted at step {n_last}, t ≈ {times[n_last]:.3f} s")
+        print(f"Reason: {exc}")
+
+    # Trim arrays to the last valid index so plots don't include uninitialized tail
+    times_plot = times[:n_last+1]
+    xs_plot = {s: arr[:n_last+1] for s, arr in xs.items()}
+    ys_plot = {s: arr[:n_last+1] for s, arr in ys.items()}
+
+    # -----------------
+    # Plots
+    # -----------------
+
+    # 1) x(t) for selected shells
+    plt.figure()
+    for s in track_shells:
+        plt.plot(times_plot, xs_plot[s], label=f"shell {s} x(t)")
+    plt.xlabel("Time [s]")
+    plt.ylabel("x displacement [m]")
+    plt.title("Friction-buffer x(t) trajectories")
+    plt.legend()
+    plt.grid(True)
+
+    # 2) y(t) for selected shells
+    plt.figure()
+    for s in track_shells:
+        plt.plot(times_plot, ys_plot[s], label=f"shell {s} y(t)")
+    plt.xlabel("Time [s]")
+    plt.ylabel("y displacement [m]")
+    plt.title("Friction-buffer y(t) trajectories")
+    plt.legend()
+    plt.grid(True)
+
+    # 3) Orbits in x–y for selected shells
+    plt.figure()
+    for s in track_shells:
+        plt.plot(xs_plot[s], ys_plot[s], label=f"shell {s}")
+    plt.xlabel("x [m]")
+    plt.ylabel("y [m]")
+    plt.axis("equal")
+    plt.title("Friction-buffer trajectories in cross-section")
+    plt.legend()
+    plt.grid(True)
+
+    plt.show()
+
+
+if __name__ == "__main__":
+    main()
+

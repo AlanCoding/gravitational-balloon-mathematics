@@ -18,19 +18,19 @@ It is *not* a realistic CFD or rotor-dynamics model, but it captures some import
 The “reference” geometry is:
 
 - Inner rotating habitat (the hull):
-  - Radius: $ R_0 = 250\ \text{m} $
-  - Rim speed: $ V_\text{hull} \approx 50\ \text{m/s} $
+  - Radius: $R_0 = 250\ \text{m}$
+  - Rim speed: $V_\text{hull} \approx 50\ \text{m/s}$
 - Friction buffers:
   - 16 additional shells outside the hull → 17 shells total (indexed 0…16)
   - Nominal radial clearance per gap:  
-    $ C_i \approx 6\ \text{m} $ (currently uniform)
-  - Axial length: $ L \approx 1000\ \text{m} $ (same for all gaps in this toy model)
+    $C_i \approx 6\ \text{m}$ (currently uniform)
+  - Axial length: $L \approx 1000\ \text{m}$ (same for all gaps in this toy model)
 - Radii:
   - Shell $i$ inner radius:  
-    $ R_i = R_0 + i\,C $
+    $R_i = R_0 + i\,C$
 - Fluid:
-  - Air, dynamic viscosity $ \mu \approx 1.8\times10^{-5}\ \text{Pa·s} $
-  - Density $ \rho \approx 1.2\ \text{kg/m}^3 $
+  - Air, dynamic viscosity $\mu \approx 1.8\times10^{-5}\ \text{Pa·s}$
+  - Density $\rho \approx 1.2\ \text{kg/m}^3$
 
 Shell 0 is the **hull**, shell 16 is the **outer stationary envelope**. In the multi-shell simulation, shells 1–15 can move in cross-section; 0 and 16 are fixed at the origin in (x, y).
 
@@ -51,7 +51,7 @@ Each gap between shell $i$ (inner) and shell $i+1$ (outer) is modeled as a short
 - Inner radius $R_i$,
 - Clearance $C_i$,
 - Axial length $L$,
-- Relative surface speed across the gap $ U_\text{rel} $ (from the staged velocities).
+- Relative surface speed across the gap $U_\text{rel}$ (from the staged velocities).
 
 Let
 

@@ -16,9 +16,9 @@ Perfect, let’s lock in a clean version of the forces with everything named and
 * $`U = \omega R`$ — surface speed of the journal
 * Film thickness:
 
-  $$
+```math
   h(\theta) = c\,(1 + \varepsilon \cos\theta)
-  $$
+```
 
 * $`p(\theta)`$ — hydrodynamic pressure in the fluid film at angle $`\theta`$
 * Coordinates:
@@ -34,7 +34,7 @@ Perfect, let’s lock in a clean version of the forces with everything named and
 
 In the “infinitely long” journal-bearing model (no axial variation), the Reynolds equation reduces to a 1D ODE in $`\theta`$:
 
-$$
+```math
 \frac{d}{d\theta}
 \left(
 h(\theta)^3 \frac{dp}{d\theta}
@@ -42,7 +42,7 @@ h(\theta)^3 \frac{dp}{d\theta}
 =
 6\,\mu\,\omega\,R^2\,\frac{dh}{d\theta}.
 \tag{Reynolds}
-$$
+```
 
 with $`h(\theta) = c(1+\varepsilon\cos\theta)`$ and $`p(\theta)`$ taken $`2\pi`$-periodic (Sommerfeld full-film assumption).
 
@@ -54,25 +54,25 @@ You solve this ODE (analytically or numerically) to get $`p(\theta)`$.
 
 Pressure acts normal to the journal surface. The elemental pressure force on area $`dA = R L\,d\theta`$ is
 
-$$
+```math
 d\vec{F}_p = -p(\theta)\,(\cos\theta\,\hat{x} + \sin\theta\,\hat{y})\,R L\,d\theta.
-$$
+```
 
 Integrate around the circumference:
 
-$$
+```math
 F_x = -R L \int_0^{2\pi} p(\theta)\cos\theta\,d\theta,
 \qquad
 F_y = -R L \int_0^{2\pi} p(\theta)\sin\theta\,d\theta.
-$$
+```
 
 Choosing “radial” direction along $`+\hat{x}`$, the **radial restoring force** (pointing opposite the displacement) is:
 
-$$
+```math
 F_r \equiv -F_x
 =
 R L \int_0^{2\pi} p(\theta)\cos\theta\,d\theta.
-$$
+```
 
 * Direction: opposite the displacement $`e`$ (i.e. from journal center back toward bearing center).
 * For small $`\varepsilon`$, this behaves like a spring: $`F_r \approx -k\,e`$, where $`k`$ comes from the $`\varepsilon`$-dependence of $`p(\theta)`$.

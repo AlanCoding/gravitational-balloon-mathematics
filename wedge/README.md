@@ -36,9 +36,9 @@ Shell 0 is the **hull**, shell 16 is the **outer stationary envelope**. In the m
 
 The **shell speeds** are staged between hull and outer envelope. For now, the script uses a simple linear profile:
 
-$$
+```math
 v_i = V_\text{hull}\,\Bigl(1 - \frac{i}{N_\text{shells}-1}\Bigr),
-$$
+```
 
 so that the **relative linear speed** in each gap is (approximately) constant from hull to envelope.
 
@@ -63,17 +63,17 @@ Let
 
 Under **short-bearing, laminar, incompressible, quasi-steady** Reynolds assumptions, the hydrodynamic reaction in that gap can be expressed in terms of:
 
-$$
+```math
 F_{r,i}(\varepsilon_i) = -F_{0,i}\, \frac{\varepsilon_i^2}{(1-\varepsilon_i^2)^2}, 
 \qquad
 F_{t,i}(\varepsilon_i) = +F_{0,i}\, \frac{\pi\,\varepsilon_i}{4(1-\varepsilon_i^2)^{3/2}},
-$$
+```
 
 with force scale
 
-$$
+```math
 F_{0,i} = \mu\, U_\text{rel}\,\frac{L^3}{c_i^2}.
-$$
+```
 
 Here:
 
@@ -89,9 +89,9 @@ In vector form for gap $`i`$:
 
 The fluid force on the **inner** shell from that gap is:
 
-$$
+```math
 \mathbf{F}_i^\text{(gap i)} = F_{r,i}\,\hat{\mathbf{e}}_{r,i} + F_{t,i}\,\hat{\mathbf{e}}_{t,i},
-$$
+```
 
 and on the **outer** shell: $`\mathbf{F}_{i+1}^\text{(gap i)} = -\mathbf{F}_i^\text{(gap i)}`$.
 
@@ -99,11 +99,11 @@ and on the **outer** shell: $`\mathbf{F}_{i+1}^\text{(gap i)} = -\mathbf{F}_i^\t
 
 For $`e \ll c`$, let $`\varepsilon \ll 1`$. Expand:
 
-$$
+```math
 F_r \approx -F_0\,\varepsilon^2 = -F_0\,\frac{e^2}{c^2}, 
 \qquad
 F_t \approx F_0\,\frac{\pi}{4}\,\varepsilon = F_0\,\frac{\pi}{4}\,\frac{e}{c}.
-$$
+```
 
 Key points:
 
@@ -111,9 +111,9 @@ Key points:
 - **Tangential component** is **linear** in $`e`$: dominant at small offsets.
 - Their ratio near center:
 
-  $$
+```math
   \frac{|F_r|}{|F_t|} \approx \frac{4}{\pi}\,\frac{e}{c}.
-  $$
+```
 
 So near $`e \approx 0`$ the wedge looks more like a **circulatory (cross-coupled) stiffness** than a nice radial spring.
 
@@ -121,15 +121,15 @@ So near $`e \approx 0`$ the wedge looks more like a **circulatory (cross-coupled
 
 Solving $`|F_r| = |F_t|`$ for $`\varepsilon`$ gives
 
-$$
+```math
 \varepsilon_* \approx 0.618.
-$$
+```
 
 For the innermost gap with $`c = 6\ \text{m}`$, this is:
 
-$$
+```math
 e_* \approx 0.618 \times 6\ \text{m} \approx 3.7\ \text{m}.
-$$
+```
 
 So in this laminar model:
 
@@ -146,10 +146,10 @@ We assemble a 17-shell system where:
 - Shells 1–15 are allowed to move in 2D.
 - The total fluid force on shell $`s`$ is the sum of contributions from the inner and outer gaps:
 
-$$
+```math
 \mathbf{F}_s^\text{fluid}
 = \mathbf{F}_s^\text{(gap s-1)} + \mathbf{F}_s^\text{(gap s)}.
-$$
+```
 
 The function:
 
@@ -157,9 +157,9 @@ The function:
 
 takes a global configuration vector
 
-$$
+```math
 q = [x_0,y_0,x_1,y_1,\dots,x_{16},y_{16}]
-$$
+```
 
 and returns the net fluid wedge force on each shell, automatically applying action–reaction between neighbors and inserting the laminar wedge law for each gap.
 
@@ -167,16 +167,16 @@ and returns the net fluid wedge force on each shell, automatically applying acti
 
 Each moving shell $`s \in \{1,\dots,15\}`$ is assigned a mass:
 
-$$
+```math
 m_s = \frac{1}{4}\,m_\text{air}^{\text{(inner annulus)}},
-$$
+```
 
 where
 
-$$
+```math
 m_\text{air}^{\text{(inner annulus i)}} 
 = \rho\,\pi\,(R_{i+1}^2 - R_i^2)\,L.
-$$
+```
 
 This is a crude but concrete way to give the shells inertia on the same order as the air mass they “ride on,” while keeping the numbers manageable.
 
@@ -237,10 +237,10 @@ A first toy (`time_sim_250.py`) let the *hull* move under wedge forces with the 
 
 This behavior is **not** a bug: near $`e=0`$, the force field linearizes to
 
-$$
+```math
 \mathbf{F}(\mathbf{r}) \approx A\,J\,\mathbf{r},\quad
 J=\begin{pmatrix}0&-1\\1&0\end{pmatrix},
-$$
+```
 
 a 90°-rotated spring that is linearly unstable when combined with inertia but no damping or direct restoring stiffness.
 
@@ -256,11 +256,11 @@ The main dynamic script (`multi_shell_time_sim.py`) does:
   - 2D positions and velocities $`(x_s,y_s,\dot x_s,\dot y_s)`$.
 - Equations of motion:
 
-  $$
+```math
   m_s \ddot{\mathbf{r}}_s 
   = \mathbf{F}_s^\text{fluid}(\{\mathbf{r}_j\}) 
     - C_\text{damp}\,\dot{\mathbf{r}}_s,
-  $$
+```
 
   with **global scalar** damping $`C_\text{damp}`$ applied to each moving shell.
 

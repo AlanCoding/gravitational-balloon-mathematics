@@ -16,9 +16,9 @@ Perfect, let’s lock in a clean version of the forces with everything named and
 * $`U = \omega R`$ — surface speed of the journal
 * Film thickness:
 
-  $$
+```math
   h(\theta) = c\,(1 + \varepsilon \cos\theta)
-  $$
+```
 
 * $`p(\theta)`$ — hydrodynamic pressure in the fluid film at angle $`\theta`$
 * Coordinates:
@@ -36,51 +36,51 @@ Taking just the viscous shear at the journal surface (the “simple” tangentia
 
 * Local shear stress at the journal:
 
-  $$
+```math
   \tau(\theta) \approx \mu \frac{U}{h(\theta)}
   = \mu\,\omega\,R\,\frac{1}{h(\theta)}.
-  $$
+```
 
 * Elemental tangential force on area $`dA = R L\,d\theta`$:
 
-  $$
+```math
   dF_\theta \approx \tau(\theta)\,dA
   = \mu\,\omega\,R^2\,\frac{1}{h(\theta)}\,L\,d\theta.
-  $$
+```
 
 Integrate around the circumference:
 
-$$
+```math
 F_\theta \approx
 \mu\,\omega\,R^2 L
 \int_0^{2\pi} \frac{d\theta}{h(\theta)}
 =
 \mu\,\omega\,R^2 L
 \int_0^{2\pi} \frac{d\theta}{c\,(1+\varepsilon\cos\theta)}.
-$$
+```
 
 This integral has a closed form for $`|\varepsilon|<1`$:
 
-$$
+```math
 \int_0^{2\pi} \frac{d\theta}{1+\varepsilon\cos\theta}
 =
 \frac{2\pi}{\sqrt{1-\varepsilon^2}},
-$$
+```
 
 so
 
-$$
+```math
 F_\theta \approx
 \frac{2\pi\,\mu\,\omega\,R^2 L}{c\,\sqrt{1-\varepsilon^2}}.
-$$
+```
 
 * Direction: opposite the direction of rotation (tangential drag).
 * This is the clean, shear-only tangential force.
 * A small additional tangential component from the pressure field can be included as
 
-  $$
+```math
   F_{\theta,\text{press}} = F_y = -R L \int_0^{2\pi} p(\theta)\sin\theta\,d\theta,
-  $$
+```
 
   but it’s often subdominant compared to the shear term above.
 

@@ -4,7 +4,7 @@ This folder contains a first-pass, laminar lubrication model of the “friction 
 
 The code is meant as a *toy model* that:
 
-- Uses **short journal bearing** / Reynolds lubrication theory in the **laminar, incompressible, quasi-steady** limit.
+- **Defunct assumption (kept for context):** earlier drafts used the **short-bearing** form of Reynolds lubrication theory in the **laminar, incompressible, quasi-steady** limit, but that approximation is no longer considered valid for the 250 m, multi-divider system; long-bearing theory is required for realistic forces.
 - Treats each annular gap as a hydrodynamic “wedge” that generates pressure and forces when the inner and outer shells are offset.
 - Scales up to a **17-shell stack** (16 gaps) with a fixed inner hull and fixed outer envelope, intermediate shells free to move in 2D.
 - Lets us probe **static force–eccentricity behavior** and **time evolution** of shell positions under wedge forces and simple damping.
@@ -46,7 +46,9 @@ so that the **relative linear speed** in each gap is (approximately) constant fr
 
 ## Single-gap laminar wedge model
 
-Each gap between shell $`i`$ (inner) and shell $`i+1`$ (outer) is modeled as a short journal bearing with:
+> **Defunct note:** The following closed-form expressions come from the short-bearing (Ocvirk) approximation. They are retained to document the toy model behavior, but they should **not** be used for the actual 250 m, 16-divider concept, which instead needs the long-bearing (Sommerfeld) formulation referenced in `lit/radial.md` and `lit/tangental.md`.
+
+Each gap between shell $`i`$ (inner) and shell $`i+1`$ (outer) is modeled with this now-defunct short-bearing approximation:
 
 - Inner radius $`R_i`$,
 - Clearance $`C_i`$,
@@ -61,7 +63,7 @@ Let
 - $`c_i`$ the clearance of that gap,
 - $`\varepsilon_i = e_i/c_i`$ the eccentricity ratio.
 
-Under **short-bearing, laminar, incompressible, quasi-steady** Reynolds assumptions, the hydrodynamic reaction in that gap can be expressed in terms of:
+Under these **defunct short-bearing, laminar, incompressible, quasi-steady** Reynolds assumptions, the hydrodynamic reaction in that gap can be expressed in terms of:
 
 ```math
 F_{r,i}(\varepsilon_i) = -F_{0,i}\, \frac{\varepsilon_i^2}{(1-\varepsilon_i^2)^2}, 
@@ -317,8 +319,8 @@ This is *qualitatively* similar to how real multi-rotor systems can move instabi
 - **Laminar, quasi-steady Reynolds**:
   - Ignores turbulence (very likely present at the actual Reynolds numbers).
   - Ignores unsteady terms that produce *velocity-dependent* film forces (true damping).
-- **Short-bearing approximation**:
-  - Treats each gap as a short journal bearing; end leakage and full 3D effects are not modeled.
+- **Defunct short-bearing approximation**:
+  - Prior toy analysis treated each gap with the short-bearing approximation; this is retained only as an archived reference because it neglects end leakage/axial variation that the real, long-bearing regime requires.
 - **Ad-hoc damping**:
   - `C_damp` is a crude global isotropic damper per shell, not a proper fluid dynamic coefficient matrix.
 - **No structural elements yet**:
@@ -338,4 +340,3 @@ python sim_250.py
 
 # Multi-shell dynamic simulation: friction buffers moving, hull & outer shell fixed
 python multi_shell_time_sim.py
-

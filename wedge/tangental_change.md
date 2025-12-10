@@ -39,7 +39,7 @@ def gap_force_magnitudes(e, c, mu, u_rel, L):
     return Fr, Ft
 ```
 
-No small-e expansion is used in the **actual force evaluation**. The dynamic sim is using the full rational functions in $\varepsilon$, not the Taylor series I wrote down in the explanation.
+No small-e expansion is used in the **actual force evaluation**. The dynamic sim is using the full rational functions in $`\varepsilon`$, not the Taylor series I wrote down in the explanation.
 
 So there is nothing to “turn off” there; the linearization is only in the *analysis*, not in the code that evolves `state`.
 

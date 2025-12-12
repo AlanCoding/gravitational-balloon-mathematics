@@ -1,5 +1,43 @@
 import numpy as np
 
+try:
+    from scipy.integrate import cumulative_trapezoid, simpson
+except ImportError:
+    def cumulative_trapezoid(y, x, initial=0.0):
+        """
+        Minimal cumulative trapezoid integrator if SciPy is unavailable.
+        """
+        y = np.asarray(y)
+        x = np.asarray(x)
+        if y.size != x.size:
+            raise ValueError("y and x must have the same length")
+        if y.size < 2:
+            return np.zeros_like(y)
+
+        trap = 0.5 * (y[1:] + y[:-1]) * np.diff(x)
+        cumsum = np.cumsum(trap)
+        if initial is None:
+            return cumsum
+        return np.concatenate(([initial], initial + cumsum))
+
+    def simpson(y, x):
+        """
+        Composite Simpson's rule for evenly spaced samples.
+        """
+        y = np.asarray(y)
+        x = np.asarray(x)
+        n = y.size
+        if n < 2:
+            return 0.0
+        if n % 2 == 0:
+            raise ValueError("Simpson integration requires an odd number of samples.")
+        h = (x[-1] - x[0]) / (n - 1)
+        return (h / 3.0) * (
+            y[0] + y[-1]
+            + 4.0 * np.sum(y[1:-1:2])
+            + 2.0 * np.sum(y[2:-2:2])
+        )
+
 # ---------------------------
 # Physical / geometric params
 # ---------------------------
@@ -35,15 +73,71 @@ U_rel = np.abs(shell_linear_speed[:-1] - shell_linear_speed[1:])  # length 16
 C = np.full(N_SHELLS - 1, GAP, dtype=float)
 
 
+# Pre-compute a θ-grid for the long-bearing integrals
+N_THETA = 2049  # odd number so Simpson's rule applies cleanly
+THETA_GRID = np.linspace(0.0, 2.0 * np.pi, N_THETA, endpoint=True)
+COS_THETA = np.cos(THETA_GRID)
+TWO_PI = 2.0 * np.pi
+
+
 # ---------------------------
 # Single-gap wedge force law
 # ---------------------------
 
-def gap_force_magnitudes(e, c, mu, u_rel, L):
+def _long_bearing_radial_force(e, c, mu, u_rel, L, r_inner):
     """
-    Return (Fr, Ft) for a single short bearing gap,
-    using the laminar wedge formulas in terms of the
-    relative center offset e and clearance c.
+    Compute the radial component for a single gap using the long-bearing
+    Reynolds solution described in lit/radial.md. Negative pressures,
+    which correspond to tensile stresses in the lubricant, are clipped
+    to zero (Reynolds boundary).
+    """
+    eps = e / c
+    h = c * (1.0 + eps * COS_THETA)
+
+    inv_h2 = 1.0 / (h * h)
+    inv_h3 = inv_h2 / h
+
+    # 6 * μ * ω * R^2 with ω replaced by U_rel / R
+    load_scale = 6.0 * mu * u_rel * r_inner
+
+    integral_inv_h2 = simpson(inv_h2, THETA_GRID)
+    integral_inv_h3 = simpson(inv_h3, THETA_GRID)
+
+    if not np.isfinite(integral_inv_h3) or np.isclose(integral_inv_h3, 0.0):
+        raise ValueError("Degenerate integral encountered in radial force computation.")
+
+    integration_constant = -load_scale * (integral_inv_h2 / integral_inv_h3)
+
+    dp_dtheta = (load_scale * h + integration_constant) * inv_h3
+
+    # Integrate once more for pressure; remove mean to avoid accumulating drift.
+    p_theta = cumulative_trapezoid(dp_dtheta, THETA_GRID, initial=0.0)
+    avg_pressure = simpson(p_theta, THETA_GRID) / TWO_PI
+    p_theta -= avg_pressure
+    # Enforce Reynolds boundary (no tensile stress) by ignoring the
+    # portion of the film that would be in tension.
+    p_positive = np.clip(p_theta, 0.0, None)
+    if np.all(p_positive == 0.0):
+        return 0.0
+
+    Fr = r_inner * L * simpson(p_positive * COS_THETA, THETA_GRID)
+    return Fr
+
+
+def _tangential_shear_force(eps, c, mu, u_rel, L, r_inner):
+    """
+    Tangential force from viscous shear per lit/tangental.md.
+    """
+    denom = np.sqrt(1.0 - eps**2)
+    Ft = (2.0 * np.pi * mu * u_rel * r_inner * L) / (c * denom)
+    return Ft
+
+
+def gap_force_magnitudes(e, c, mu, u_rel, L, r_inner):
+    """
+    Return (Fr, Ft) for a single gap using the long-bearing
+    Reynolds solution for the radial component and the shear-based
+    tangential load from lit/tangental.md.
 
     Fr: radial component (negative = inward reaction)
     Ft: tangential component (in direction of rotation / ΔU)
@@ -55,31 +149,24 @@ def gap_force_magnitudes(e, c, mu, u_rel, L):
     if eps >= 1.0:
         raise ValueError(f"Offset e={e} exceeds or equals clearance c={c}")
 
-    # Characteristic force scale:
-    # F0 ~ mu * (ΔU) * L^3 / c^2   (generalized from mu*Ω*R*L^3/c^2 by ΩR -> ΔU)
-    F0 = mu * u_rel * (L ** 3) / (c ** 2)
-
-    denom_r = (1.0 - eps**2)**2
-    denom_t = (1.0 - eps**2)**1.5
-
-    Fr = -F0 * (eps**2) / denom_r
-    Ft = +F0 * (np.pi * eps / 4.0) / denom_t
+    Fr = _long_bearing_radial_force(e, c, mu, u_rel, L, r_inner)
+    Ft = _tangential_shear_force(eps, c, mu, u_rel, L, r_inner)
 
     return Fr, Ft
 
 
-def gap_force_vector(r_inner, r_outer, c, mu, u_rel, L):
+def gap_force_vector(r_inner_center, r_outer_center, c, mu, u_rel, L, r_inner_radius):
     """
     Compute the 2D force vector on the INNER shell due to the fluid
     in the gap between (inner, outer) shells.
 
-    r_inner, r_outer: np.array([x,y]) center coordinates of the shells.
+    r_inner_center, r_outer_center: np.array([x,y]) center coordinates of the shells.
     c: clearance for this gap
     mu: viscosity
     u_rel: relative linear speed across the gap
     L: axial length
     """
-    d = r_inner - r_outer
+    d = r_inner_center - r_outer_center
     e = np.linalg.norm(d)
 
     if e == 0.0:
@@ -89,7 +176,7 @@ def gap_force_vector(r_inner, r_outer, c, mu, u_rel, L):
     er = d / e                          # radial unit (inner->outer)
     et = np.array([-er[1], er[0]])      # tangential unit (+90° rotation)
 
-    Fr, Ft = gap_force_magnitudes(e, c, mu, u_rel, L)
+    Fr, Ft = gap_force_magnitudes(e, c, mu, u_rel, L, r_inner_radius)
 
     F_vec = Fr * er + Ft * et
     return F_vec
@@ -119,12 +206,13 @@ def total_fluid_forces(q, C, MU, U_rel, L):
         r_outer = q[2*(i+1):2*(i+1)+2]
 
         F_inner = gap_force_vector(
-            r_inner=r_inner,
-            r_outer=r_outer,
+            r_inner_center=r_inner,
+            r_outer_center=r_outer,
             c=C[i],
             mu=MU,
             u_rel=U_rel[i],
             L=L,
+            r_inner_radius=R[i],
         )
 
         # Add to inner, subtract from outer (action-reaction)

@@ -21,7 +21,9 @@ M_HULL = 1.0e8      # kg, arbitrary but big; tweak as needed
 
 # Structural centering stiffness and damping
 K_CENTER = 1.0e6    # N/m, isotropic
-C_DAMP   = 1.0e5    # N·s/m, isotropic
+C_DAMP   = 0.0    # N·s/m, isotropic
+# C_DAMP values with the old short-journal assumption
+# 1.0e5 made the 5th stage go unstable before the 1st
 
 # Time integration
 DT      = 0.1       # s

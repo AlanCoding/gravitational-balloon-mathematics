@@ -1,3 +1,4 @@
+import time
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -116,12 +117,27 @@ def main():
     xs[0], ys[0], vxs[0], vys[0] = state
     t = 0.0
 
+    # Print a short progress update every ~2 seconds of wall time
+    print_interval = 2.0  # seconds of real wall-clock time
+    next_print = time.perf_counter() + print_interval
+
     for n in range(1, N_STEPS + 1):
         state = rk4_step(state, DT)
         t += DT
 
         times[n] = t
         xs[n], ys[n], vxs[n], vys[n] = state
+
+        now = time.perf_counter()
+        if now >= next_print:
+            disp = np.hypot(state[0], state[1])
+            speed = np.hypot(state[2], state[3])
+            print(
+                f"[progress] sim t = {t:9.1f}s / {T_FINAL:9.1f}s "
+                f"({100 * t / T_FINAL:5.1f}%)  |  "
+                f"disp = {disp:7.3f} m, speed = {speed:7.3f} m/s"
+            )
+            next_print = now + print_interval
 
     # -----------------
     # Plots
@@ -160,4 +176,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

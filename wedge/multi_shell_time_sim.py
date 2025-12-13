@@ -1,3 +1,4 @@
+import time
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -104,7 +105,7 @@ def main():
 
     # Time integration parameters
     DT = 0.05        # s, timestep
-    T_FINAL = 5000  # s, total simulation time
+    T_FINAL = 1000  # s, total simulation time
     N_STEPS = int(T_FINAL / DT)
 
     times = np.zeros(N_STEPS + 1)
@@ -126,6 +127,9 @@ def main():
     t = 0.0
     n_last = 0  # last valid index
 
+    print_interval = 2.0  # seconds of wall time
+    next_print = time.perf_counter() + print_interval
+
     try:
         for n in range(1, N_STEPS + 1):
             # One RK4 step; this is where we can hit e >= C and raise ValueError
@@ -140,6 +144,17 @@ def main():
             for s, j in zip(track_shells, track_idx):
                 xs[s][n] = pos[j, 0]
                 ys[s][n] = pos[j, 1]
+
+            now = time.perf_counter()
+            if now >= next_print:
+                max_disp = np.max(np.linalg.norm(pos, axis=1)) if pos.size else 0.0
+                avg_speed = np.mean(np.linalg.norm(state[2*n_move:].reshape((n_move, 2)), axis=1)) if n_move else 0.0
+                print(
+                    f"[progress] sim t = {t:9.1f}s / {T_FINAL:9.1f}s "
+                    f"({100 * t / T_FINAL:5.1f}%)  |  "
+                    f"max|pos| = {max_disp:7.3f} m, avg|vel| = {avg_speed:7.3f} m/s"
+                )
+                next_print = now + print_interval
 
     except ValueError as exc:
         # We hit the "offset e >= clearance c" condition somewhere in the RK4 stages
@@ -191,4 +206,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

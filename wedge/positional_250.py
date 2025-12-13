@@ -59,18 +59,29 @@ MU = 1.8e-5          # Pa*s
 # Rim speed of hull (at R_HULL)
 V_HULL = 50.0        # m/s
 
-# For simplicity: linearly staged shell speeds from V_HULL down to 0
-# so each gap sees the same ΔU
-shell_linear_speed = np.array([
-    V_HULL * (1.0 - i / (N_SHELLS - 1)) for i in range(N_SHELLS)
-], dtype=float)
-
-# Relative speed in each gap (inner shell i vs outer shell i+1)
-U_rel = np.abs(shell_linear_speed[:-1] - shell_linear_speed[1:])  # length 16
-# With the linear profile above, all entries should be equal to V_HULL / (N_SHELLS-1)
+from steady_spin import steady_state_omegas, torque_coefficients
 
 # Clearances per gap (could be nonuniform later)
 C = np.full(N_SHELLS - 1, GAP, dtype=float)
+
+# Steady-state angular speeds derived from torque balance
+OMEGA_INNER = V_HULL / R_HULL
+OMEGA_OUTER = 0.0
+TORQUE_COEFFS = torque_coefficients(MU, L, R, C)
+SHELL_OMEGA_STEADY = steady_state_omegas(
+    R,
+    C,
+    MU,
+    L,
+    OMEGA_INNER,
+    OMEGA_OUTER,
+)
+
+# Corresponding tangential surface speeds
+shell_linear_speed = SHELL_OMEGA_STEADY * R
+
+# Relative baseline slip per gap (inner shell i vs outer shell i+1)
+U_rel = np.abs(shell_linear_speed[:-1] - shell_linear_speed[1:])
 
 
 # Pre-compute a θ-grid for the long-bearing integrals

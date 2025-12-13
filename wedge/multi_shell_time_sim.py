@@ -8,10 +8,12 @@ from positional_250 import (
     R,          # radii of shells (inner radius of each shell)
     C,          # clearances per gap (len = N_SHELLS-1)
     MU,
-    U_rel,      # relative speeds per gap (len = N_SHELLS-1)
     L,          # axial length
+    TORQUE_COEFFS,
+    SHELL_OMEGA_STEADY,
     total_fluid_forces,
 )
+from steady_spin import signed_torque_on_inner
 
 # ----------------------------------------------------
 # Mass model: each friction-buffer shell gets a mass
@@ -40,31 +42,57 @@ for j, s in enumerate(moving_indices):
 # Small isotropic damping for each shell (to keep things from ringing forever)
 C_DAMP = 3e4  # N·s/m; set >0 if you want some damping
 
+# Rotational inertia per moving shell (approximate thin ring: I = m * R^2)
+shell_inertias = np.zeros(n_move)
+for j, s in enumerate(moving_indices):
+    shell_inertias[j] = shell_masses[j] * (R[s] ** 2)
+
 
 # ----------------------------------------------------
-# Dynamics: state = [positions(2*n_move), velocities(2*n_move)]
+# Dynamics: state = [positions(2*n_move), velocities(2*n_move), omegas(n_move)]
 # ----------------------------------------------------
 
 def deriv(state):
     """
     Compute time derivative of the state for all moving shells.
 
-    state shape: (4 * n_move,)
+    state shape: (5 * n_move,)
       - first 2*n_move entries: [x_1, y_1, x_2, y_2, ..., x_{N-2}, y_{N-2}]
       - next  2*n_move entries: [vx_1, vy_1, vx_2, vy_2, ..., vx_{N-2}, vy_{N-2}]
+      - final n_move entries: angular velocities ω_s for moving shells
     """
     pos = state[:2*n_move].reshape((n_move, 2))
-    vel = state[2*n_move:].reshape((n_move, 2))
+    vel = state[2*n_move:4*n_move].reshape((n_move, 2))
+    omega = state[4*n_move:]
 
-    # Build global positions q for all shells
+    # Build global positions + angular speeds for all shells
     q_global = np.zeros(2 * N_SHELLS)
-    # hull (0) fixed at (0,0)
-    # outer stator (N_SHELLS-1) fixed at (0,0)
+    omega_global = np.array(SHELL_OMEGA_STEADY, copy=True)
     for j, s in enumerate(moving_indices):
         q_global[2*s:2*s+2] = pos[j]
+        omega_global[s] = omega[j]
+
+    # Relative tangential slip from current angular speeds
+    u_rel = np.abs(omega_global[:-1] * R[:-1] - omega_global[1:] * R[1:])
 
     # Fluid wedge forces on all shells
-    F_global = total_fluid_forces(q_global, C, MU, U_rel, L)
+    F_global = total_fluid_forces(q_global, C, MU, u_rel, L)
+
+    # Fluid torques on each shell (array length N_SHELLS)
+    T_global = np.zeros(N_SHELLS)
+    for i in range(N_SHELLS - 1):
+        r_inner = q_global[2*i:2*i+2]
+        r_outer = q_global[2*(i+1):2*(i+1)+2]
+        e = np.linalg.norm(r_inner - r_outer)
+        torque_inner = signed_torque_on_inner(
+            omega_global[i],
+            omega_global[i+1],
+            TORQUE_COEFFS[i],
+            e,
+            C[i],
+        )
+        T_global[i] += torque_inner
+        T_global[i+1] -= torque_inner
 
     # Accelerations for moving shells
     acc = np.zeros_like(pos)
@@ -74,10 +102,19 @@ def deriv(state):
         acc[j, 0] = (Fx - C_DAMP * vel[j, 0]) / m
         acc[j, 1] = (Fy - C_DAMP * vel[j, 1]) / m
 
+    # Angular accelerations
+    alpha = np.zeros_like(omega)
+    for j, s in enumerate(moving_indices):
+        torque = T_global[s]
+        I = shell_inertias[j]
+        if I > 0.0:
+            alpha[j] = torque / I
+
     dpos = vel
     dvel = acc
+    domega = alpha
 
-    return np.concatenate([dpos.reshape(-1), dvel.reshape(-1)])
+    return np.concatenate([dpos.reshape(-1), dvel.reshape(-1), domega])
 
 
 def rk4_step(state, dt):
@@ -100,8 +137,9 @@ def main():
     pos0[0, 0] = 0.1  # shell 1 offset 0.1 m in +x
 
     vel0 = np.zeros((n_move, 2))
+    omega0 = SHELL_OMEGA_STEADY[moving_indices]
 
-    state = np.concatenate([pos0.reshape(-1), vel0.reshape(-1)])
+    state = np.concatenate([pos0.reshape(-1), vel0.reshape(-1), omega0])
 
     # Time integration parameters
     DT = 0.05        # s, timestep
@@ -118,11 +156,13 @@ def main():
 
     xs = {s: np.zeros(N_STEPS + 1) for s in track_shells}
     ys = {s: np.zeros(N_STEPS + 1) for s in track_shells}
+    omegas = {s: np.zeros(N_STEPS + 1) for s in track_shells}
 
     # Record initial positions
     for s, j in zip(track_shells, track_idx):
         xs[s][0] = pos0[j, 0]
         ys[s][0] = pos0[j, 1]
+        omegas[s][0] = omega0[j]
 
     t = 0.0
     n_last = 0  # last valid index
@@ -140,19 +180,24 @@ def main():
             n_last = n
 
             pos = state[:2*n_move].reshape((n_move, 2))
+            vel = state[2*n_move:4*n_move].reshape((n_move, 2))
+            omega = state[4*n_move:]
 
             for s, j in zip(track_shells, track_idx):
                 xs[s][n] = pos[j, 0]
                 ys[s][n] = pos[j, 1]
+                omegas[s][n] = omega[j]
 
             now = time.perf_counter()
             if now >= next_print:
                 max_disp = np.max(np.linalg.norm(pos, axis=1)) if pos.size else 0.0
-                avg_speed = np.mean(np.linalg.norm(state[2*n_move:].reshape((n_move, 2)), axis=1)) if n_move else 0.0
+                avg_speed = np.mean(np.linalg.norm(vel, axis=1)) if n_move else 0.0
+                avg_omega = np.mean(omega) if omega.size else 0.0
                 print(
                     f"[progress] sim t = {t:9.1f}s / {T_FINAL:9.1f}s "
                     f"({100 * t / T_FINAL:5.1f}%)  |  "
-                    f"max|pos| = {max_disp:7.3f} m, avg|vel| = {avg_speed:7.3f} m/s"
+                    f"max|pos| = {max_disp:7.3f} m, avg|vel| = {avg_speed:7.3f} m/s, "
+                    f"avg ω = {avg_omega:7.4f} rad/s"
                 )
                 next_print = now + print_interval
 
@@ -165,6 +210,7 @@ def main():
     times_plot = times[:n_last+1]
     xs_plot = {s: arr[:n_last+1] for s, arr in xs.items()}
     ys_plot = {s: arr[:n_last+1] for s, arr in ys.items()}
+    omega_plot = {s: arr[:n_last+1] for s, arr in omegas.items()}
 
     # -----------------
     # Plots
@@ -198,6 +244,16 @@ def main():
     plt.ylabel("y [m]")
     plt.axis("equal")
     plt.title("Friction-buffer trajectories in cross-section")
+    plt.legend()
+    plt.grid(True)
+
+    # 4) Angular speed evolution
+    plt.figure()
+    for s in track_shells:
+        plt.plot(times_plot, omega_plot[s], label=f"shell {s} ω(t)")
+    plt.xlabel("Time [s]")
+    plt.ylabel("Angular speed [rad/s]")
+    plt.title("Shell angular speeds vs time")
     plt.legend()
     plt.grid(True)
 

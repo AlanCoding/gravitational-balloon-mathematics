@@ -143,7 +143,7 @@ def main():
 
     # Time integration parameters
     DT = 0.05        # s, timestep
-    T_FINAL = 1000  # s, total simulation time
+    T_FINAL = 10000  # s, total simulation time
     N_STEPS = int(T_FINAL / DT)
 
     times = np.zeros(N_STEPS + 1)

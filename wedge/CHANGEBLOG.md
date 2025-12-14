@@ -67,3 +67,40 @@ and this might forever be hard to simulate.
 The lower cross-over point for the force ratios also has another tantalizing
 implication - that a reasonable amount of intentional offset might work
 completely to stabilize the construction.
+
+## Including Angular Speeds
+
+This turned out to not have much of an effect given the prior simulation.
+But this is likely because of the relatively small displacements seen.
+
+## Longer time runs
+
+Those simulations so far ran 1,000s.
+Over that time, relatively small displacements were seen.
+This was good, but the small wobbles are concerning for longer-term operation,
+as chance interactions over larger scales might still drive it unstable.
+
+This time, I ran for 10,000s keeping everything else the same.
+Here is the x position over time, the wobble & y position are
+telling pretty much the same story.
+
+![x overtime](10000s/x_time.png)
+
+Key conclusions here:
+ - the movement does reach a limit
+ - shell that moves the most is 15, so the furthest out
+
+This last point is intuitive and particularly interesting.
+Because the transient started with a variation in position
+of the inner-most shell.
+
+You can also see no dampening, which is somewhat intended.
+This model very much has no dampening in it on purpose.
+If dampening was added, you might see them restore to
+their original positions, but still unclear.
+
+## Using a controlled displacement
+
+The idea here is that we might "induce" the wedge effect intentionally.
+This would be maintained by a constant force on the bearings of the tube,
+pressed against a force maintained out the outermost stationary sheet.

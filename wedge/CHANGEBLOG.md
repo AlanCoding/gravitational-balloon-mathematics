@@ -104,3 +104,42 @@ their original positions, but still unclear.
 The idea here is that we might "induce" the wedge effect intentionally.
 This would be maintained by a constant force on the bearings of the tube,
 pressed against a force maintained out the outermost stationary sheet.
+
+ran:
+
+```
+python wedge/multi_shell_time_sim.py --hull-offset 30 --initial-perturb 0.1
+```
+
+Initial results are very weird, with the y value decreasing.
+
+![y with control disp](control_disp/y_time.png)
+
+Nothing interesting happened with the x position, and nothing could be
+seen happening at all with the overall (x, y) plot because the starting
+condition dwarfs any movement.
+
+So to be sure, I tried it for the 10000 s run.
+Wasn't enough, so I ran a 100,000 s run.
+This finally revealed the end-state evolution of the system.
+
+![y for long run](control_disp_hours/y_time.png)
+
+The steady-state version of the system is in view now.
+This state, also, is not oscillating.
+That run was done with `--hull-offset 20`, meaing that
+the hull is offset 30 meters in a tube surrounded by 100 meters
+of friction buffers.
+
+This result shows that that degree of offset **atains stability**,
+which is an important result.
+
+You might wonder, what is going on with these y values?
+Weren't they supposed to be 0? And yes they were.
+But this is probably a case of the simulation being right,
+and me being wrong with how I formed the initial conditions.
+I balanced the x values for the external force/offset.
+But since there is also a tangential force obtained when
+the rotor is offset, it's pretty easy to see how the final
+solution might have some non-zero y values, and this is
+what I believe we are getting.

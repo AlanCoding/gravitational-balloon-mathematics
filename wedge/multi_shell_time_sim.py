@@ -1,3 +1,4 @@
+import argparse
 import time
 import numpy as np
 import matplotlib.pyplot as plt
@@ -13,6 +14,7 @@ from positional_250 import (
     SHELL_OMEGA_STEADY,
     total_fluid_forces,
 )
+from static_offset_solver import solve_static_offsets
 from steady_spin import signed_torque_on_inner
 
 # ----------------------------------------------------
@@ -47,6 +49,8 @@ shell_inertias = np.zeros(n_move)
 for j, s in enumerate(moving_indices):
     shell_inertias[j] = shell_masses[j] * (R[s] ** 2)
 
+BASE_POSITIONS = np.zeros((N_SHELLS, 2))
+
 
 # ----------------------------------------------------
 # Dynamics: state = [positions(2*n_move), velocities(2*n_move), omegas(n_move)]
@@ -66,7 +70,7 @@ def deriv(state):
     omega = state[4*n_move:]
 
     # Build global positions + angular speeds for all shells
-    q_global = np.zeros(2 * N_SHELLS)
+    q_global = BASE_POSITIONS.reshape(-1).copy()
     omega_global = np.array(SHELL_OMEGA_STEADY, copy=True)
     for j, s in enumerate(moving_indices):
         q_global[2*s:2*s+2] = pos[j]
@@ -130,11 +134,39 @@ def rk4_step(state, dt):
 # ----------------------------------------------------
 
 def main():
+    parser = argparse.ArgumentParser(description="Multi-shell time simulation.")
+    parser.add_argument(
+        "--hull-offset",
+        type=float,
+        default=0.0,
+        help="Imposed x-offset of the central tube (m). Default 0.",
+    )
+    parser.add_argument(
+        "--initial-perturb",
+        type=float,
+        default=0.1,
+        help="Additional x-perturbation for shell 1 (m). Default 0.1.",
+    )
+    args = parser.parse_args()
+
+    base_positions = np.zeros((N_SHELLS, 2))
+    base_positions[-1, :] = 0.0  # outer envelope
+    base_positions[0, 0] = args.hull_offset
+    base_force = 0.0
+    if abs(args.hull_offset) > 0.0:
+        result = solve_static_offsets(hull_offset=args.hull_offset, outer_offset=0.0)
+        base_positions[:, 0] = result.offsets
+        base_force = result.target_force
+        print(f"[steady-offset] gap |Fr| = {base_force:.6e} N")
+
+    BASE_POSITIONS[:] = base_positions
+
     # Initial conditions:
     # - Start with all shells concentric,
     #   except give the first friction buffer (shell 1) a small x-offset.
-    pos0 = np.zeros((n_move, 2))
-    pos0[0, 0] = 0.1  # shell 1 offset 0.1 m in +x
+    pos0 = base_positions[moving_indices].copy()
+    if n_move > 0:
+        pos0[0, 0] += args.initial_perturb
 
     vel0 = np.zeros((n_move, 2))
     omega0 = SHELL_OMEGA_STEADY[moving_indices]
@@ -143,7 +175,7 @@ def main():
 
     # Time integration parameters
     DT = 0.05        # s, timestep
-    T_FINAL = 10000  # s, total simulation time
+    T_FINAL = 100000   # s, total simulation time
     N_STEPS = int(T_FINAL / DT)
 
     times = np.zeros(N_STEPS + 1)

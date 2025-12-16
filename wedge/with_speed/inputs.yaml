@@ -1,0 +1,15 @@
+metadata:
+  name: angular-speed-enabled
+  source: CHANGEBLOG.md#Including Angular Speeds
+  description: >
+    Same setup as the long-journal baseline but with shell angular speeds
+    promoted to state variables.
+
+simulation:
+  hull_offset: 0.0
+  outer_offset: 0.0
+  initial_perturb: 0.1
+  damping: 30000.0
+  dt: 0.05
+  total_time: 1000.0
+  track_shells: [1, 5, 10, 15]

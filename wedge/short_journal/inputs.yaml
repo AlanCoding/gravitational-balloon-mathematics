@@ -1,0 +1,18 @@
+metadata:
+  name: short-journal-baseline
+  source: CHANGEBLOG.md#First coupled simulation
+  description: >
+    Initial coupled simulation that still relied on the short-journal force
+    model; includes the vanilla run plus a repeat with higher damping.
+  notes:
+    - Hull and envelope remained concentric.
+    - Shell 1 received the nominal 0.1 m perturbation.
+
+simulation:
+  hull_offset: 0.0
+  outer_offset: 0.0
+  initial_perturb: 0.1
+  damping: 30000.0
+  dt: 0.05
+  total_time: 1000.0
+  track_shells: [1, 5, 10, 15]

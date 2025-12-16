@@ -1,0 +1,16 @@
+metadata:
+  name: induced-wedge-100ks
+  source: CHANGEBLOG.md#Using a controlled displacement
+  description: >
+    Multi-hour (100,000 s) run to observe the final steady state when a large
+    initial offset is imposed. Notes mention the effective hull offset being
+    about 20 m for this case.
+
+simulation:
+  hull_offset: 20.0
+  outer_offset: 0.0
+  initial_perturb: 0.1
+  damping: 30000.0
+  dt: 0.05
+  total_time: 100000.0
+  track_shells: [1, 5, 10, 15]

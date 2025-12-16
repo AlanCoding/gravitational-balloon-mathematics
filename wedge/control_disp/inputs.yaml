@@ -1,0 +1,16 @@
+metadata:
+  name: induced-wedge-short-run
+  source: CHANGEBLOG.md#Using a controlled displacement
+  description: >
+    Controlled displacement test with a 30 m hull offset to intentionally bias
+    the wedge. This captures the shorter runs discussed before the multi-hour
+    sweep.
+
+simulation:
+  hull_offset: 30.0
+  outer_offset: 0.0
+  initial_perturb: 0.1
+  damping: 30000.0
+  dt: 0.05
+  total_time: 10000.0
+  track_shells: [1, 5, 10, 15]

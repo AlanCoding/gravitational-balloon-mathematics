@@ -1,0 +1,15 @@
+metadata:
+  name: ten-ks-run
+  source: CHANGEBLOG.md#Longer time runs
+  description: >
+    Ten-thousand second integration to check whether the small wobble grows
+    without bound under nominal offsets.
+
+simulation:
+  hull_offset: 0.0
+  outer_offset: 0.0
+  initial_perturb: 0.1
+  damping: 30000.0
+  dt: 0.05
+  total_time: 10000.0
+  track_shells: [1, 5, 10, 15]

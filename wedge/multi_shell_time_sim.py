@@ -1,7 +1,10 @@
-import argparse
+import sys
 import time
+from pathlib import Path
+
 import numpy as np
 import matplotlib.pyplot as plt
+import yaml
 
 # Import your laminar wedge model & geometry
 from positional_250 import (
@@ -50,6 +53,72 @@ for j, s in enumerate(moving_indices):
     shell_inertias[j] = shell_masses[j] * (R[s] ** 2)
 
 BASE_POSITIONS = np.zeros((N_SHELLS, 2))
+
+DEFAULTS_DIR = Path(__file__).resolve().parent / "defaults"
+DEFAULT_CONFIG = DEFAULTS_DIR / "multi_shell_time_sim.yaml"
+RUN_INPUT_NAMES = ("inputs.yaml", "inputs.yml")
+
+
+def _read_yaml(path):
+    with path.open("r", encoding="utf-8") as stream:
+        data = yaml.safe_load(stream)
+    if data is None:
+        return {}
+    if not isinstance(data, dict):
+        raise ValueError(f"YAML file {path} must define a dictionary.")
+    return data
+
+
+def _deep_merge(base, overrides):
+    result = dict(base)
+    for key, value in overrides.items():
+        if (
+            key in result
+            and isinstance(result[key], dict)
+            and isinstance(value, dict)
+        ):
+            result[key] = _deep_merge(result[key], value)
+        else:
+            result[key] = value
+    return result
+
+
+def load_configuration(run_dir):
+    config = {}
+    if DEFAULT_CONFIG.exists():
+        config = _read_yaml(DEFAULT_CONFIG)
+
+    input_file = None
+    for name in RUN_INPUT_NAMES:
+        candidate = run_dir / name
+        if candidate.exists():
+            input_file = candidate
+            break
+
+    if input_file is None:
+        available = ", ".join(RUN_INPUT_NAMES)
+        raise FileNotFoundError(
+            f"No input file found in {run_dir}. Expected one of: {available}"
+        )
+
+    run_config = _read_yaml(input_file)
+    return _deep_merge(config, run_config)
+
+
+def next_available_path(directory, desired_name):
+    directory.mkdir(parents=True, exist_ok=True)
+    base_path = directory / desired_name
+    if not base_path.exists():
+        return base_path
+
+    stem = base_path.stem
+    suffix = base_path.suffix
+    counter = 1
+    while True:
+        candidate = directory / f"{stem}_{counter}{suffix}"
+        if not candidate.exists():
+            return candidate
+        counter += 1
 
 
 # ----------------------------------------------------
@@ -134,79 +203,83 @@ def rk4_step(state, dt):
 # ----------------------------------------------------
 
 def main():
-    parser = argparse.ArgumentParser(description="Multi-shell time simulation.")
-    parser.add_argument(
-        "--hull-offset",
-        type=float,
-        default=0.0,
-        help="Imposed x-offset of the central tube (m). Default 0.",
-    )
-    parser.add_argument(
-        "--initial-perturb",
-        type=float,
-        default=0.1,
-        help="Additional x-perturbation for shell 1 (m). Default 0.1.",
-    )
-    args = parser.parse_args()
+    global C_DAMP
+    if len(sys.argv) != 2:
+        run_script = Path(__file__).name
+        print(f"Usage: python {run_script} RUN_DIRECTORY", file=sys.stderr)
+        sys.exit(1)
+
+    run_dir = Path(sys.argv[1]).expanduser().resolve()
+    if not run_dir.is_dir():
+        raise FileNotFoundError(f"Run directory {run_dir} does not exist.")
+
+    config = load_configuration(run_dir)
+    sim_cfg = config.get("simulation", {})
+
+    hull_offset = float(sim_cfg.get("hull_offset", 0.0))
+    outer_offset = float(sim_cfg.get("outer_offset", 0.0))
+    initial_perturb = float(sim_cfg.get("initial_perturb", 0.1))
+    dt = float(sim_cfg.get("dt", 0.05))
+    total_time = float(sim_cfg.get("total_time", 1000.0))
+    print_interval = float(sim_cfg.get("print_interval", 2.0))
+    damping = float(sim_cfg.get("damping", C_DAMP))
+    track_shells = sim_cfg.get("track_shells", [1, 5, 10, 15])
+    track_shells = [int(s) for s in track_shells if 1 <= s <= N_SHELLS - 2]
+
+    if dt <= 0.0:
+        raise ValueError("simulation.dt must be positive.")
+    if total_time <= 0.0:
+        raise ValueError("simulation.total_time must be positive.")
+
+    C_DAMP = damping
 
     base_positions = np.zeros((N_SHELLS, 2))
-    base_positions[-1, :] = 0.0  # outer envelope
-    base_positions[0, 0] = args.hull_offset
+    base_positions[-1, 0] = outer_offset
+    base_positions[0, 0] = hull_offset
     base_force = 0.0
-    if abs(args.hull_offset) > 0.0:
-        result = solve_static_offsets(hull_offset=args.hull_offset, outer_offset=0.0)
+    if abs(hull_offset) > 0.0 or abs(outer_offset) > 0.0:
+        result = solve_static_offsets(
+            hull_offset=hull_offset,
+            outer_offset=outer_offset,
+        )
         base_positions[:, 0] = result.offsets
         base_force = result.target_force
         print(f"[steady-offset] gap |Fr| = {base_force:.6e} N")
 
     BASE_POSITIONS[:] = base_positions
 
-    # Initial conditions:
-    # - Start with all shells concentric,
-    #   except give the first friction buffer (shell 1) a small x-offset.
     pos0 = base_positions[moving_indices].copy()
     if n_move > 0:
-        pos0[0, 0] += args.initial_perturb
+        pos0[0, 0] += initial_perturb
 
     vel0 = np.zeros((n_move, 2))
     omega0 = SHELL_OMEGA_STEADY[moving_indices]
 
     state = np.concatenate([pos0.reshape(-1), vel0.reshape(-1), omega0])
 
-    # Time integration parameters
-    DT = 0.05        # s, timestep
-    T_FINAL = 100000   # s, total simulation time
-    N_STEPS = int(T_FINAL / DT)
+    n_steps = max(1, int(np.ceil(total_time / dt)))
+    times = np.zeros(n_steps + 1)
 
-    times = np.zeros(N_STEPS + 1)
-    # Store positions for a subset of shells to avoid too much clutter
-    track_shells = [1, 5, 10, 15]  # shell indices to monitor (if exist)
-    track_shells = [s for s in track_shells if 1 <= s <= N_SHELLS - 2]
-
-    # Map these to moving-shell indices
     track_idx = [moving_indices.index(s) for s in track_shells]
+    xs = {s: np.zeros(n_steps + 1) for s in track_shells}
+    ys = {s: np.zeros(n_steps + 1) for s in track_shells}
+    omegas = {s: np.zeros(n_steps + 1) for s in track_shells}
 
-    xs = {s: np.zeros(N_STEPS + 1) for s in track_shells}
-    ys = {s: np.zeros(N_STEPS + 1) for s in track_shells}
-    omegas = {s: np.zeros(N_STEPS + 1) for s in track_shells}
-
-    # Record initial positions
     for s, j in zip(track_shells, track_idx):
         xs[s][0] = pos0[j, 0]
         ys[s][0] = pos0[j, 1]
         omegas[s][0] = omega0[j]
 
     t = 0.0
-    n_last = 0  # last valid index
-
-    print_interval = 2.0  # seconds of wall time
-    next_print = time.perf_counter() + print_interval
+    n_last = 0
+    next_print = (
+        time.perf_counter() + print_interval if print_interval > 0.0 else None
+    )
 
     try:
-        for n in range(1, N_STEPS + 1):
-            # One RK4 step; this is where we can hit e >= C and raise ValueError
-            state = rk4_step(state, DT)
-            t += DT
+        for n in range(1, n_steps + 1):
+            state = rk4_step(state, dt)
+            t += dt
 
             times[n] = t
             n_last = n
@@ -220,76 +293,91 @@ def main():
                 ys[s][n] = pos[j, 1]
                 omegas[s][n] = omega[j]
 
-            now = time.perf_counter()
-            if now >= next_print:
+            if next_print is not None:
+                now = time.perf_counter()
+                if now < next_print:
+                    continue
                 max_disp = np.max(np.linalg.norm(pos, axis=1)) if pos.size else 0.0
                 avg_speed = np.mean(np.linalg.norm(vel, axis=1)) if n_move else 0.0
                 avg_omega = np.mean(omega) if omega.size else 0.0
                 print(
-                    f"[progress] sim t = {t:9.1f}s / {T_FINAL:9.1f}s "
-                    f"({100 * t / T_FINAL:5.1f}%)  |  "
+                    f"[progress] sim t = {t:9.1f}s / {total_time:9.1f}s "
+                    f"({100 * t / total_time:5.1f}%)  |  "
                     f"max|pos| = {max_disp:7.3f} m, avg|vel| = {avg_speed:7.3f} m/s, "
                     f"avg ω = {avg_omega:7.4f} rad/s"
                 )
                 next_print = now + print_interval
 
     except ValueError as exc:
-        # We hit the "offset e >= clearance c" condition somewhere in the RK4 stages
         print(f"\nSimulation aborted at step {n_last}, t ≈ {times[n_last]:.3f} s")
         print(f"Reason: {exc}")
 
-    # Trim arrays to the last valid index so plots don't include uninitialized tail
     times_plot = times[:n_last+1]
     xs_plot = {s: arr[:n_last+1] for s, arr in xs.items()}
     ys_plot = {s: arr[:n_last+1] for s, arr in ys.items()}
     omega_plot = {s: arr[:n_last+1] for s, arr in omegas.items()}
 
-    # -----------------
-    # Plots
-    # -----------------
+    plot_cfg = config.get("output", {}).get("plots", {})
+    filename_x = plot_cfg.get("x_time", "x_time.png")
+    filename_y = plot_cfg.get("y_time", "y_time.png")
+    filename_xy = plot_cfg.get("xy", "trajectories.png")
+    filename_omega = plot_cfg.get("omega", "omega.png")
 
-    # 1) x(t) for selected shells
-    plt.figure()
-    for s in track_shells:
-        plt.plot(times_plot, xs_plot[s], label=f"shell {s} x(t)")
-    plt.xlabel("Time [s]")
-    plt.ylabel("x displacement [m]")
-    plt.title("Friction-buffer x(t) trajectories")
-    plt.legend()
-    plt.grid(True)
+    if track_shells:
+        fig = plt.figure()
+        for s in track_shells:
+            plt.plot(times_plot, xs_plot[s], label=f"shell {s} x(t)")
+        plt.xlabel("Time [s]")
+        plt.ylabel("x displacement [m]")
+        plt.title("Friction-buffer x(t) trajectories")
+        plt.legend()
+        plt.grid(True)
+        save_path = next_available_path(run_dir, filename_x)
+        fig.savefig(save_path)
+        plt.close(fig)
+        print(f"[output] saved {save_path}")
 
-    # 2) y(t) for selected shells
-    plt.figure()
-    for s in track_shells:
-        plt.plot(times_plot, ys_plot[s], label=f"shell {s} y(t)")
-    plt.xlabel("Time [s]")
-    plt.ylabel("y displacement [m]")
-    plt.title("Friction-buffer y(t) trajectories")
-    plt.legend()
-    plt.grid(True)
+        fig = plt.figure()
+        for s in track_shells:
+            plt.plot(times_plot, ys_plot[s], label=f"shell {s} y(t)")
+        plt.xlabel("Time [s]")
+        plt.ylabel("y displacement [m]")
+        plt.title("Friction-buffer y(t) trajectories")
+        plt.legend()
+        plt.grid(True)
+        save_path = next_available_path(run_dir, filename_y)
+        fig.savefig(save_path)
+        plt.close(fig)
+        print(f"[output] saved {save_path}")
 
-    # 3) Orbits in x–y for selected shells
-    plt.figure()
-    for s in track_shells:
-        plt.plot(xs_plot[s], ys_plot[s], label=f"shell {s}")
-    plt.xlabel("x [m]")
-    plt.ylabel("y [m]")
-    plt.axis("equal")
-    plt.title("Friction-buffer trajectories in cross-section")
-    plt.legend()
-    plt.grid(True)
+        fig = plt.figure()
+        for s in track_shells:
+            plt.plot(xs_plot[s], ys_plot[s], label=f"shell {s}")
+        plt.xlabel("x [m]")
+        plt.ylabel("y [m]")
+        plt.axis("equal")
+        plt.title("Friction-buffer trajectories in cross-section")
+        plt.legend()
+        plt.grid(True)
+        save_path = next_available_path(run_dir, filename_xy)
+        fig.savefig(save_path)
+        plt.close(fig)
+        print(f"[output] saved {save_path}")
 
-    # 4) Angular speed evolution
-    plt.figure()
-    for s in track_shells:
-        plt.plot(times_plot, omega_plot[s], label=f"shell {s} ω(t)")
-    plt.xlabel("Time [s]")
-    plt.ylabel("Angular speed [rad/s]")
-    plt.title("Shell angular speeds vs time")
-    plt.legend()
-    plt.grid(True)
-
-    plt.show()
+        fig = plt.figure()
+        for s in track_shells:
+            plt.plot(times_plot, omega_plot[s], label=f"shell {s} ω(t)")
+        plt.xlabel("Time [s]")
+        plt.ylabel("Angular speed [rad/s]")
+        plt.title("Shell angular speeds vs time")
+        plt.legend()
+        plt.grid(True)
+        save_path = next_available_path(run_dir, filename_omega)
+        fig.savefig(save_path)
+        plt.close(fig)
+        print(f"[output] saved {save_path}")
+    else:
+        print("[output] No track shells specified; skipping plots.")
 
 
 if __name__ == "__main__":

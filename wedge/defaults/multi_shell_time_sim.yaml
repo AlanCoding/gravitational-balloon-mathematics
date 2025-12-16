@@ -1,0 +1,20 @@
+metadata:
+  name: nominal-long-bearing-run
+  description: Baseline laminar wedge simulation with concentric shells.
+
+simulation:
+  hull_offset: 0.0
+  outer_offset: 0.0
+  initial_perturb: 0.1
+  damping: 30000.0
+  dt: 0.05
+  total_time: 1000.0
+  print_interval: 2.0
+  track_shells: [1, 5, 10, 15]
+
+output:
+  plots:
+    x_time: x_time.png
+    y_time: y_time.png
+    xy: trajectories.png
+    omega: omega.png

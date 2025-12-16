@@ -1,0 +1,15 @@
+metadata:
+  name: long-journal-correction
+  source: CHANGEBLOG.md#Corrected for long-journal
+  description: >
+    Baseline long-journal run that produced the 1000 s trajectories once the
+    corrected force law was implemented.
+
+simulation:
+  hull_offset: 0.0
+  outer_offset: 0.0
+  initial_perturb: 0.1
+  damping: 30000.0
+  dt: 0.05
+  total_time: 1000.0
+  track_shells: [1, 5, 10, 15]

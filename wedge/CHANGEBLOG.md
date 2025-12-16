@@ -143,3 +143,25 @@ But since there is also a tangential force obtained when
 the rotor is offset, it's pretty easy to see how the final
 solution might have some non-zero y values, and this is
 what I believe we are getting.
+
+## Pesimistic Radial force
+
+Because the updated simulations for the long-journal approximations
+have a fairly large `F_r` relative to `F_theta`, I didn't fully believe
+the results.
+So I added a "fudge" factor that would reduce the `F_r` value to a lower one.
+
+![y for long run with Fr fudge](fr_fudge_02_long/x_time.png)
+
+Compare to the [longer time runs](#longer-time-runs) section graph.
+this is for the same time frame, differences are:
+
+ - greater magnitude, 0.8 meter max, vs 0.4 meter
+ - very arguably, shell 15 might still be increasing in magnitude
+
+My present takeaway is that even if shell 15 is still increasing
+its wobble size, that it's nowhere near driving unstable,
+and doing so in the future is unlikely.
+
+The channel widths are about 7 or 8 meters, so the wobbles are,
+in fact, small, in both cases.

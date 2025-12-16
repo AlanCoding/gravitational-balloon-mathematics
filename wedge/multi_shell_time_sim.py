@@ -16,6 +16,7 @@ from positional_250 import (
     TORQUE_COEFFS,
     SHELL_OMEGA_STEADY,
     total_fluid_forces,
+    set_radial_fudge_factor,
 )
 from static_offset_solver import solve_static_offsets
 from steady_spin import signed_torque_on_inner
@@ -225,6 +226,8 @@ def main():
     damping = float(sim_cfg.get("damping", C_DAMP))
     track_shells = sim_cfg.get("track_shells", [1, 5, 10, 15])
     track_shells = [int(s) for s in track_shells if 1 <= s <= N_SHELLS - 2]
+    forces_cfg = config.get("forces", {})
+    fr_fudge = float(forces_cfg.get("radial_fudge", 1.0))
 
     if dt <= 0.0:
         raise ValueError("simulation.dt must be positive.")
@@ -232,6 +235,7 @@ def main():
         raise ValueError("simulation.total_time must be positive.")
 
     C_DAMP = damping
+    set_radial_fudge_factor(fr_fudge)
 
     base_positions = np.zeros((N_SHELLS, 2))
     base_positions[-1, 0] = outer_offset

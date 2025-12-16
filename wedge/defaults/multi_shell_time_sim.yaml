@@ -18,3 +18,6 @@ output:
     y_time: y_time.png
     xy: trajectories.png
     omega: omega.png
+
+forces:
+  radial_fudge: 1.0

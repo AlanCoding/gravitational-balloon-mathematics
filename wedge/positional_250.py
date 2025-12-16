@@ -83,12 +83,22 @@ shell_linear_speed = SHELL_OMEGA_STEADY * R
 # Relative baseline slip per gap (inner shell i vs outer shell i+1)
 U_rel = np.abs(shell_linear_speed[:-1] - shell_linear_speed[1:])
 
+FR_FUDGE = 1.0  # multiplier on radial force component
+
 
 # Pre-compute a θ-grid for the long-bearing integrals
 N_THETA = 2049  # odd number so Simpson's rule applies cleanly
 THETA_GRID = np.linspace(0.0, 2.0 * np.pi, N_THETA, endpoint=True)
 COS_THETA = np.cos(THETA_GRID)
 TWO_PI = 2.0 * np.pi
+
+
+def set_radial_fudge_factor(value: float) -> None:
+    """
+    Set a global multiplier for the radial force component.
+    """
+    global FR_FUDGE
+    FR_FUDGE = float(value)
 
 
 # ---------------------------
@@ -161,6 +171,7 @@ def gap_force_magnitudes(e, c, mu, u_rel, L, r_inner):
         raise ValueError(f"Offset e={e} exceeds or equals clearance c={c}")
 
     Fr = _long_bearing_radial_force(e, c, mu, u_rel, L, r_inner)
+    Fr *= FR_FUDGE
     Ft = _tangential_shear_force(eps, c, mu, u_rel, L, r_inner)
 
     return Fr, Ft

@@ -100,14 +100,10 @@ def set_radial_fudge_factor(value: float) -> None:
 # Single-gap wedge force law
 # ---------------------------
 
-def _long_bearing_pressure_components(e, c, mu, u_rel, L, r_inner):
+def _long_bearing_positive_pressure(e, c, mu, u_rel, L, r_inner):
     """
-    Compute the pressure-induced force components for a single gap using
-    the long-bearing Reynolds solution described in lit/radial.md.
-
-    Returns (Fr, Ft) expressed in the local (er, et) basis, where er is
-    along the line of centers (inner → outer) and et is rotated +90°.
-    Negative pressures (tension) are clipped to zero via a Reynolds boundary.
+    Solve the long-bearing Reynolds equation and return the positive
+    portion of the circumferential pressure distribution.
     """
     eps = e / c
     h = c * (1.0 + eps * COS_THETA)
@@ -135,6 +131,35 @@ def _long_bearing_pressure_components(e, c, mu, u_rel, L, r_inner):
     # Enforce Reynolds boundary (no tensile stress) by ignoring the
     # portion of the film that would be in tension.
     p_positive = np.clip(p_theta, 0.0, None)
+    return p_positive
+
+
+def pressure_profile(e, c, mu, u_rel, L, r_inner):
+    """
+    Return (theta, pressure) arrays for a single gap (pressure is already
+    clipped to remove negative values per the Reynolds boundary).
+    """
+    if e <= 0.0:
+        return THETA_GRID.copy(), np.zeros_like(THETA_GRID)
+
+    eps = e / c
+    if eps >= 1.0:
+        raise ValueError(f"Offset e={e} exceeds or equals clearance c={c}")
+
+    p_positive = _long_bearing_positive_pressure(e, c, mu, u_rel, L, r_inner)
+    return THETA_GRID.copy(), p_positive
+
+
+def _long_bearing_pressure_components(e, c, mu, u_rel, L, r_inner):
+    """
+    Compute the pressure-induced force components for a single gap using
+    the long-bearing Reynolds solution described in lit/radial.md.
+
+    Returns (Fr, Ft) expressed in the local (er, et) basis, where er is
+    along the line of centers (inner → outer) and et is rotated +90°.
+    Negative pressures (tension) are clipped to zero via a Reynolds boundary.
+    """
+    p_positive = _long_bearing_positive_pressure(e, c, mu, u_rel, L, r_inner)
     if np.all(p_positive == 0.0):
         return 0.0, 0.0
 

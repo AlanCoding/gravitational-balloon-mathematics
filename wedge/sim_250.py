@@ -12,6 +12,7 @@ from positional_250 import (
     SHELL_OMEGA_STEADY,
     TORQUE_COEFFS,
     total_fluid_forces,
+    pressure_profile,
 )
 from steady_spin import signed_torque_on_inner
 
@@ -82,6 +83,7 @@ def main():
     Fr = Fx_hull
     Ft = Fy_hull
     Fmag = np.sqrt(Fr**2 + Ft**2)
+    force_angles = np.degrees(np.arctan2(Ft, Fr))
 
     # -----------------
     # Make the plots
@@ -98,15 +100,7 @@ def main():
     plt.legend()
     plt.grid(True)
 
-    # 2) Force magnitude vs offset
-    plt.figure()
-    plt.plot(e_vals, Fmag)
-    plt.xlabel("Hull offset e [m]")
-    plt.ylabel("Force magnitude |F| [N]")
-    plt.title("Total wedge force magnitude on hull vs offset")
-    plt.grid(True)
-
-    # 3) Ratio |Fr| / Ft vs offset (to see how radial stiffens faster)
+    # 2) Ratio |Fr| / Ft vs offset (to see how radial stiffens faster)
     # Avoid divide-by-zero issues at e=0
     ratio = np.zeros_like(e_vals)
     mask = np.abs(Ft) > 0
@@ -117,6 +111,37 @@ def main():
     plt.xlabel("Hull offset e [m]")
     plt.ylabel(r"$|F_r| / |F_t|$")
     plt.title("Radial vs tangential wedge strength")
+    plt.grid(True)
+
+    # 3) Resultant angle vs offset (attitude angle relative to +x)
+    plt.figure()
+    plt.plot(e_vals, force_angles)
+    plt.xlabel("Hull offset e [m]")
+    plt.ylabel("Resultant angle [deg]")
+    plt.title("Pressure resultant angle vs offset")
+    plt.grid(True)
+
+    # 4) Sample pressure distributions
+    sample_fracs = [0.1, 0.5, 0.8]
+    theta_deg = None
+    plt.figure()
+    for frac in sample_fracs:
+        e = frac * C[0]
+        theta, pressure = pressure_profile(
+            e,
+            C[0],
+            MU,
+            U_rel[0],
+            L,
+            R[0],
+        )
+        if theta_deg is None:
+            theta_deg = np.degrees(theta)
+        plt.plot(theta_deg, pressure, label=f"e = {frac:.1f} c")
+    plt.xlabel("θ [deg] (0 = max film thickness)")
+    plt.ylabel("Pressure [Pa]")
+    plt.title("Long-bearing pressure distributions for selected offsets")
+    plt.legend()
     plt.grid(True)
 
     plt.show()

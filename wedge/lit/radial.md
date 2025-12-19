@@ -10,7 +10,7 @@ Perfect, let’s lock in a clean version of the forces with everything named and
 * $`L`$ — bearing (axial) length
 * $`e`$ — eccentricity (displacement of journal center from bearing center)
 * $`\varepsilon = e / c`$ — eccentricity ratio ($`0 \le \varepsilon < 1`$)
-* $`\theta`$ — circumferential angle, measured from the line of minimum film thickness (aligned with the displacement $`e`$)
+* $`\theta`$ — circumferential angle, measured from the line of **maximum** film thickness (i.e. opposite the displacement $`e`$)
 * $`\mu`$ — dynamic viscosity of the fluid
 * $`\omega`$ — angular speed of the journal
 * $`U = \omega R`$ — surface speed of the journal

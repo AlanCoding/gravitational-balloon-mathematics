@@ -43,7 +43,7 @@ n_move = len(moving_indices)
 # Assign each moving shell a mass = 1/4 of the air mass in its *inner* annulus
 shell_masses = np.zeros(n_move)
 for j, s in enumerate(moving_indices):
-    shell_masses[j] = 0.25 * gap_masses[s - 1]
+    shell_masses[j] = gap_masses[s - 1]
 
 # Small isotropic damping for each shell (to keep things from ringing forever)
 C_DAMP = 3e4  # N·s/m; set >0 if you want some damping

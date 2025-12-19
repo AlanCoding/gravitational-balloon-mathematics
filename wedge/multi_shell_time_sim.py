@@ -199,6 +199,23 @@ def rk4_step(state, dt):
     return state + (dt / 6.0) * (k1 + 2*k2 + 2*k3 + k4)
 
 
+def rk4_step_adaptive(state, dt, depth, _initial=True):
+    """Attempt an RK4 step; recursively halve dt on failure."""
+    try:
+        return rk4_step(state, dt)
+    except ValueError as exc:
+        if depth <= 0:
+            raise
+        if _initial:
+            print(
+                f"[integrator] step failed (dt={dt:.3e} s): {exc}\n"
+                f"             retrying with dt={0.5*dt:.3e} s",
+                flush=True,
+            )
+        mid = rk4_step_adaptive(state, 0.5 * dt, depth - 1, _initial=False)
+        return rk4_step_adaptive(mid, 0.5 * dt, depth - 1, _initial=False)
+
+
 # ----------------------------------------------------
 # Time simulation
 # ----------------------------------------------------
@@ -282,7 +299,7 @@ def main():
 
     try:
         for n in range(1, n_steps + 1):
-            state = rk4_step(state, dt)
+            state = rk4_step_adaptive(state, dt, depth=8)
             t += dt
 
             times[n] = t

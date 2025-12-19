@@ -11,5 +11,5 @@ simulation:
   initial_perturb: 0.1
   damping: 30000.0
   dt: 0.05
-  total_time: 1000.0
+  total_time: 10000.0
   track_shells: [1, 5, 10, 15]

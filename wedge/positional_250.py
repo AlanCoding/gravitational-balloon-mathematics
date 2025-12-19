@@ -4,9 +4,6 @@ try:
     from scipy.integrate import cumulative_trapezoid, simpson
 except ImportError:
     def cumulative_trapezoid(y, x, initial=0.0):
-        """
-        Minimal cumulative trapezoid integrator if SciPy is unavailable.
-        """
         y = np.asarray(y)
         x = np.asarray(x)
         if y.size != x.size:
@@ -21,9 +18,6 @@ except ImportError:
         return np.concatenate(([initial], initial + cumsum))
 
     def simpson(y, x):
-        """
-        Composite Simpson's rule for evenly spaced samples.
-        """
         y = np.asarray(y)
         x = np.asarray(x)
         n = y.size
@@ -90,6 +84,7 @@ FR_FUDGE = 1.0  # multiplier on radial force component
 N_THETA = 2049  # odd number so Simpson's rule applies cleanly
 THETA_GRID = np.linspace(0.0, 2.0 * np.pi, N_THETA, endpoint=True)
 COS_THETA = np.cos(THETA_GRID)
+SIN_THETA = np.sin(THETA_GRID)
 TWO_PI = 2.0 * np.pi
 
 
@@ -105,12 +100,14 @@ def set_radial_fudge_factor(value: float) -> None:
 # Single-gap wedge force law
 # ---------------------------
 
-def _long_bearing_radial_force(e, c, mu, u_rel, L, r_inner):
+def _long_bearing_pressure_components(e, c, mu, u_rel, L, r_inner):
     """
-    Compute the radial component for a single gap using the long-bearing
-    Reynolds solution described in lit/radial.md. Negative pressures,
-    which correspond to tensile stresses in the lubricant, are clipped
-    to zero (Reynolds boundary).
+    Compute the pressure-induced force components for a single gap using
+    the long-bearing Reynolds solution described in lit/radial.md.
+
+    Returns (Fr, Ft) expressed in the local (er, et) basis, where er is
+    along the line of centers (inner → outer) and et is rotated +90°.
+    Negative pressures (tension) are clipped to zero via a Reynolds boundary.
     """
     eps = e / c
     h = c * (1.0 + eps * COS_THETA)
@@ -139,19 +136,12 @@ def _long_bearing_radial_force(e, c, mu, u_rel, L, r_inner):
     # portion of the film that would be in tension.
     p_positive = np.clip(p_theta, 0.0, None)
     if np.all(p_positive == 0.0):
-        return 0.0
+        return 0.0, 0.0
 
-    Fr = r_inner * L * simpson(p_positive * COS_THETA, THETA_GRID)
-    return Fr
-
-
-def _tangential_shear_force(eps, c, mu, u_rel, L, r_inner):
-    """
-    Tangential force from viscous shear per lit/tangental.md.
-    """
-    denom = np.sqrt(1.0 - eps**2)
-    Ft = (2.0 * np.pi * mu * u_rel * r_inner * L) / (c * denom)
-    return Ft
+    scale = r_inner * L
+    Fr = scale * simpson(p_positive * COS_THETA, THETA_GRID)
+    Ft = scale * simpson(p_positive * SIN_THETA, THETA_GRID)
+    return Fr, Ft
 
 
 def gap_force_magnitudes(e, c, mu, u_rel, L, r_inner):
@@ -170,9 +160,8 @@ def gap_force_magnitudes(e, c, mu, u_rel, L, r_inner):
     if eps >= 1.0:
         raise ValueError(f"Offset e={e} exceeds or equals clearance c={c}")
 
-    Fr = _long_bearing_radial_force(e, c, mu, u_rel, L, r_inner)
+    Fr, Ft = _long_bearing_pressure_components(e, c, mu, u_rel, L, r_inner)
     Fr *= FR_FUDGE
-    Ft = _tangential_shear_force(eps, c, mu, u_rel, L, r_inner)
 
     return Fr, Ft
 
@@ -227,15 +216,20 @@ def total_fluid_forces(q, C, MU, U_rel, L):
         r_inner = q[2*i:2*i+2]
         r_outer = q[2*(i+1):2*(i+1)+2]
 
-        F_inner = gap_force_vector(
-            r_inner_center=r_inner,
-            r_outer_center=r_outer,
-            c=C[i],
-            mu=MU,
-            u_rel=U_rel[i],
-            L=L,
-            r_inner_radius=R[i],
-        )
+        try:
+            F_inner = gap_force_vector(
+                r_inner_center=r_inner,
+                r_outer_center=r_outer,
+                c=C[i],
+                mu=MU,
+                u_rel=U_rel[i],
+                L=L,
+                r_inner_radius=R[i],
+            )
+        except ValueError as exc:
+            raise ValueError(
+                f"gap {i} between shells {i} and {i+1}: {exc}"
+            ) from exc
 
         # Add to inner, subtract from outer (action-reaction)
         F[2*i:2*i+2]      += F_inner

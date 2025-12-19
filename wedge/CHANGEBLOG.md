@@ -165,3 +165,13 @@ and doing so in the future is unlikely.
 
 The channel widths are about 7 or 8 meters, so the wobbles are,
 in fact, small, in both cases.
+
+## Wrong F_r Angle
+
+A major step backwards here - upon drawing force diagrams I realized
+that my approach was wrong specifically in applying `F_r` along the
+line of centers (the center of the rotor, center of the stator).
+
+The simulation was updated, although the result is more pessimistic than
+before. It is much harder to get a stable-looking simulation and now
+only happens at the real extremes.

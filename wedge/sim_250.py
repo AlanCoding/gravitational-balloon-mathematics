@@ -1,15 +1,19 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Import parameters and functions from your existing script
+# Parameters and force law from the laminar wedge model
 from positional_250 import (
     N_SHELLS,
     C,
     MU,
     U_rel,
     L,
+    R,
+    SHELL_OMEGA_STEADY,
+    TORQUE_COEFFS,
     total_fluid_forces,
 )
+from steady_spin import signed_torque_on_inner
 
 # -------------------------------------------------------
 # Static "simulation": sweep hull offset and compute forces
@@ -22,9 +26,10 @@ def sweep_hull_offset(e_min=0.0, e_max_factor=0.95, n_points=200):
     the hull for each offset.
 
     Returns:
-        e_vals : array of offsets [m]
-        Fx_hull: fluid force x-component [N]
-        Fy_hull: fluid force y-component [N]
+        e_vals : offsets [m]
+        Fx_hull: x-component of total pressure resultant on shell 0 [N]
+        Fy_hull: y-component of total pressure resultant on shell 0 [N]
+        Ftq    : torque divided by radius (force-equivalent) [N]
     """
     # Clearance for the innermost gap (between shell 0 and 1)
     C0 = C[0]
@@ -35,9 +40,14 @@ def sweep_hull_offset(e_min=0.0, e_max_factor=0.95, n_points=200):
 
     Fx_hull = np.zeros_like(e_vals)
     Fy_hull = np.zeros_like(e_vals)
+    Ftq = np.zeros_like(e_vals)
 
     # Global dof count
     n_dofs = 2 * N_SHELLS
+    omega_inner = SHELL_OMEGA_STEADY[0]
+    omega_outer = SHELL_OMEGA_STEADY[1]
+    torque_coeff = TORQUE_COEFFS[0]
+    radius = R[0]
 
     for k, e in enumerate(e_vals):
         # Build configuration: all shells at origin except hull x = e
@@ -47,12 +57,21 @@ def sweep_hull_offset(e_min=0.0, e_max_factor=0.95, n_points=200):
         F = total_fluid_forces(q, C, MU, U_rel, L)
         Fx_hull[k], Fy_hull[k] = F[0], F[1]
 
-    return e_vals, Fx_hull, Fy_hull
+        torque = signed_torque_on_inner(
+            omega_inner,
+            omega_outer,
+            torque_coeff,
+            e,
+            C0,
+        )
+        Ftq[k] = torque / radius
+
+    return e_vals, Fx_hull, Fy_hull, Ftq
 
 
 def main():
     # Run the sweep
-    e_vals, Fx_hull, Fy_hull = sweep_hull_offset(
+    e_vals, Fx_hull, Fy_hull, Ftq = sweep_hull_offset(
         e_min=0.0,
         e_max_factor=0.95,  # up to 0.95 * C0
         n_points=300,
@@ -68,10 +87,11 @@ def main():
     # Make the plots
     # -----------------
 
-    # 1) Radial and tangential forces vs offset
+    # 1) Cartesian force components (pressure resultant) and torque-equivalent
     plt.figure()
-    plt.plot(e_vals, Fr, label=r"$F_r$ (radial, x-direction)")
-    plt.plot(e_vals, Ft, label=r"$F_t$ (tangential, y-direction)")
+    plt.plot(e_vals, Fr, label=r"$F_r$ (pressure resultant, x-comp)")
+    plt.plot(e_vals, Ft, label=r"$F_t$ (pressure resultant, y-comp)")
+    plt.plot(e_vals, Ftq, label=r"$T/R$ (torque ÷ radius)")
     plt.xlabel("Hull offset e [m]")
     plt.ylabel("Force on hull [N]")
     plt.title("Wedge forces on hull vs offset (gap 0, laminar model)")
@@ -104,4 +124,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

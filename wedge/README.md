@@ -97,6 +97,8 @@ The fluid force on the **inner** shell from that gap is:
 
 and on the **outer** shell: $`\mathbf{F}_{i+1}^\text{(gap i)} = -\mathbf{F}_i^\text{(gap i)}`$.
 
+> **Implementation note:** in the current scripts the short-bearing formulas above are left only as historical context. `positional_250.py` now integrates the long-bearing Reynolds solution from `lit/radial.md` and projects the resulting pressure field onto both $`\cos\theta`$ and $`\sin\theta`$ to obtain the full reaction vector (including the classical attitude-angle effect). The Couette shear integral from `lit/tangental.md` is retained for torque / power-loss estimates only.
+
 ### Small-eccentricity behavior
 
 For $`e \ll c`$, let $`\varepsilon \ll 1`$. Expand:

@@ -7,7 +7,7 @@ metadata:
     sweep.
 
 simulation:
-  hull_offset: 30.0
+  hull_offset: 80.0
   outer_offset: 0.0
   initial_perturb: 0.1
   damping: 30000.0

@@ -1,165 +1,53 @@
-# Friction Buffers Experiment Roadmap — AI Image Prompt Specs
+Create an image for this fliuid dynamics experiment.
 
-This document is a **prompt-and-spec sheet** for generating a consistent set of AI images that communicate the **scale**, **geometry**, and **purpose** of the friction-buffers concept and its experimental roadmap.
-
-Use this file as the single source of truth for Codex-driven image generation.
-
----
-
-## Concept summary (include in every prompt, condensed)
-
-A “friction buffers” habitat (and its scaled experiments) uses **one rotating inner cylinder** surrounded by **many co-rotating shrouds / sleeves** (nested cylinders). These sleeves act as **flow dividers** so that the total rim-speed difference is split across many small annular gaps, reducing windage and stabilizing shear.
+This is an idea for a space habitat where **one rotating inner cylinder** is surrounded by **many co-rotating shrouds / sleeves** (nested cylinders). These sleeves act as **flow dividers** so that the total rim-speed difference is split across many small annular gaps, reducing drag.
 
 Key features to depict:
 
-- **Nested sleeves**: multiple concentric cylindrical shells surrounding the main rotating tube.
-- **Flow-dividers**: sleeves reduce relative velocity between adjacent air layers.
-- **Annular gaps**: each sleeve-to-sleeve gap is a narrow ring-shaped channel (air or water depending on experiment).
-- **End treatment**: the sleeves are open-ended or nearly open-ended; there is a **small circumferential clearance at the ends** (a “ring opening”) so that sleeves do not scrape end-walls, and to show the **end-leakage challenge**.
-- **Conical end caps (optional, conceptual)**: a gentle conical “cup” end-piece that rotates with the sleeves to reduce end recirculation; show ribs/vanes hinting at swirl-braking.
 - **Drive system**: each experiment includes a motor + gearbox (or belt drive), clearly shown with mounting.
-- **Human scale**: include at least one adult human (standing, crouching, or on a platform) for scale.
+- **Shaft**: As any motor has a shaft, this connects the motor to the inner rotor (at the cylinder's center), it is a generic metal rod.
+- **Inner rotor**: the main rotating cylinder (the “habitat tube” analog).
+- **Flow-dividers**: concentric cylindrical shells that divide the rotating flow.
+- **Gap**: radial spacing between adjacent flow-dividers.
+- **End treatment**: there is a cone-shaped taper towards the center with an opening that the shaft goes through. This taper exists on both the bottom and top of each flow divider. This makes the flow-dividers similar to Russian dolls, where each one nearly completely envelopes the one inside of it, with exception of holes to allow the shaft through.
+- **Human scale**: include at least one adult human for scale.
 
-**Important:** These are *illustrative engineering visuals*, not exact CAD.
+The style is illustrative engineering visuals.
 
----
+## Style rules
 
-## Global style rules (consistency across the whole set)
-
-- **Render style**: clean technical illustration / concept art (semi-realistic), **high clarity**, not cartoonish.
+- **Render style**: clean technical illustration / concept art (semi-realistic), **high clarity**, not cartoonish, no text labels.
 - **View**: 3/4 isometric cutaway, with a **partial transparent outer shell** so the nested sleeves are visible.
 - **Lighting**: neutral studio lighting; readable shadows; avoid dramatic cinematic fog.
 - **Materials**:
-  - Experiments (bucket/pool/lake): plastics + aluminum + steel shafts; water is slightly tinted for visibility.
-  - Air experiments: clear structural frames, acrylic/transparent panels where helpful.
-  - Habitat: large inflatable/beam structure vibe, smooth metallic rotating tube, translucent pressure envelope.
+  - plastics + aluminum + steel shafts; water is slightly tinted for visibility.
 - **Color coding** (subtle): rotating parts slightly warmer tint; stationary frame slightly cooler tint.
 - **Annotations**: *no text labels burned into the image* (we will add labels later in diagrams). If the model insists, allow tiny unobtrusive callouts but avoid.
 - **No clutter**: minimal background objects; focus on the rig + environment cues.
 - **Safety realism**: show cages/guards around exposed rotating shafts on anything larger than bucket scale.
 
----
 
-## Shared geometric language
+## Specific details for pool-water scenario
 
-Use these terms consistently in prompts:
+In this scenario a 10-foot-diameter above-ground pool forms the stationary outer boundary (outer radius 1.524 m) filled with water to 1.10 m height.
+Inside it, a large inner rotating cylinder radius 1.224 m is centered, surrounded by 9 co-rotating sleeves (flow dividers) in the 0.30 m annular region.
+The motor is a 1 kW motor with gearbox on a platform that spans accross the top of pool, driving a vertical shaft down into the rotor.
+All of the inner rotor and flow-dividers, including the conical end taper, should be fully below the water level. The motor and platform should be above the water level.
 
-- **Inner rotor**: the main rotating cylinder (the “habitat tube” analog).
-- **Sleeves / shrouds / flow dividers**: concentric co-rotating shells around the rotor.
-- **Outer container**: stationary boundary (bucket wall, pool wall, lake boundary ring, hangar structure).
-- **Gap**: radial spacing between adjacent cylinders.
-- **End clearance ring**: small annular opening at ends (depict as a visible circumferential gap).
+Environment is a backyard, this is a cheap above-ground pool.
 
----
+3/4 isometric cutaway with partial transparency where necessary to show detail.
 
-## Speculated stage counts (purely for visualization)
 
-Stage count here is **not a final engineering decision**; it is to help visuals communicate the multi-stage idea.
 
-- Bucket scale: **5 sleeves** (≈ 6 annular regions including rotor-to-sleeve, sleeve-to-sleeve…)
-- Pool/backyard scale: **9 sleeves**
-- Lake/hangar scale: **17 sleeves**
-- Space habitat reference: **17 sleeves** (matches long-term conceptual target)
+## Specific details for backyard-air scenario
 
----
+Create a high-clarity technical concept illustration of a backyard air-based friction-buffers experiment (neutral-buoyancy style).
+This means that the inner rotor and surrounding flow-dividers are made of kite-like materials.
+There are bubbles in a donut shape going around some flow dividers filled with Helium to keep them neurtral bouancy.
+Show clear structure of the inner rotor and flow-dividers with transparency or cut-aways.
 
-## Dimension and environment table (reference)
-
-These are the working numbers used in the roadmap images.
-
-| Node | Inner radius ri | Outer radius ro | Gap g (ro-ri for single annulus) | Active length L | Environment |
-|---|---:|---:|---:|---:|---|
-| Bucket-water | 0.084 m | 0.140 m | 0.056 m | 0.30 m | garage/workbench |
-| Pool-water (10 ft “deep”) | 1.224 m | 1.524 m | 0.30 m | 1.10 m | backyard |
-| Backyard-air | 1.224 m | 1.524 m | 0.30 m | 1.10 m | backyard (frame structure) |
-| Lake-water | 8 m | 10 m | 2 m | 15 m | lake (institutional test) |
-| Hangar-air | 8 m | 10 m | 2 m | 15 m | aircraft hangar / industrial hall |
-| Space habitat reference | 250 m | 252 m | 2 m | (very long tube) | space (inside pressure envelope) |
-
----
-
-## Prompt template (copy/paste)
-
-Use this template for every image and fill in the bracketed fields.
-
-**Prompt:**
-
-> Create a high-clarity technical concept illustration of a friction-buffers rotating-cylinder experiment.  
-> Show a 3/4 isometric cutaway with partial transparency so concentric nested sleeves are visible.  
-> Depict an inner rotating cylinder (radius [ri]) surrounded by [N] co-rotating concentric sleeves (flow dividers) inside a stationary outer boundary (radius [ro]).  
-> Show narrow annular gaps and a visible small circumferential end clearance ring at both ends.  
-> Include a gentle conical end-cap concept with subtle swirl-brake ribs (conceptual), and show that end leakage is a key challenge via visible open-end clearances.  
-> Include a motor + gearbox drive system ([motor placement: above/below/side]) with guards and supports, connected via shaft or belt drive.  
-> Add at least one adult human for scale.  
-> Environment: [environment cue].  
-> Materials: plastic, aluminum, steel; water or air as appropriate.  
-> Style: clean engineering concept art, realistic proportions, neutral lighting, no text labels.
-
-**Negative prompt (if supported):**
-
-> No exploded view, no text labels, no unrealistic sci-fi glow, no fantasy ornaments, no messy clutter, no tiny unreadable components, no fish-eye distortion.
-
----
-
-## Per-image specs (ready-to-run prompt blocks)
-
-### 1) Bucket-water (root experiment)
-
-**Goal:** Make the smallest rig feel real and buildable. Emphasize the nested sleeves and end clearance rings.
-
-- Fluid: water  
-- ri = 0.084 m (6" PVC OD / 2)  
-- ro = 0.140 m (bucket effective radius)  
-- L = 0.30 m  
-- Sleeves: 5  
-- Motor power class: 100 W DC motor + gearbox  
-- Motor placement: **below** (bench-mounted motor driving vertical shaft up into rotor), or side-mounted belt drive  
-- Environment: **garage workbench** with simple tools; spill tray; safety shield
-
-**Prompt block:**
-
-> Create a high-clarity technical concept illustration of a small friction-buffers bucket experiment.  
-> 3/4 isometric cutaway with partial transparency.  
-> Inner rotating PVC-like cylinder radius 0.084 m inside a 5-gallon bucket outer radius 0.140 m, water-filled to 0.30 m height.  
-> Surround the inner rotor with 5 thin co-rotating sleeves (flow dividers), concentric and evenly spaced.  
-> Show narrow annular gaps and a visible small end clearance ring at top and bottom for each sleeve.  
-> Include a compact 100 W DC motor with a gearbox below the bucket, driving a vertical shaft; include a simple guard and mounting plate.  
-> Include one adult human standing next to the bench for scale.  
-> Materials: PVC, acrylic sleeves, aluminum shaft, steel fasteners; water slightly tinted for visibility.  
-> Clean engineering concept art, neutral lighting, no text labels.
-
----
-
-### 2) Pool-water (10 ft “deep” backyard scale)
-
-**Goal:** Communicate the jump in size and the idea that the pool wall is the stationary boundary. Emphasize that this is still a single Couette tube, but with many sleeves.
-
-- Fluid: water  
-- ri = 1.224 m  
-- ro = 1.524 m (10 ft pool radius)  
-- g = 0.30 m  
-- L = 1.10 m (deeper-than-typical small pool)  
-- Sleeves: 9  
-- Motor power class: 1 kW with gearing  
-- Motor placement: **platform above** pool edge driving down a central shaft OR side belt drive with frame tower  
-- Environment: **backyard**, cheap above-ground pool, unsightly but functional; safety railings
-
-**Prompt block:**
-
-> Create a high-clarity technical concept illustration of a backyard friction-buffers pool experiment.  
-> 3/4 isometric cutaway with partial transparency.  
-> A 10-foot-diameter above-ground pool forms the stationary outer boundary (outer radius 1.524 m) filled with water to 1.10 m height.  
-> Inside it, a large inner rotating cylinder radius 1.224 m is centered, surrounded by 9 co-rotating sleeves (flow dividers) in the 0.30 m annular region.  
-> Show narrow annular gaps, concentric sleeves, and a visible small circumferential end clearance ring at both ends.  
-> Include a 1 kW motor with gearbox on a sturdy platform above the pool edge, driving a vertical shaft down into the rotor; show safety guarding and a frame tower.  
-> Include two adults for scale standing near the pool with railings.  
-> Clean engineering concept art, neutral lighting, no text labels.
-
----
-
-### 3) Backyard-air (neutral-buoyancy air rig, same footprint as pool)
-
-**Goal:** Same geometry as pool, but in air with a frame, transparent panels, and visible “floating” neutral-buoyancy elements (e.g., helium bladders or foam floats) without overexplaining.
+The donut filled with helium at the top of the flow dividers should be relatively small compared to the total.
 
 - Fluid: air  
 - ri = 1.224 m  
@@ -167,19 +55,38 @@ Use this template for every image and fill in the bracketed fields.
 - L = 1.10 m  
 - Sleeves: 9  
 - Motor power class: 1 kW with gearing  
-- Motor placement: **side-mounted** or above, with guards  
+- Motor placement: on **ground** with shaft going up into the inner rotor  
 - Environment: backyard; looks like a big ring-shaped test rig (open framework)
 
-**Prompt block:**
+3/4 isometric cutaway with partial transparency.  
+Show annular gaps and visible small circumferential end clearance rings; show subtle conical end-caps.  
+Include one adult human for scale; backyard setting with minimal clutter.  
+Clean engineering concept art, neutral lighting, no text labels.
 
-> Create a high-clarity technical concept illustration of a backyard air-based friction-buffers experiment (neutral-buoyancy style).  
-> 3/4 isometric cutaway with partial transparency.  
-> Stationary outer boundary radius 1.524 m as a rigid circular frame (not water), enclosing an inner rotating cylinder radius 1.224 m with 9 co-rotating sleeves in the 0.30 m annulus.  
-> Show annular gaps and visible small circumferential end clearance rings; show subtle conical end-caps with swirl-brake ribs conceptually.  
-> Depict lightweight neutral-buoyancy supports (small helium bladders or foam floats) holding parts in alignment without heavy bearings, but keep it believable and minimal.  
-> Include a 1 kW motor with gearbox mounted on the side frame, belt-driving the rotor; show guards.  
-> Include one adult human for scale; backyard setting with minimal clutter.  
-> Clean engineering concept art, neutral lighting, no text labels.
+Required clarification:
+
+The motor shaft should go straight vertical up, from the motor. the inner rotor is basically a cylinder, but it needs to be a vertical cylinder. That is, a horizontal cross section would be a circle.
+
+
+
+## Specific details for bucket-water scenario
+
+- Fluid: water  
+- ri = 0.084 m (6" PVC OD / 2)  
+- ro = 0.140 m (bucket effective radius)  
+- L = 0.30 m  
+- flow-dividers: 5  
+- Motor power class: 100 W DC motor + gearbox  
+- Motor placement: **above** connected to tip of bucket by a plank
+- Environment: **garage workbench**
+
+In our case, L is the height of the inner rotor. The rotor is vertical.
+
+The inner rotor and all flow-dividers are fully under the water level.
+The motor is above the water and the shaft goes into the water.
+
+
+
 
 ---
 

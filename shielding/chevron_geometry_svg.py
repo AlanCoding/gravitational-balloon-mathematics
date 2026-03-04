@@ -83,6 +83,20 @@ def main() -> None:
 
     zmin = -0.25 * p_eff
     zmax = (a.periods + 0.25) * p_eff
+    zspan = zmax - zmin
+
+    # Keep x/z plot units isotropic so geometric angles render correctly.
+    scale = min(inner_w / a.L, inner_h / zspan)
+    draw_w = a.L * scale
+    draw_h = zspan * scale
+    x_pad = margin + 0.5 * (inner_w - draw_w)
+    y_pad = margin + 0.5 * (inner_h - draw_h)
+
+    def sx_plot(x: float) -> float:
+        return sx(x, draw_w, x_pad, a.L)
+
+    def sz_plot(z: float) -> float:
+        return sz(z, draw_h, y_pad, zmin, zmax)
 
     theta = math.radians(a.theta_deg)
     m = math.tan(theta)
@@ -93,10 +107,10 @@ def main() -> None:
     parts.append('<rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/>')
 
     # Frame and axes.
-    x0 = sx(0.0, inner_w, margin, a.L)
-    xL = sx(a.L, inner_w, margin, a.L)
-    z0v = sz(zmin, inner_h, margin, zmin, zmax)
-    z1v = sz(zmax, inner_h, margin, zmin, zmax)
+    x0 = sx_plot(0.0)
+    xL = sx_plot(a.L)
+    z0v = sz_plot(zmin)
+    z1v = sz_plot(zmax)
     parts.append(line(x0, z0v, xL, z0v, "stroke:#444;stroke-width:1"))
     parts.append(line(x0, z1v, xL, z1v, "stroke:#444;stroke-width:1"))
     parts.append(line(x0, z0v, x0, z1v, "stroke:#444;stroke-width:1"))
@@ -105,7 +119,7 @@ def main() -> None:
     # Period guides.
     for k in range(a.periods + 1):
         zk = k * p_eff
-        yk = sz(zk, inner_h, margin, zmin, zmax)
+        yk = sz_plot(zk)
         parts.append(line(x0, yk, xL, yk, "stroke:#ddd;stroke-width:1"))
         parts.append(text(xL + 6, yk + 4, f"z={zk:.4f}", "font:12px monospace;fill:#666"))
 
@@ -116,8 +130,8 @@ def main() -> None:
         xA, zA = 0.0, zoff
         xB, zB = 0.5 * a.L, zoff + m * 0.5 * a.L
         xC, zC = a.L, zoff
-        parts.append(line(sx(xA, inner_w, margin, a.L), sz(zA, inner_h, margin, zmin, zmax), sx(xB, inner_w, margin, a.L), sz(zB, inner_h, margin, zmin, zmax), style_chev))
-        parts.append(line(sx(xB, inner_w, margin, a.L), sz(zB, inner_h, margin, zmin, zmax), sx(xC, inner_w, margin, a.L), sz(zC, inner_h, margin, zmin, zmax), style_chev))
+        parts.append(line(sx_plot(xA), sz_plot(zA), sx_plot(xB), sz_plot(zB), style_chev))
+        parts.append(line(sx_plot(xB), sz_plot(zB), sx_plot(xC), sz_plot(zC), style_chev))
 
     # Sample rays.
     rng = np.random.default_rng(a.seed)
@@ -140,10 +154,10 @@ def main() -> None:
             a.thickness,
         )[0]
 
-        x1 = sx(0.0, inner_w, margin, a.L)
-        y1 = sz(zstart, inner_h, margin, zmin, zmax)
-        x2 = sx(a.L, inner_w, margin, a.L)
-        y2 = sz(zend, inner_h, margin, zmin, zmax)
+        x1 = sx_plot(0.0)
+        y1 = sz_plot(zstart)
+        x2 = sx_plot(a.L)
+        y2 = sz_plot(zend)
         parts.append(line(x1, y1, x2, y2, "stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4"))
 
         xm = 0.55 * x1 + 0.45 * x2

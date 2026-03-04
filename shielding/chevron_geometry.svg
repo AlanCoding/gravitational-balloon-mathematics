@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980.0" height="680.0" viewBox="0 0 980.0 680.0">
+<rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/>
+<line x1="40.000" y1="640.000" x2="940.000" y2="640.000" style="stroke:#444;stroke-width:1" />
+<line x1="40.000" y1="40.000" x2="940.000" y2="40.000" style="stroke:#444;stroke-width:1" />
+<line x1="40.000" y1="640.000" x2="40.000" y2="40.000" style="stroke:#444;stroke-width:1" />
+<line x1="940.000" y1="640.000" x2="940.000" y2="40.000" style="stroke:#444;stroke-width:1" />
+<line x1="40.000" y1="597.143" x2="940.000" y2="597.143" style="stroke:#ddd;stroke-width:1" />
+<text x="946.000" y="601.143" style="font:12px monospace;fill:#666">z=0.0000</text>
+<line x1="40.000" y1="425.714" x2="940.000" y2="425.714" style="stroke:#ddd;stroke-width:1" />
+<text x="946.000" y="429.714" style="font:12px monospace;fill:#666">z=0.5000</text>
+<line x1="40.000" y1="254.286" x2="940.000" y2="254.286" style="stroke:#ddd;stroke-width:1" />
+<text x="946.000" y="258.286" style="font:12px monospace;fill:#666">z=1.0000</text>
+<line x1="40.000" y1="82.857" x2="940.000" y2="82.857" style="stroke:#ddd;stroke-width:1" />
+<text x="946.000" y="86.857" style="font:12px monospace;fill:#666">z=1.5000</text>
+<line x1="40.000" y1="768.571" x2="490.000" y2="597.143" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="490.000" y1="597.143" x2="940.000" y2="768.571" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="40.000" y1="597.143" x2="490.000" y2="425.714" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="490.000" y1="425.714" x2="940.000" y2="597.143" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="40.000" y1="425.714" x2="490.000" y2="254.285" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="490.000" y1="254.285" x2="940.000" y2="425.714" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="40.000" y1="254.286" x2="490.000" y2="82.857" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="490.000" y1="82.857" x2="940.000" y2="254.286" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="40.000" y1="82.857" x2="490.000" y2="-88.572" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="490.000" y1="-88.572" x2="940.000" y2="82.857" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="40.000" y1="-88.571" x2="490.000" y2="-260.000" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="490.000" y1="-260.000" x2="940.000" y2="-88.571" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="40.000" y1="489.275" x2="940.000" y2="754.690" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="445.000" y="604.712" style="font:11px monospace;fill:#0a58ca">Lmat=0.2981</text>
+<line x1="40.000" y1="337.580" x2="940.000" y2="447.132" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="445.000" y="382.878" style="font:11px monospace;fill:#0a58ca">Lmat=0.0339</text>
+<line x1="40.000" y1="169.107" x2="940.000" y2="-15.193" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="445.000" y="82.172" style="font:11px monospace;fill:#0a58ca">Lmat=0.0313</text>
+<line x1="40.000" y1="554.712" x2="940.000" y2="386.280" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="445.000" y="474.918" style="font:11px monospace;fill:#0a58ca">Lmat=0.2956</text>
+<line x1="40.000" y1="423.692" x2="940.000" y2="800.377" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="445.000" y="589.201" style="font:11px monospace;fill:#0a58ca">Lmat=0.1107</text>
+<line x1="40.000" y1="221.302" x2="940.000" y2="91.173" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="445.000" y="158.744" style="font:11px monospace;fill:#0a58ca">Lmat=0.1061</text>
+<line x1="40.000" y1="478.509" x2="940.000" y2="-540.580" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="445.000" y="15.919" style="font:11px monospace;fill:#0a58ca">Lmat=1.1816</text>
+<line x1="40.000" y1="391.325" x2="940.000" y2="305.790" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="445.000" y="348.834" style="font:11px monospace;fill:#0a58ca">Lmat=0.0998</text>
+<line x1="40.000" y1="190.937" x2="940.000" y2="322.457" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="445.000" y="246.121" style="font:11px monospace;fill:#0a58ca">Lmat=0.1458</text>
+<line x1="40.000" y1="596.503" x2="940.000" y2="244.751" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="445.000" y="434.214" style="font:11px monospace;fill:#0a58ca">Lmat=0.0612</text>
+<line x1="40.000" y1="283.420" x2="940.000" y2="-223.535" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="445.000" y="51.291" style="font:11px monospace;fill:#0a58ca">Lmat=0.2232</text>
+<line x1="40.000" y1="227.807" x2="940.000" y2="777.344" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="445.000" y="471.098" style="font:11px monospace;fill:#0a58ca">Lmat=0.2261</text>
+<line x1="40.000" y1="551.269" x2="940.000" y2="1124.337" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="445.000" y="805.150" style="font:11px monospace;fill:#0a58ca">Lmat=0.2195</text>
+<line x1="40.000" y1="274.800" x2="940.000" y2="-57.347" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="445.000" y="121.334" style="font:11px monospace;fill:#0a58ca">Lmat=0.0646</text>
+<text x="40.000" y="20.000" style="font:16px monospace;font-weight:bold;fill:#111">Connected Chevron Geometry</text>
+<text x="40.000" y="36.000" style="font:12px monospace;fill:#333">model=surface, L=1, p_input=0.5, p_effective=0.499999, t=0.03, theta=45</text>
+<text x="40.000" y="52.000" style="font:12px monospace;fill:#333">pitch_no_miss_limit_conservative=0.5000000000, enforce_no_miss=True</text>
+</svg>

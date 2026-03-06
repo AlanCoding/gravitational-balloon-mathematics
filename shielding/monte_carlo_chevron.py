@@ -65,8 +65,8 @@ def parse_args() -> Params:
         type=float,
         default=0.0,
         help=(
-            "For model=surface_extended only: extension length on one side of each segment, "
-            "as fraction of L. Example 0.25 gives +50% total line-length material."
+            "For model=surface_extended only: asymmetric extension of the ascending '/' branch "
+            "toward +x by this fraction of L. Example 0.5 gives +50% total line-length material."
         ),
     )
     parser.add_argument(
@@ -182,7 +182,7 @@ def describe_variables() -> None:
     print("thickness: blade attenuation thickness t")
     print("theta_deg: slat angle from x-axis (45 means fixed 45-degree slats)")
     print("model: surface, surface_extended, or strip")
-    print("center_extension_frac: one-sided segment extension fraction of L for surface_extended")
+    print("center_extension_frac: asymmetric '/'-branch extension fraction of L for surface_extended")
     print("tau_reference: blade uses tau=lambda*t, slab uses tau=lambda*L")
     print("enforce_no_miss: tiny-adjust pitch downward to conservative no-miss limit")
     print("pitch_margin: tiny epsilon used by enforce_no_miss")
@@ -237,7 +237,7 @@ def geometric_line_factor(params: Params, depth: float, pitch: float) -> float |
     theta = math.radians(params.theta_deg)
     # Total slat centerline length per period divided by flat-wall reference length.
     ext = params.center_extension_frac if params.model == "surface_extended" else 0.0
-    return (depth * (1.0 + 2.0 * ext)) / (pitch * max(math.cos(theta), 1e-15))
+    return (depth * (1.0 + ext)) / (pitch * max(math.cos(theta), 1e-15))
 
 
 def periodic_distance(value: float, period: float) -> float:
@@ -386,9 +386,10 @@ def surface_extended_material_length(
 
     ext = center_extension_frac * depth
     x_mid = 0.5 * depth
-    x1_lo = 0.0
-    x1_hi = min(depth, x_mid + ext)
-    x2_lo = max(0.0, x_mid - ext)
+    # Asymmetric hockey-stick: add a left-tip continuation of the '/' branch.
+    x1_lo = -ext
+    x1_hi = x_mid
+    x2_lo = x_mid
     x2_hi = depth
     n1, n2 = surface_hit_counts(ux, uz, z0, depth, p, theta_deg, x1_lo, x1_hi, x2_lo, x2_hi)
     out = n1 * (t / dot1) + n2 * (t / dot2)
@@ -418,9 +419,9 @@ def hit_count_distribution(
     if params.model == "surface_extended":
         ext = params.center_extension_frac * depth
         x_mid = 0.5 * depth
-        x1_lo = 0.0
-        x1_hi = min(depth, x_mid + ext)
-        x2_lo = max(0.0, x_mid - ext)
+        x1_lo = -ext
+        x1_hi = x_mid
+        x2_lo = x_mid
         x2_hi = depth
         n1, n2 = surface_hit_counts(
             ux, uz, z0, depth, pitch, params.theta_deg, x1_lo, x1_hi, x2_lo, x2_hi
@@ -429,11 +430,27 @@ def hit_count_distribution(
     return None
 
 
+def z0_at_x0(
+    params: Params, ux: np.ndarray, uz: np.ndarray, z_entry_unit: np.ndarray, depth: float, pitch: float
+) -> np.ndarray:
+    """
+    Build z(x=0) from uniformly sampled entry points at the exposed-space plane.
+    For surface_extended, exposed-space plane is at x=-ext so the left extension can be hit.
+    """
+    z_entry = z_entry_unit * pitch
+    if params.model != "surface_extended" or params.center_extension_frac <= 0:
+        return z_entry
+    ext = params.center_extension_frac * depth
+    q = uz / ux
+    x_entry = -ext
+    return z_entry - q * x_entry
+
+
 def evaluate_case(
     params: Params, ux: np.ndarray, uz: np.ndarray, z0_unit: np.ndarray, depth: float, thickness: float
 ) -> tuple[float, float, float, float]:
     pitch_eff, pitch_lim = effective_pitch(params, depth, thickness)
-    z0 = z0_unit * pitch_eff
+    z0 = z0_at_x0(params, ux, uz, z0_unit, depth, pitch_eff)
     l_mat = material_length(params, ux, uz, z0, depth, pitch_eff, thickness)
     lam = lambda_from_params(params, thickness, depth)
     t_chev = float(np.mean(np.exp(-lam * l_mat)))
@@ -537,7 +554,7 @@ def main() -> None:
     print(f"P_no_hit={p_no_hit:.10f}")
     print(f"T_chevron_MC={t_chev_mc:.10f}")
     print(f"delta_T_chevron_minus_flat={t_chev_mc - t_flat_an:.10f}")
-    z0_final = z0_unit * p_eff
+    z0_final = z0_at_x0(params, ux, uz, z0_unit, report_L, p_eff)
     hits = hit_count_distribution(params, ux, uz, z0_final, report_L, p_eff)
     if hits is not None:
         for k in range(6):

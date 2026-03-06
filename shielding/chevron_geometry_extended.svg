@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980.0" height="680.0" viewBox="0 0 980.0 680.0">
+<rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/>
+<line x1="232.857" y1="640.000" x2="747.143" y2="640.000" style="stroke:#444;stroke-width:1" />
+<line x1="232.857" y1="40.000" x2="747.143" y2="40.000" style="stroke:#444;stroke-width:1" />
+<line x1="232.857" y1="640.000" x2="232.857" y2="40.000" style="stroke:#444;stroke-width:1" />
+<line x1="404.286" y1="640.000" x2="404.286" y2="40.000" style="stroke:#888;stroke-width:1;stroke-dasharray:3,3" />
+<line x1="747.143" y1="640.000" x2="747.143" y2="40.000" style="stroke:#444;stroke-width:1" />
+<line x1="232.857" y1="597.143" x2="747.143" y2="597.143" style="stroke:#ddd;stroke-width:1" />
+<text x="753.143" y="601.143" style="font:12px monospace;fill:#666">z=0.0000</text>
+<line x1="232.857" y1="425.714" x2="747.143" y2="425.714" style="stroke:#ddd;stroke-width:1" />
+<text x="753.143" y="429.714" style="font:12px monospace;fill:#666">z=0.5000</text>
+<line x1="232.857" y1="254.286" x2="747.143" y2="254.286" style="stroke:#ddd;stroke-width:1" />
+<text x="753.143" y="258.286" style="font:12px monospace;fill:#666">z=1.0000</text>
+<line x1="232.857" y1="82.857" x2="747.143" y2="82.857" style="stroke:#ddd;stroke-width:1" />
+<text x="753.143" y="86.857" style="font:12px monospace;fill:#666">z=1.5000</text>
+<line x1="232.857" y1="940.000" x2="575.714" y2="597.143" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="575.714" y1="597.143" x2="747.143" y2="768.571" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="232.857" y1="768.572" x2="575.714" y2="425.714" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="575.714" y1="425.714" x2="747.143" y2="597.143" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="232.857" y1="597.143" x2="575.714" y2="254.285" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="575.714" y1="254.285" x2="747.143" y2="425.714" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="232.857" y1="425.715" x2="575.714" y2="82.857" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="575.714" y1="82.857" x2="747.143" y2="254.286" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="232.857" y1="254.286" x2="575.714" y2="-88.572" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="575.714" y1="-88.572" x2="747.143" y2="82.857" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="232.857" y1="82.857" x2="575.714" y2="-260.000" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="575.714" y1="-260.000" x2="747.143" y2="-88.571" style="stroke:#d11;stroke-width:2;fill:none" />
+<line x1="232.857" y1="595.121" x2="747.143" y2="196.997" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="464.286" y="411.965" style="font:11px monospace;fill:#0a58ca">h=3, Lmat=4.7585</text>
+<line x1="232.857" y1="392.731" x2="747.143" y2="346.628" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="464.286" y="367.985" style="font:11px monospace;fill:#0a58ca">h=3, Lmat=2.2272</text>
+<line x1="232.857" y1="135.652" x2="747.143" y2="334.645" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="464.286" y="221.199" style="font:11px monospace;fill:#0a58ca">h=4, Lmat=2.9179</text>
+<line x1="232.857" y1="562.753" x2="747.143" y2="-388.862" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="464.286" y="130.526" style="font:11px monospace;fill:#0a58ca">h=4, Lmat=3.1806</text>
+<line x1="232.857" y1="362.365" x2="747.143" y2="192.550" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="464.286" y="281.948" style="font:11px monospace;fill:#0a58ca">h=2, Lmat=2.7751</text>
+<line x1="232.857" y1="253.646" x2="747.143" y2="149.023" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="464.286" y="202.565" style="font:11px monospace;fill:#0a58ca">h=3, Lmat=2.4217</text>
+<line x1="232.857" y1="454.849" x2="747.143" y2="5828.883" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="464.286" y="2869.164" style="font:11px monospace;fill:#0a58ca">h=32, Lmat=27.6411</text>
+<line x1="232.857" y1="399.235" x2="747.143" y2="168.372" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="464.286" y="291.347" style="font:11px monospace;fill:#0a58ca">h=2, Lmat=1.8721</text>
+<line x1="232.857" y1="208.412" x2="747.143" y2="-44.591" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="464.286" y="90.560" style="font:11px monospace;fill:#0a58ca">h=2, Lmat=2.0018</text>
+<line x1="232.857" y1="446.229" x2="747.143" y2="992.228" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="464.286" y="687.928" style="font:11px monospace;fill:#0a58ca">h=4, Lmat=1.9211</text>
+<line x1="232.857" y1="338.322" x2="747.143" y2="1100.756" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="464.286" y="677.417" style="font:11px monospace;fill:#0a58ca">h=5, Lmat=2.4781</text>
+<line x1="232.857" y1="109.060" x2="747.143" y2="-609.244" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="464.286" y="-218.177" style="font:11px monospace;fill:#0a58ca">h=4, Lmat=4.8425</text>
+<line x1="232.857" y1="487.477" x2="747.143" y2="1092.544" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="464.286" y="755.757" style="font:11px monospace;fill:#0a58ca">h=4, Lmat=2.4656</text>
+<line x1="232.857" y1="298.554" x2="747.143" y2="870.551" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="464.286" y="551.952" style="font:11px monospace;fill:#0a58ca">h=4, Lmat=1.9226</text>
+<line x1="232.857" y1="238.601" x2="747.143" y2="748.132" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="464.286" y="463.890" style="font:11px monospace;fill:#0a58ca">h=4, Lmat=1.9159</text>
+<line x1="232.857" y1="504.375" x2="747.143" y2="497.163" style="stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4" />
+<text x="464.286" y="497.130" style="font:11px monospace;fill:#0a58ca">h=3, Lmat=2.7445</text>
+<text x="40.000" y="20.000" style="font:16px monospace;font-weight:bold;fill:#111">Connected Chevron Geometry</text>
+<text x="40.000" y="36.000" style="font:12px monospace;fill:#333">model=surface_extended, L=1, p_input=0.5, p_effective=0.499999, t=0.478935, theta=45</text>
+<text x="40.000" y="52.000" style="font:12px monospace;fill:#333">pitch_no_miss_limit_conservative=0.5000000000, enforce_no_miss=True, ext_frac=0.5</text>
+<text x="40.000" y="68.000" style="font:12px monospace;fill:#333">Dashed vertical line marks x=0 entry plane; frame includes left extension region.</text>
+</svg>

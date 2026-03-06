@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import argparse
 import math
-from dataclasses import replace
 
 import numpy as np
 
@@ -18,7 +17,13 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--pitch", type=float, default=0.5, help="Input pitch p in z")
     p.add_argument("--thickness", type=float, default=0.03, help="Blade attenuation thickness t")
     p.add_argument("--theta-deg", type=float, default=45.0, help="Slat angle")
-    p.add_argument("--model", type=str, default="surface", choices=["surface", "strip"])
+    p.add_argument("--model", type=str, default="surface", choices=["surface", "surface_extended", "strip"])
+    p.add_argument(
+        "--center-extension-frac",
+        type=float,
+        default=0.0,
+        help="For model=surface_extended: asymmetric '/'-branch extension fraction of L toward +x.",
+    )
     p.add_argument("--tau-flat", type=float, default=5.0)
     p.add_argument("--tau-reference", type=str, default="blade", choices=["blade", "slab"])
     p.add_argument("--num-rays", type=int, default=14, help="How many dotted rays to show")
@@ -71,6 +76,7 @@ def main() -> None:
         d_max=5.0,
         solve_iters=28,
         describe_variables=False,
+        center_extension_frac=a.center_extension_frac,
     )
 
     p_eff, p_lim = mc.effective_pitch(params, a.L, a.thickness)
@@ -85,15 +91,19 @@ def main() -> None:
     zmax = (a.periods + 0.25) * p_eff
     zspan = zmax - zmin
 
+    ext = a.center_extension_frac * a.L if a.model == "surface_extended" else 0.0
+    x_min = -ext if a.model == "surface_extended" else 0.0
+    x_span = a.L - x_min
+
     # Keep x/z plot units isotropic so geometric angles render correctly.
-    scale = min(inner_w / a.L, inner_h / zspan)
-    draw_w = a.L * scale
+    scale = min(inner_w / x_span, inner_h / zspan)
+    draw_w = x_span * scale
     draw_h = zspan * scale
     x_pad = margin + 0.5 * (inner_w - draw_w)
     y_pad = margin + 0.5 * (inner_h - draw_h)
 
     def sx_plot(x: float) -> float:
-        return sx(x, draw_w, x_pad, a.L)
+        return x_pad + ((x - x_min) / x_span) * draw_w
 
     def sz_plot(z: float) -> float:
         return sz(z, draw_h, y_pad, zmin, zmax)
@@ -107,13 +117,15 @@ def main() -> None:
     parts.append('<rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/>')
 
     # Frame and axes.
-    x0 = sx_plot(0.0)
+    x0 = sx_plot(x_min)
+    x_entry = sx_plot(0.0)
     xL = sx_plot(a.L)
     z0v = sz_plot(zmin)
     z1v = sz_plot(zmax)
     parts.append(line(x0, z0v, xL, z0v, "stroke:#444;stroke-width:1"))
     parts.append(line(x0, z1v, xL, z1v, "stroke:#444;stroke-width:1"))
     parts.append(line(x0, z0v, x0, z1v, "stroke:#444;stroke-width:1"))
+    parts.append(line(x_entry, z0v, x_entry, z1v, "stroke:#888;stroke-width:1;stroke-dasharray:3,3"))
     parts.append(line(xL, z0v, xL, z1v, "stroke:#444;stroke-width:1"))
 
     # Period guides.
@@ -125,13 +137,16 @@ def main() -> None:
 
     # Chevron centerlines.
     style_chev = "stroke:#d11;stroke-width:2;fill:none"
+    x1_lo, x1_hi = (-ext, 0.5 * a.L) if a.model == "surface_extended" else (0.0, 0.5 * a.L)
+    x2_lo, x2_hi = 0.5 * a.L, a.L
     for k in range(-1, a.periods + 2):
         zoff = k * p_eff
-        xA, zA = 0.0, zoff
-        xB, zB = 0.5 * a.L, zoff + m * 0.5 * a.L
-        xC, zC = a.L, zoff
-        parts.append(line(sx_plot(xA), sz_plot(zA), sx_plot(xB), sz_plot(zB), style_chev))
-        parts.append(line(sx_plot(xB), sz_plot(zB), sx_plot(xC), sz_plot(zC), style_chev))
+        z1a = zoff + m * x1_lo
+        z1b = zoff + m * x1_hi
+        z2a = zoff + m * a.L - m * x2_lo
+        z2b = zoff + m * a.L - m * x2_hi
+        parts.append(line(sx_plot(x1_lo), sz_plot(z1a), sx_plot(x1_hi), sz_plot(z1b), style_chev))
+        parts.append(line(sx_plot(x2_lo), sz_plot(z2a), sx_plot(x2_hi), sz_plot(z2b), style_chev))
 
     # Sample rays.
     rng = np.random.default_rng(a.seed)
@@ -141,28 +156,41 @@ def main() -> None:
     for i in range(a.num_rays):
         zstart = float(z0_unit[i] * p_eff + (i % a.periods) * p_eff)
         q = float(uz[i] / ux[i])
-        zend = zstart + q * a.L
+        x_ray_start = x_min
+        x_ray_end = a.L
+        zend = zstart + q * (x_ray_end - x_ray_start)
+        z_at_x0 = zstart - q * x_ray_start
 
         # Evaluate material length for this specific ray.
         li = mc.material_length(
             params,
             np.array([ux[i]]),
             np.array([uz[i]]),
-            np.array([zstart]),
+            np.array([z_at_x0]),
             a.L,
             p_eff,
             a.thickness,
         )[0]
+        hi = mc.hit_count_distribution(
+            params,
+            np.array([ux[i]]),
+            np.array([uz[i]]),
+            np.array([z_at_x0]),
+            a.L,
+            p_eff,
+        )
+        htxt = int(hi[0]) if hi is not None else -1
 
-        x1 = sx_plot(0.0)
+        x1 = sx_plot(x_ray_start)
         y1 = sz_plot(zstart)
-        x2 = sx_plot(a.L)
+        x2 = sx_plot(x_ray_end)
         y2 = sz_plot(zend)
         parts.append(line(x1, y1, x2, y2, "stroke:#0a58ca;stroke-width:1.4;stroke-dasharray:4,4"))
 
         xm = 0.55 * x1 + 0.45 * x2
         ym = 0.55 * y1 + 0.45 * y2 - 4
-        parts.append(text(xm, ym, f"Lmat={li:.4f}", "font:11px monospace;fill:#0a58ca"))
+        label = f"h={htxt}, Lmat={li:.4f}" if htxt >= 0 else f"Lmat={li:.4f}"
+        parts.append(text(xm, ym, label, "font:11px monospace;fill:#0a58ca"))
 
     # Header labels.
     parts.append(text(margin, 20, "Connected Chevron Geometry", "font:16px monospace;font-weight:bold;fill:#111"))
@@ -178,10 +206,19 @@ def main() -> None:
         text(
             margin,
             52,
-            f"pitch_no_miss_limit_conservative={p_lim:.10f}, enforce_no_miss={a.enforce_no_miss}",
+            f"pitch_no_miss_limit_conservative={p_lim:.10f}, enforce_no_miss={a.enforce_no_miss}, ext_frac={a.center_extension_frac:.4g}",
             "font:12px monospace;fill:#333",
         )
     )
+    if a.model == "surface_extended":
+        parts.append(
+            text(
+                margin,
+                68,
+                "Dashed vertical line marks x=0 entry plane; frame includes left extension region.",
+                "font:12px monospace;fill:#333",
+            )
+        )
 
     parts.append("</svg>")
 

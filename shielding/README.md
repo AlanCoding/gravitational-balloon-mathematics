@@ -70,39 +70,31 @@ This is the current ultimate FOM for the agreed setup.
 A new geometry mode is available:
 
 - `model=surface_extended`
-- `--center-extension-frac f` extends each segment on one side (toward center) by `f*L`
-- `f=0.25` corresponds to `+50%` line-length material vs baseline chevron geometry
+- `--center-extension-frac f` adds a left-tip continuation of the `/` branch by `f*L` (hockey-stick style)
+- `f=0.5` corresponds to `+50%` line-length material vs baseline chevron geometry
 
-Example comparison at fixed `L=1`, `p=0.5`, `theta=45 deg`, no-miss enforcement, matching `T_flat` by solving `t`:
+Comparison at fixed `L=1`, `p=0.5`, `theta=45 deg`, no-miss enforcement, matching `T_flat` by solving `t`
+(`samples=500000` for both rows):
 
-Baseline:
+| Geometry | Solve `t` | `P_no_hit` | `P_hit_1` | `mean_hits` | `M_geom` | `M'_geom*t` |
+|---|---:|---:|---:|---:|---:|---:|
+| Basic chevron (`surface`) | `0.765144` | `0.000000` | `0.177982` | `2.819090` | `2.828433` | `2.164158` |
+| Extended hockey-stick (`surface_extended`, `f=0.5`) | `0.478935` | `0.000000` | `0.022272` | `4.226746` | `4.242649` | `2.031955` |
+
+Reproduction commands:
 
 ```bash
 ~/venvs/gb/bin/python monte_carlo_chevron.py \
   --model surface --L 1 --pitch 0.5 --theta-deg 45 --tau-reference slab \
   --solve-thickness-for-flat --enforce-no-miss --require-no-hit \
-  --samples 400000 --t-min 1e-5 --t-max 2.0
-```
+  --samples 500000 --t-min 1e-5 --t-max 2.0
 
-- `t ~= 0.7648`
-- `M_geom ~= 2.8284`
-- `M_prime_geom_t ~= 2.1632`
-
-Extended (`f=0.25`):
-
-```bash
 ~/venvs/gb/bin/python monte_carlo_chevron.py \
-  --model surface_extended --center-extension-frac 0.25 \
+  --model surface_extended --center-extension-frac 0.5 \
   --L 1 --pitch 0.5 --theta-deg 45 --tau-reference slab \
   --solve-thickness-for-flat --enforce-no-miss --require-no-hit \
-  --samples 400000 --t-min 1e-5 --t-max 2.0
+  --samples 500000 --t-min 1e-5 --t-max 2.0
 ```
-
-- `t ~= 0.3482`
-- `M_geom ~= 4.2426`
-- `M_prime_geom_t ~= 1.4773`
-
-So this extension mode improved the final material factor (`M'`) for this scenario.
 
 ### Hit-Count Output
 
@@ -133,3 +125,24 @@ To generate a dimensioned SVG with sample rays and per-ray evaluated material pa
 Embedded preview:
 
 ![Chevron Geometry](chevron_geometry.svg)
+
+## Extended Geometry SVG
+
+To generate the one-sided extended hit diagram (`surface_extended`):
+
+```bash
+~/venvs/gb/bin/python chevron_geometry_svg.py \
+  --model surface_extended \
+  --center-extension-frac 0.5 \
+  --L 1 \
+  --pitch 0.5 \
+  --thickness 0.478935 \
+  --theta-deg 45 \
+  --enforce-no-miss \
+  --num-rays 16 \
+  --out chevron_geometry_extended.svg
+```
+
+Embedded preview:
+
+![Chevron Extended Geometry](chevron_geometry_extended.svg)

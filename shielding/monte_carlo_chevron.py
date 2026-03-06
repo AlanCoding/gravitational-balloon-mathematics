@@ -32,6 +32,7 @@ class Params:
     d_max: float
     solve_iters: int
     describe_variables: bool
+    center_extension_frac: float
 
 
 def parse_args() -> Params:
@@ -52,10 +53,20 @@ def parse_args() -> Params:
         "--model",
         type=str,
         default="surface",
-        choices=["surface", "strip"],
+        choices=["surface", "surface_extended", "strip"],
         help=(
             "surface: infinitesimally thin slat geometry, attenuation per crossing uses t/|n.u|; "
+            "surface_extended: surface model with one-sided center extension of each segment; "
             "strip: finite geometric strip thickness in the x-z section"
+        ),
+    )
+    parser.add_argument(
+        "--center-extension-frac",
+        type=float,
+        default=0.0,
+        help=(
+            "For model=surface_extended only: extension length on one side of each segment, "
+            "as fraction of L. Example 0.25 gives +50% total line-length material."
         ),
     )
     parser.add_argument(
@@ -131,6 +142,10 @@ def parse_args() -> Params:
         parser.error("--solve-iters must be >= 1")
     if args.solve_depth_for_flat and args.solve_thickness_for_flat:
         parser.error("Choose at most one of --solve-depth-for-flat or --solve-thickness-for-flat")
+    if args.center_extension_frac < 0:
+        parser.error("--center-extension-frac must be >= 0")
+    if args.center_extension_frac > 0.5:
+        parser.error("--center-extension-frac must be <= 0.5")
 
     return Params(
         n_samples=args.samples,
@@ -153,6 +168,7 @@ def parse_args() -> Params:
         d_max=args.d_max,
         solve_iters=args.solve_iters,
         describe_variables=args.describe_variables,
+        center_extension_frac=args.center_extension_frac,
     )
 
 
@@ -165,7 +181,8 @@ def describe_variables() -> None:
     print("pitch: repeating period p in z direction")
     print("thickness: blade attenuation thickness t")
     print("theta_deg: slat angle from x-axis (45 means fixed 45-degree slats)")
-    print("model: surface (zero geometric slat thickness) or strip (finite-width slats)")
+    print("model: surface, surface_extended, or strip")
+    print("center_extension_frac: one-sided segment extension fraction of L for surface_extended")
     print("tau_reference: blade uses tau=lambda*t, slab uses tau=lambda*L")
     print("enforce_no_miss: tiny-adjust pitch downward to conservative no-miss limit")
     print("pitch_margin: tiny epsilon used by enforce_no_miss")
@@ -200,7 +217,7 @@ def lambda_from_params(params: Params, thickness: float, depth: float) -> float:
 def conservative_pitch_limit(depth: float, thickness: float, theta_deg: float, model: str) -> float:
     theta = math.radians(theta_deg)
     base = 0.5 * depth * math.tan(theta)
-    if model == "surface":
+    if model in ("surface", "surface_extended"):
         return base
     c = max(math.cos(theta), 1e-15)
     return base + thickness / c
@@ -212,6 +229,15 @@ def effective_pitch(params: Params, depth: float, thickness: float) -> tuple[flo
     if params.enforce_no_miss:
         p_eff = min(params.p, max(1e-12, p_lim - params.pitch_margin))
     return p_eff, p_lim
+
+
+def geometric_line_factor(params: Params, depth: float, pitch: float) -> float | None:
+    if params.model not in ("surface", "surface_extended"):
+        return None
+    theta = math.radians(params.theta_deg)
+    # Total slat centerline length per period divided by flat-wall reference length.
+    ext = params.center_extension_frac if params.model == "surface_extended" else 0.0
+    return (depth * (1.0 + 2.0 * ext)) / (pitch * max(math.cos(theta), 1e-15))
 
 
 def periodic_distance(value: float, period: float) -> float:
@@ -287,11 +313,46 @@ def count_integer_hits(y0: float, y1: float, p: float) -> int:
     return max(0, int(k_max - k_min + 1))
 
 
-def surface_material_length(ux: np.ndarray, uz: np.ndarray, z0: np.ndarray, depth: float, p: float, t: float, theta_deg: float) -> np.ndarray:
+def surface_hit_counts(
+    ux: np.ndarray,
+    uz: np.ndarray,
+    z0: np.ndarray,
+    depth: float,
+    p: float,
+    theta_deg: float,
+    x1_lo: float,
+    x1_hi: float,
+    x2_lo: float,
+    x2_hi: float,
+) -> tuple[np.ndarray, np.ndarray]:
     theta = math.radians(theta_deg)
     m = math.tan(theta)
     q = uz / ux
+    n1_out = np.empty_like(ux, dtype=np.int64)
+    n2_out = np.empty_like(ux, dtype=np.int64)
 
+    for i in range(ux.size):
+        zi = float(z0[i])
+        qi = float(q[i])
+
+        # Segment 1 centerlines: z = m*x + k*p, x in [x1_lo, x1_hi]
+        y10 = zi + (qi - m) * x1_lo
+        y11 = zi + (qi - m) * x1_hi
+        n1 = count_integer_hits(y10, y11, p)
+
+        # Segment 2 centerlines: z = m*L - m*x + k*p, x in [x2_lo, x2_hi]
+        y20 = zi - m * depth + (qi + m) * x2_lo
+        y21 = zi - m * depth + (qi + m) * x2_hi
+        n2 = count_integer_hits(y20, y21, p)
+
+        n1_out[i] = n1
+        n2_out[i] = n2
+
+    return n1_out, n2_out
+
+
+def surface_material_length(ux: np.ndarray, uz: np.ndarray, z0: np.ndarray, depth: float, p: float, t: float, theta_deg: float) -> np.ndarray:
+    theta = math.radians(theta_deg)
     s = math.sin(theta)
     c = math.cos(theta)
     dot1 = np.abs(-s * ux + c * uz)
@@ -300,24 +361,37 @@ def surface_material_length(ux: np.ndarray, uz: np.ndarray, z0: np.ndarray, dept
     dot2 = np.maximum(dot2, 1e-12)
 
     x_mid = 0.5 * depth
-    out = np.empty_like(ux)
+    n1, n2 = surface_hit_counts(ux, uz, z0, depth, p, theta_deg, 0.0, x_mid, x_mid, depth)
+    out = n1 * (t / dot1) + n2 * (t / dot2)
+    return out
 
-    for i in range(ux.size):
-        zi = float(z0[i])
-        qi = float(q[i])
 
-        # Segment 1 centerlines: z = m*x + k*p for x in [0, L/2]
-        y10 = zi
-        y11 = zi + (qi - m) * x_mid
-        n1 = count_integer_hits(y10, y11, p)
+def surface_extended_material_length(
+    ux: np.ndarray,
+    uz: np.ndarray,
+    z0: np.ndarray,
+    depth: float,
+    p: float,
+    t: float,
+    theta_deg: float,
+    center_extension_frac: float,
+) -> np.ndarray:
+    theta = math.radians(theta_deg)
+    s = math.sin(theta)
+    c = math.cos(theta)
+    dot1 = np.abs(-s * ux + c * uz)
+    dot2 = np.abs(+s * ux + c * uz)
+    dot1 = np.maximum(dot1, 1e-12)
+    dot2 = np.maximum(dot2, 1e-12)
 
-        # Segment 2 centerlines: z = m*L - m*x + k*p for x in [L/2, L]
-        y20 = zi - m * depth + (qi + m) * x_mid
-        y21 = zi - m * depth + (qi + m) * depth
-        n2 = count_integer_hits(y20, y21, p)
-
-        out[i] = n1 * (t / dot1[i]) + n2 * (t / dot2[i])
-
+    ext = center_extension_frac * depth
+    x_mid = 0.5 * depth
+    x1_lo = 0.0
+    x1_hi = min(depth, x_mid + ext)
+    x2_lo = max(0.0, x_mid - ext)
+    x2_hi = depth
+    n1, n2 = surface_hit_counts(ux, uz, z0, depth, p, theta_deg, x1_lo, x1_hi, x2_lo, x2_hi)
+    out = n1 * (t / dot1) + n2 * (t / dot2)
     return out
 
 
@@ -326,7 +400,33 @@ def material_length(
 ) -> np.ndarray:
     if params.model == "surface":
         return surface_material_length(ux, uz, z0, depth, pitch, thickness, params.theta_deg)
+    if params.model == "surface_extended":
+        return surface_extended_material_length(
+            ux, uz, z0, depth, pitch, thickness, params.theta_deg, params.center_extension_frac
+        )
     return strip_material_length(ux, uz, z0, depth, pitch, thickness, params.theta_deg)
+
+
+def hit_count_distribution(
+    params: Params, ux: np.ndarray, uz: np.ndarray, z0: np.ndarray, depth: float, pitch: float
+) -> np.ndarray | None:
+    """Return per-ray discrete hit counts for surface-based models, else None."""
+    if params.model == "surface":
+        x_mid = 0.5 * depth
+        n1, n2 = surface_hit_counts(ux, uz, z0, depth, pitch, params.theta_deg, 0.0, x_mid, x_mid, depth)
+        return n1 + n2
+    if params.model == "surface_extended":
+        ext = params.center_extension_frac * depth
+        x_mid = 0.5 * depth
+        x1_lo = 0.0
+        x1_hi = min(depth, x_mid + ext)
+        x2_lo = max(0.0, x_mid - ext)
+        x2_hi = depth
+        n1, n2 = surface_hit_counts(
+            ux, uz, z0, depth, pitch, params.theta_deg, x1_lo, x1_hi, x2_lo, x2_hi
+        )
+        return n1 + n2
+    return None
 
 
 def evaluate_case(
@@ -412,6 +512,7 @@ def main() -> None:
     lam = lambda_from_params(params, report_t, report_L)
     tol = 1e-12 * max(1.0, abs(p_lim))
     pitch_ok = p_eff <= p_lim + tol
+    m_geom = geometric_line_factor(params, report_L, p_eff)
 
     print("Connected Chevron Monte Carlo")
     print(f"samples={params.n_samples} seed={params.seed}")
@@ -424,6 +525,8 @@ def main() -> None:
     if params.solve_depth_for_flat:
         print(f"depth_solve_bracket=[{params.d_min:.6g}, {params.d_max:.6g}] iters={params.solve_iters}")
     print(f"enforce_no_miss={params.enforce_no_miss}")
+    if params.model == "surface_extended":
+        print(f"center_extension_frac={params.center_extension_frac:.6g}")
     print(f"pitch_no_miss_limit_conservative={p_lim:.10f}")
     print(f"pitch_satisfies_limit={pitch_ok}")
     print(f"tau_flat={params.tau_flat:.6g}")
@@ -434,6 +537,18 @@ def main() -> None:
     print(f"P_no_hit={p_no_hit:.10f}")
     print(f"T_chevron_MC={t_chev_mc:.10f}")
     print(f"delta_T_chevron_minus_flat={t_chev_mc - t_flat_an:.10f}")
+    z0_final = z0_unit * p_eff
+    hits = hit_count_distribution(params, ux, uz, z0_final, report_L, p_eff)
+    if hits is not None:
+        for k in range(6):
+            print(f"P_hit_{k}={float(np.mean(hits == k)):.10f}")
+        print(f"P_hit_6plus={float(np.mean(hits >= 6)):.10f}")
+        print(f"mean_hits={float(np.mean(hits)):.10f}")
+    else:
+        print("hit_count_distribution=not_available_for_strip_model")
+    if m_geom is not None:
+        print(f"M_geom={m_geom:.10f}")
+        print(f"M_prime_geom_t={m_geom * report_t:.10f}")
 
     if params.require_no_hit and p_no_hit > 0.0:
         raise SystemExit("No-hit rays detected while --require-no-hit was requested.")

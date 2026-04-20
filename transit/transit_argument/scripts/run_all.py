@@ -14,6 +14,7 @@ def main() -> None:
         "scripts/run_transit.py",
         "scripts/compute_thermal_bounds.py",
         "scripts/compute_vacuum_lattice.py",
+        "scripts/compute_space_city_mobility.py",
         "scripts/build_project_summary.py",
     ]:
         subprocess.run([python, str(ROOT / script)], check=True)

@@ -80,6 +80,22 @@ def main() -> None:
             }
         )
 
+    mobility_path = TABLE_DIR / "space_city_trip_summary.csv"
+    mobility = pd.read_csv(mobility_path) if mobility_path.exists() else pd.DataFrame()
+    if not mobility.empty:
+        for row in mobility.to_dict("records"):
+            rows.append(
+                {
+                    "section": "space_city_mobility",
+                    "subject": row["case"],
+                    "metric_a": "median_travel_time_min",
+                    "value_a": row["median_travel_time_min"],
+                    "metric_b": "p90_travel_time_min",
+                    "value_b": row["p90_travel_time_min"],
+                    "notes": f"mean_net_kinetic_energy_kwh={row['mean_net_kinetic_energy_kwh']:.3f}",
+                }
+            )
+
     write_dataframe(TABLE_DIR / "project_summary.csv", pd.DataFrame(rows))
 
 

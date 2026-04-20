@@ -1,0 +1,3 @@
+case,population,node_count,people_per_node_effective,mean_travel_time_min,median_travel_time_min,p90_travel_time_min,p99_travel_time_min,max_travel_time_min,mean_net_kinetic_energy_kwh,p90_net_kinetic_energy_kwh,grid_shape,cell_spacing_m,access_time_min,egress_time_min,transfer_time_min
+gravity_wheels_in_atmosphere,1000000000,1000000,1000.0,56.14786264736165,56.22861861861862,72.34616473616474,83.87716001716002,91.79758043758044,0.1525175703125,0.24174234375000003,100x100x100,1000.0,2.0,2.0,5.0
+rotating_habitats_in_vacuum,1000000000,100000,10000.0,66.91756205522054,66.07961130625372,85.6942815621154,97.49724899551762,102.49724899551762,1.4557264377083334,2.0207916666666668,47x47x46,3000.0,6.0,6.0,7.0

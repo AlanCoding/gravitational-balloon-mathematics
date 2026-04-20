@@ -1,0 +1,5 @@
+case,tier_name,cell_span,cell_distance_m,capacity_units,vehicle_mass_kg,max_speed_m_s,max_speed_km_h,acceleration_m_s2,regen_efficiency,full_speed_kinetic_energy_kwh_per_vehicle,net_cycle_energy_kwh_per_passenger_at_full_load,notes
+rotating_habitats_in_vacuum,local_pod_bus,1,3000.0,8,9120.0,40.0,144.0,0.8,0.8,2.026666666666667,0.05066666666666666,Short-hop electromagnetic carrier for pod collection and distribution.
+rotating_habitats_in_vacuum,regional_pod_bus,4,12000.0,64,60960.0,180.0,648.0,0.9,0.85,274.32,0.6429375000000002,Regional bus between medium hubs on the cubic lattice.
+rotating_habitats_in_vacuum,trunk_pod_bus,16,48000.0,512,447680.0,500.0,1800.0,1.0,0.9,15544.444444444445,3.036024305555555,Mainline bus on long axis corridors using electromagnetic launch and recovery.
+rotating_habitats_in_vacuum,single_person_pod,0,0.0,1,640.0,,,,,,,Single-person pod sized as a minimal shielded taxi. The 130 kg suit-and-restraint term is anchored to NASA's roughly 280-pound spacesuit scale and rounded upward.

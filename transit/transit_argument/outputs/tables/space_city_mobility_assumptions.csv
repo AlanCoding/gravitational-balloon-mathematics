@@ -1,0 +1,23 @@
+category,name,value,notes
+global,transfer_penalty_reference_min,5.0,"Earth-analog transfer penalty anchored near 5 minutes. This sits below the 11.24-minute equivalent in-vehicle penalty reported for Seoul smartcard trips and below the 13-18 minute planning range proposed in later transfer-penalty literature, because the space-city stations here are assumed to be purpose-built and low-friction."
+atmosphere,population,1000000000,
+atmosphere,people_per_node,1000,
+atmosphere,grid_shape,100x100x100,
+atmosphere,cell_spacing_m,1000.0,
+atmosphere,access_time_min,2.0,
+atmosphere,egress_time_min,2.0,
+atmosphere,transfer_time_min,5.0,
+vacuum,population,1000000000,
+vacuum,people_per_node,10000,
+vacuum,grid_shape,47x47x46,
+vacuum,cell_spacing_m,3000.0,
+vacuum,access_time_min,6.0,
+vacuum,egress_time_min,6.0,
+vacuum,transfer_time_min,7.0,
+vacuum,pod_passenger_mass_kg,90.0,
+vacuum,pod_suit_and_restraint_mass_kg,130.0,
+vacuum,pod_pressure_shell_mass_kg,140.0,
+vacuum,pod_localized_shielding_mass_kg,180.0,
+vacuum,pod_battery_avionics_mass_kg,60.0,
+vacuum,pod_docking_hardware_mass_kg,40.0,
+vacuum,pod_notes,,Single-person pod sized as a minimal shielded taxi. The 130 kg suit-and-restraint term is anchored to NASA's roughly 280-pound spacesuit scale and rounded upward.

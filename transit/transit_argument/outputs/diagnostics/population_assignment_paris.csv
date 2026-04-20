@@ -1,0 +1,2 @@
+city,metro_population_target,assigned_population_total,assigned_cells,all_cells,station_count,method_tag
+Paris,12300000,12299999.999999998,170,170,630,station_kernel_grid_fallback

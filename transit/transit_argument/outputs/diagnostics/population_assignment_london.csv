@@ -1,0 +1,2 @@
+city,metro_population_target,assigned_population_total,assigned_cells,all_cells,station_count,method_tag
+London,14800000,14799999.999999998,1419,1960,1001,station_kernel_grid_fallback

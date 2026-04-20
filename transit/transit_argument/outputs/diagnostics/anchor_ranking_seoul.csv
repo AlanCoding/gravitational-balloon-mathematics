@@ -1,0 +1,2 @@
+city,anchor_station_id,anchor_name,reachable_stations_60min,reachable_stations_120min,weighted_reach_score
+Seoul,::37.5663::126.9771,시청,698,936,67896.68444239197

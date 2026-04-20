@@ -1,0 +1,5 @@
+city,anchor_station_id,anchor_name,reachable_stations_60min,reachable_stations_120min,weighted_reach_score
+London,oxford circus::51.5157::-0.142,Oxford Circus,933,999,86817.10886815288
+London,king s cross st pancras::51.5296::-0.1245,King's Cross St Pancras,936,999,85544.83097262247
+London,bank::51.5133::-0.0889,Bank,929,999,85534.15389809699
+London,waterloo::51.5025::-0.1125,Waterloo,930,999,85317.5988516731

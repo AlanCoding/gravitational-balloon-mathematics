@@ -1,0 +1,2 @@
+city,metro_population_target,assigned_population_total,assigned_cells,all_cells,station_count,method_tag
+Hong Kong,7500000,7500000.0,555,576,529,station_kernel_grid_fallback

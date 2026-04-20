@@ -1,0 +1,5 @@
+city,anchor_station_id,anchor_name,reachable_stations_60min,reachable_stations_120min,weighted_reach_score
+Hong Kong,prince edward::22.3244::114.1682,太子 Prince Edward,305,529,37497.19386802832
+Hong Kong,kowloon tong::22.337::114.1758,九龍塘 Kowloon Tong,280,529,35876.05211977487
+Hong Kong,central::22.2815::114.1593,中環 Central,270,529,34438.99240150921
+Hong Kong,admiralty::22.2784::114.1661,金鐘 Admiralty,263,529,33961.97383405298

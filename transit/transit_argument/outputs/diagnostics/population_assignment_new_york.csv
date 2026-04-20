@@ -1,0 +1,2 @@
+city,metro_population_target,assigned_population_total,assigned_cells,all_cells,station_count,method_tag
+New York,19500000,19500000.0,1067,1190,2028,station_kernel_grid_fallback

@@ -1,0 +1,4 @@
+city,anchor_station_id,anchor_name,reachable_stations_60min,reachable_stations_120min,weighted_reach_score
+New York,34th street herald square::40.7505::-73.9871,34th Street–Herald Square,1785,2028,164501.70088080893
+New York,times square 42nd street s::40.7554::-73.9855,Times Square–42nd Street (S),1777,2028,164206.2085392965
+New York,grand central::40.7525::-73.9783,Grand Central,1780,2028,164029.81289915572

@@ -1,0 +1,5412 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-04-20T02:21:14Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "relation",
+  "id": 7533582,
+  "center": {
+    "lat": 37.6195083,
+    "lon": 127.0154996
+  },
+  "members": [
+    {
+      "type": "node",
+      "ref": 9459739630,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9459739631,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9459739632,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9459739634,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9459739635,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9459739636,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9459739637,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9459739639,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9459739641,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9459739646,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9459739647,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9459739653,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9459739656,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026020335,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026020324,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026020329,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#BACC50",
+    "from": "북한산우이",
+    "name": "서울 경전철 우이신설선: 북한산우이 → 신설동",
+    "name:en": "Seoul LRT Ui-Sinseol Line: Bukhansan Ui → Sinseol-dong",
+    "name:ko": "서울 경전철 우이신설선: 북한산우이 → 신설동",
+    "official_ref": "Ui LRT",
+    "public_transport:version": "2",
+    "ref": "W",
+    "ref:source": "http://www.seoulmetro.co.kr/download/map_english.pdf",
+    "route": "light_rail",
+    "to": "신설동",
+    "type": "route",
+    "wikidata": "Q3832795",
+    "wikipedia": "en:Ui LRT"
+  }
+},
+{
+  "type": "relation",
+  "id": 7533583,
+  "center": {
+    "lat": 37.6195224,
+    "lon": 127.0155656
+  },
+  "members": [
+    {
+      "type": "node",
+      "ref": 5899527462,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 287323400,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5754623761,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4852979216,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4852979526,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4852989058,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4852989066,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4852989079,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3888944113,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4852984870,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4852984874,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4852984875,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4852984876,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026020330,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 192247534,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026020328,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 554331554,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026020334,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#BACC50",
+    "from": "신설동",
+    "name": "서울 경전철 우이신설선: 신설동 → 북한산우이",
+    "name:en": "Seoul LRT Ui-Sinseol Line: Sinseol-dong → Bukhansan Ui",
+    "name:ko": "서울 경전철 우이신설선: 신설동 → 북한산우이",
+    "official_ref": "Ui LRT",
+    "public_transport:version": "2",
+    "ref": "W",
+    "ref:source": "http://www.seoulmetro.co.kr/download/map_english.pdf",
+    "route": "light_rail",
+    "to": "북한산우이",
+    "type": "route",
+    "wikidata": "Q3832795",
+    "wikipedia": "en:Ui LRT"
+  }
+},
+{
+  "type": "relation",
+  "id": 14191876,
+  "center": {
+    "lat": 37.4933967,
+    "lon": 126.9315615
+  },
+  "members": [
+    {
+      "type": "node",
+      "ref": 9776585974,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776585985,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776586004,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776586013,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776586016,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776589241,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776589242,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776589246,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776620259,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776620262,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776620271,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 957436186,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1064524186,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#6789CA",
+    "from": "관악산",
+    "name": "서울 경전철 신림선: 관악산 → 샛강",
+    "name:en": "Seoul LRT Sillim Line: Gwanaksan → Saetgang",
+    "name:ko": "서울 경전철 신림선: 관악산 → 샛강",
+    "network": "수도권 전철",
+    "operator": "로템SRS",
+    "public_transport:version": "2",
+    "route": "light_rail",
+    "to": "샛강",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 14191877,
+  "center": {
+    "lat": 37.4930676,
+    "lon": 126.9317752
+  },
+  "members": [
+    {
+      "type": "node",
+      "ref": 9776620272,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776620263,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776620260,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776589245,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8859323116,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776589240,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776586015,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776586014,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776586005,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776585986,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9776585975,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1064525895,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 957436187,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1064524185,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#6789CA",
+    "from": "샛강",
+    "name": "서울 경전철 신림선: 샛강 → 관악산",
+    "name:en": "Seoul LRT Sillim Line: Saetgang → Gwanaksan",
+    "name:ko": "서울 경전철 신림선: 샛강 → 관악산",
+    "network": "수도권 전철",
+    "network:wikidata": "Q16950",
+    "operator": "로템SRS",
+    "public_transport:version": "2",
+    "route": "light_rail",
+    "to": "관악산",
+    "type": "route"
+  }
+},
+{
+  "type": "node",
+  "id": 8859323046,
+  "lat": 37.4821486,
+  "lon": 126.9298974
+},
+{
+  "type": "node",
+  "id": 8859333032,
+  "lat": 37.4813882,
+  "lon": 126.9298394
+},
+{
+  "type": "node",
+  "id": 9776586007,
+  "lat": 37.4808941,
+  "lon": 126.9300418
+},
+{
+  "type": "node",
+  "id": 9776586008,
+  "lat": 37.4812542,
+  "lon": 126.9300283
+},
+{
+  "type": "node",
+  "id": 8859323047,
+  "lat": 37.4837909,
+  "lon": 126.9297244
+},
+{
+  "type": "node",
+  "id": 8859323048,
+  "lat": 37.4851731,
+  "lon": 126.9296426
+},
+{
+  "type": "node",
+  "id": 8859323049,
+  "lat": 37.4870544,
+  "lon": 126.9290437
+},
+{
+  "type": "node",
+  "id": 8859323050,
+  "lat": 37.4887249,
+  "lon": 126.9283116
+},
+{
+  "type": "node",
+  "id": 8859333027,
+  "lat": 37.4886247,
+  "lon": 126.9282912
+},
+{
+  "type": "node",
+  "id": 8859333029,
+  "lat": 37.4862089,
+  "lon": 126.9292601
+},
+{
+  "type": "node",
+  "id": 8859333030,
+  "lat": 37.4851658,
+  "lon": 126.9295110
+},
+{
+  "type": "node",
+  "id": 8859333031,
+  "lat": 37.4834988,
+  "lon": 126.9296966
+},
+{
+  "type": "node",
+  "id": 9776586012,
+  "lat": 37.4858569,
+  "lon": 126.9294898
+},
+{
+  "type": "node",
+  "id": 9776586013,
+  "lat": 37.4848518,
+  "lon": 126.9296508,
+  "tags": {
+    "addr:city": "서울특별시",
+    "addr:district": "관악구",
+    "addr:housenumber": "지하1614",
+    "addr:postcode": "08777",
+    "addr:street": "남부순환로",
+    "addr:subdistrict": "신림동",
+    "light_rail": "yes",
+    "name": "신림",
+    "name:en": "Sillim",
+    "name:ja": "シンリム(新林)",
+    "name:ja-Hira": "シンリム",
+    "name:ko": "신림",
+    "name:zh": "新林",
+    "operator": "로템SRS",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S408",
+    "start_date": "2022-05-28",
+    "wikidata": "Q487848",
+    "wikipedia": "ko:신림역"
+  }
+},
+{
+  "type": "node",
+  "id": 9776586014,
+  "lat": 37.4848427,
+  "lon": 126.9295604,
+  "tags": {
+    "addr:city": "서울특별시",
+    "addr:district": "관악구",
+    "addr:housenumber": "지하1614",
+    "addr:postcode": "08777",
+    "addr:street": "남부순환로",
+    "addr:subdistrict": "신림동",
+    "light_rail": "yes",
+    "name": "신림",
+    "name:en": "Sillim",
+    "name:ja": "シンリム(新林)",
+    "name:ja-Hira": "シンリム",
+    "name:ko": "신림",
+    "name:zh": "新林",
+    "operator": "로템SRS",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S408",
+    "start_date": "2022-05-28",
+    "wikidata": "Q487848",
+    "wikipedia": "ko:신림역"
+  }
+},
+{
+  "type": "node",
+  "id": 9776586015,
+  "lat": 37.4897250,
+  "lon": 126.9277642,
+  "tags": {
+    "light_rail": "yes",
+    "name": "당곡",
+    "name:en": "Danggok",
+    "name:ja": "タングク",
+    "name:ko": "당곡",
+    "operator": "로템SRS",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S407",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 9776586016,
+  "lat": 37.4897299,
+  "lon": 126.9278180,
+  "tags": {
+    "light_rail": "yes",
+    "name": "당곡",
+    "name:en": "Danggok",
+    "name:ja": "タングク",
+    "name:ko": "당곡",
+    "operator": "로템SRS",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S407",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 5733236365,
+  "lat": 37.4933504,
+  "lon": 126.9212406
+},
+{
+  "type": "node",
+  "id": 8555618635,
+  "lat": 37.4930386,
+  "lon": 126.9234424
+},
+{
+  "type": "node",
+  "id": 8859323056,
+  "lat": 37.4934740,
+  "lon": 126.9211254
+},
+{
+  "type": "node",
+  "id": 8859323057,
+  "lat": 37.4936762,
+  "lon": 126.9194867
+},
+{
+  "type": "node",
+  "id": 8859323058,
+  "lat": 37.4938846,
+  "lon": 126.9189792
+},
+{
+  "type": "node",
+  "id": 8859323059,
+  "lat": 37.4940957,
+  "lon": 126.9187861
+},
+{
+  "type": "node",
+  "id": 8859323060,
+  "lat": 37.4948671,
+  "lon": 126.9184494
+},
+{
+  "type": "node",
+  "id": 8859323115,
+  "lat": 37.4958777,
+  "lon": 126.9178745
+},
+{
+  "type": "node",
+  "id": 8859323116,
+  "lat": 37.4952476,
+  "lon": 126.9181210,
+  "tags": {
+    "light_rail": "yes",
+    "name": "보라매공원",
+    "name:en": "Boramae Park",
+    "name:ja": "ボラメゴンウォン",
+    "name:ko": "보라매공원",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S405",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 8859333017,
+  "lat": 37.4942316,
+  "lon": 126.9185944
+},
+{
+  "type": "node",
+  "id": 8859333018,
+  "lat": 37.4938790,
+  "lon": 126.9187844
+},
+{
+  "type": "node",
+  "id": 8859333019,
+  "lat": 37.4936104,
+  "lon": 126.9193277
+},
+{
+  "type": "node",
+  "id": 8859333020,
+  "lat": 37.4934984,
+  "lon": 126.9201930
+},
+{
+  "type": "node",
+  "id": 9776589221,
+  "lat": 37.4959265,
+  "lon": 126.9180390
+},
+{
+  "type": "node",
+  "id": 9776589242,
+  "lat": 37.4953052,
+  "lon": 126.9182796,
+  "tags": {
+    "light_rail": "yes",
+    "name": "보라매공원",
+    "name:en": "Boramae Park",
+    "name:ja": "ボラメゴンウォン",
+    "name:ko": "보라매공원",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S405",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 9776655341,
+  "lat": 37.4934360,
+  "lon": 126.9206344
+},
+{
+  "type": "node",
+  "id": 10598720888,
+  "lat": 37.4930947,
+  "lon": 126.9230463
+},
+{
+  "type": "node",
+  "id": 10598720895,
+  "lat": 37.4933821,
+  "lon": 126.9210160
+},
+{
+  "type": "node",
+  "id": 10598720896,
+  "lat": 37.4934158,
+  "lon": 126.9207775
+},
+{
+  "type": "node",
+  "id": 10598720897,
+  "lat": 37.4937096,
+  "lon": 126.9190816
+},
+{
+  "type": "node",
+  "id": 10598720900,
+  "lat": 37.4964303,
+  "lon": 126.9178577
+},
+{
+  "type": "node",
+  "id": 570954351,
+  "lat": 37.4925846,
+  "lon": 126.9266823
+},
+{
+  "type": "node",
+  "id": 8859323051,
+  "lat": 37.4903793,
+  "lon": 126.9275038
+},
+{
+  "type": "node",
+  "id": 8859323052,
+  "lat": 37.4918207,
+  "lon": 126.9270323
+},
+{
+  "type": "node",
+  "id": 8859323054,
+  "lat": 37.4927440,
+  "lon": 126.9263673
+},
+{
+  "type": "node",
+  "id": 8859323055,
+  "lat": 37.4928240,
+  "lon": 126.9259150
+},
+{
+  "type": "node",
+  "id": 8859333021,
+  "lat": 37.4926845,
+  "lon": 126.9258801
+},
+{
+  "type": "node",
+  "id": 8859333023,
+  "lat": 37.4924435,
+  "lon": 126.9264842
+},
+{
+  "type": "node",
+  "id": 8859333024,
+  "lat": 37.4921696,
+  "lon": 126.9268177
+},
+{
+  "type": "node",
+  "id": 8859333026,
+  "lat": 37.4904223,
+  "lon": 126.9274437
+},
+{
+  "type": "node",
+  "id": 9776589218,
+  "lat": 37.4925908,
+  "lon": 126.9262339
+},
+{
+  "type": "node",
+  "id": 9776589240,
+  "lat": 37.4929164,
+  "lon": 126.9242838,
+  "tags": {
+    "light_rail": "yes",
+    "name": "보라매병원",
+    "name:en": "Boramae Medical Center",
+    "name:ja": "ボラメ病院",
+    "name:ko": "보라매병원",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S406",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 9776589241,
+  "lat": 37.4930402,
+  "lon": 126.9243222,
+  "tags": {
+    "light_rail": "yes",
+    "name": "보라매병원",
+    "name:en": "Boramae Medical Center",
+    "name:ja": "ボラメ病院",
+    "name:ko": "보라매병원",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S406",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 10598720883,
+  "lat": 37.4922437,
+  "lon": 126.9269245
+},
+{
+  "type": "node",
+  "id": 8859323061,
+  "lat": 37.4966536,
+  "lon": 126.9178147
+},
+{
+  "type": "node",
+  "id": 8859323064,
+  "lat": 37.4970340,
+  "lon": 126.9179117
+},
+{
+  "type": "node",
+  "id": 8859323065,
+  "lat": 37.4971784,
+  "lon": 126.9180211
+},
+{
+  "type": "node",
+  "id": 8859323066,
+  "lat": 37.4973374,
+  "lon": 126.9184216
+},
+{
+  "type": "node",
+  "id": 8859323067,
+  "lat": 37.4975107,
+  "lon": 126.9191682
+},
+{
+  "type": "node",
+  "id": 8859323068,
+  "lat": 37.4976455,
+  "lon": 126.9196354
+},
+{
+  "type": "node",
+  "id": 8859323069,
+  "lat": 37.4978370,
+  "lon": 126.9199318
+},
+{
+  "type": "node",
+  "id": 8859323070,
+  "lat": 37.4983043,
+  "lon": 126.9202876
+},
+{
+  "type": "node",
+  "id": 8859323071,
+  "lat": 37.4993838,
+  "lon": 126.9203698
+},
+{
+  "type": "node",
+  "id": 8859323072,
+  "lat": 37.4998949,
+  "lon": 126.9203957
+},
+{
+  "type": "node",
+  "id": 8859323073,
+  "lat": 37.5001424,
+  "lon": 126.9204683
+},
+{
+  "type": "node",
+  "id": 8859323074,
+  "lat": 37.5009033,
+  "lon": 126.9207659
+},
+{
+  "type": "node",
+  "id": 8859323075,
+  "lat": 37.5029563,
+  "lon": 126.9216157
+},
+{
+  "type": "node",
+  "id": 8859323104,
+  "lat": 37.5003006,
+  "lon": 126.9203966
+},
+{
+  "type": "node",
+  "id": 8859323105,
+  "lat": 37.4994141,
+  "lon": 126.9202645
+},
+{
+  "type": "node",
+  "id": 8859323106,
+  "lat": 37.4984666,
+  "lon": 126.9202032
+},
+{
+  "type": "node",
+  "id": 8859323107,
+  "lat": 37.4980496,
+  "lon": 126.9199736
+},
+{
+  "type": "node",
+  "id": 8859323108,
+  "lat": 37.4976973,
+  "lon": 126.9194836
+},
+{
+  "type": "node",
+  "id": 8859323109,
+  "lat": 37.4975475,
+  "lon": 126.9190651
+},
+{
+  "type": "node",
+  "id": 8859323110,
+  "lat": 37.4974080,
+  "lon": 126.9183613
+},
+{
+  "type": "node",
+  "id": 8859323111,
+  "lat": 37.4972469,
+  "lon": 126.9178690
+},
+{
+  "type": "node",
+  "id": 8859323112,
+  "lat": 37.4970053,
+  "lon": 126.9176617
+},
+{
+  "type": "node",
+  "id": 9776589222,
+  "lat": 37.4973441,
+  "lon": 126.9180990
+},
+{
+  "type": "node",
+  "id": 9776589243,
+  "lat": 37.4999099,
+  "lon": 126.9202954
+},
+{
+  "type": "node",
+  "id": 9776589244,
+  "lat": 37.5002844,
+  "lon": 126.9205262
+},
+{
+  "type": "node",
+  "id": 9776589245,
+  "lat": 37.5003803,
+  "lon": 126.9204283,
+  "tags": {
+    "light_rail": "yes",
+    "name": "보라매",
+    "name:en": "Boramae",
+    "name:ja": "ボラメ",
+    "name:ko": "보라매",
+    "name:zh": "波拉美",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S404",
+    "start_date": "2022-05-28",
+    "wikidata": "Q68988",
+    "wikipedia": "ko:보라매역"
+  }
+},
+{
+  "type": "node",
+  "id": 9776589246,
+  "lat": 37.5003601,
+  "lon": 126.9205555,
+  "tags": {
+    "light_rail": "yes",
+    "name": "보라매",
+    "name:en": "Boramae",
+    "name:ja": "ボラメ",
+    "name:ko": "보라매",
+    "name:zh": "波拉美",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S404",
+    "start_date": "2022-05-28",
+    "wikidata": "Q68988",
+    "wikipedia": "ko:보라매역"
+  }
+},
+{
+  "type": "node",
+  "id": 10091509832,
+  "lat": 37.4979099,
+  "lon": 126.9198177
+},
+{
+  "type": "node",
+  "id": 10598720898,
+  "lat": 37.4967195,
+  "lon": 126.9176514
+},
+{
+  "type": "node",
+  "id": 10598720899,
+  "lat": 37.4964795,
+  "lon": 126.9176770
+},
+{
+  "type": "node",
+  "id": 10598720901,
+  "lat": 37.4968891,
+  "lon": 126.9178471
+},
+{
+  "type": "node",
+  "id": 10598720902,
+  "lat": 37.4971086,
+  "lon": 126.9177332
+},
+{
+  "type": "node",
+  "id": 10598720904,
+  "lat": 37.4981779,
+  "lon": 126.9202170
+},
+{
+  "type": "node",
+  "id": 10598725605,
+  "lat": 37.4982297,
+  "lon": 126.9201107
+},
+{
+  "type": "node",
+  "id": 8859323028,
+  "lat": 37.4712956,
+  "lon": 126.9351518
+},
+{
+  "type": "node",
+  "id": 8859323029,
+  "lat": 37.4718675,
+  "lon": 126.9339290
+},
+{
+  "type": "node",
+  "id": 8859323030,
+  "lat": 37.4722331,
+  "lon": 126.9335994
+},
+{
+  "type": "node",
+  "id": 8859323031,
+  "lat": 37.4724751,
+  "lon": 126.9334854
+},
+{
+  "type": "node",
+  "id": 8859323032,
+  "lat": 37.4730945,
+  "lon": 126.9334266
+},
+{
+  "type": "node",
+  "id": 8859323034,
+  "lat": 37.4738036,
+  "lon": 126.9341938
+},
+{
+  "type": "node",
+  "id": 8859323035,
+  "lat": 37.4743819,
+  "lon": 126.9352679
+},
+{
+  "type": "node",
+  "id": 8859333040,
+  "lat": 37.4753102,
+  "lon": 126.9365295
+},
+{
+  "type": "node",
+  "id": 8859333041,
+  "lat": 37.4744787,
+  "lon": 126.9352391
+},
+{
+  "type": "node",
+  "id": 8859333042,
+  "lat": 37.4741599,
+  "lon": 126.9346302
+},
+{
+  "type": "node",
+  "id": 8859333043,
+  "lat": 37.4736532,
+  "lon": 126.9337895
+},
+{
+  "type": "node",
+  "id": 8859333044,
+  "lat": 37.4734003,
+  "lon": 126.9335015
+},
+{
+  "type": "node",
+  "id": 8859333045,
+  "lat": 37.4726918,
+  "lon": 126.9333272
+},
+{
+  "type": "node",
+  "id": 8859333046,
+  "lat": 37.4721689,
+  "lon": 126.9335362
+},
+{
+  "type": "node",
+  "id": 8859333047,
+  "lat": 37.4717485,
+  "lon": 126.9339791
+},
+{
+  "type": "node",
+  "id": 8859333048,
+  "lat": 37.4712424,
+  "lon": 126.9351443
+},
+{
+  "type": "node",
+  "id": 9776585979,
+  "lat": 37.4725597,
+  "lon": 126.9333551
+},
+{
+  "type": "node",
+  "id": 9776585980,
+  "lat": 37.4727460,
+  "lon": 126.9334210
+},
+{
+  "type": "node",
+  "id": 9776585981,
+  "lat": 37.4715066,
+  "lon": 126.9345783
+},
+{
+  "type": "node",
+  "id": 9776585982,
+  "lat": 37.4714828,
+  "lon": 126.9345074
+},
+{
+  "type": "node",
+  "id": 9776585983,
+  "lat": 37.4719356,
+  "lon": 126.9337084
+},
+{
+  "type": "node",
+  "id": 9776585984,
+  "lat": 37.4723187,
+  "lon": 126.9334475
+},
+{
+  "type": "node",
+  "id": 9776585985,
+  "lat": 37.4720479,
+  "lon": 126.9337423,
+  "tags": {
+    "light_rail": "yes",
+    "name": "서울대벤처타운",
+    "name:en": "Seoul Nat'l Univ. Venture Town",
+    "name:ja": "ソウル大ベンチャータウン",
+    "name:ko": "서울대벤처타운",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 9776585986,
+  "lat": 37.4720468,
+  "lon": 126.9336031,
+  "tags": {
+    "light_rail": "yes",
+    "name": "서울대벤처타운",
+    "name:en": "Seoul Nat'l Univ. Venture Town",
+    "name:ja": "ソウル大ベンチャータウン",
+    "name:ko": "서울대벤처타운",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S410",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 9776585987,
+  "lat": 37.4738628,
+  "lon": 126.9341344
+},
+{
+  "type": "node",
+  "id": 9776585989,
+  "lat": 37.4736376,
+  "lon": 126.9339056
+},
+{
+  "type": "node",
+  "id": 9776585991,
+  "lat": 37.4730220,
+  "lon": 126.9333173
+},
+{
+  "type": "node",
+  "id": 10598720868,
+  "lat": 37.4716341,
+  "lon": 126.9342277
+},
+{
+  "type": "node",
+  "id": 10598720869,
+  "lat": 37.4718402,
+  "lon": 126.9338473
+},
+{
+  "type": "node",
+  "id": 10598720870,
+  "lat": 37.4734206,
+  "lon": 126.9336243
+},
+{
+  "type": "node",
+  "id": 10598720871,
+  "lat": 37.4731842,
+  "lon": 126.9333700
+},
+{
+  "type": "node",
+  "id": 10598720872,
+  "lat": 37.4728908,
+  "lon": 126.9334127
+},
+{
+  "type": "node",
+  "id": 10598720873,
+  "lat": 37.4727888,
+  "lon": 126.9333137
+},
+{
+  "type": "node",
+  "id": 10598720874,
+  "lat": 37.4735464,
+  "lon": 126.9336451
+},
+{
+  "type": "node",
+  "id": 10598720876,
+  "lat": 37.4749127,
+  "lon": 126.9361062
+},
+{
+  "type": "node",
+  "id": 10598720878,
+  "lat": 37.4751613,
+  "lon": 126.9364898
+},
+{
+  "type": "node",
+  "id": 8859323023,
+  "lat": 37.4707835,
+  "lon": 126.9431411
+},
+{
+  "type": "node",
+  "id": 8859323024,
+  "lat": 37.4710074,
+  "lon": 126.9420079
+},
+{
+  "type": "node",
+  "id": 8859323025,
+  "lat": 37.4708783,
+  "lon": 126.9404956
+},
+{
+  "type": "node",
+  "id": 8859323026,
+  "lat": 37.4707546,
+  "lon": 126.9395604
+},
+{
+  "type": "node",
+  "id": 8859323027,
+  "lat": 37.4710128,
+  "lon": 126.9371490
+},
+{
+  "type": "node",
+  "id": 8859323037,
+  "lat": 37.4756957,
+  "lon": 126.9370604
+},
+{
+  "type": "node",
+  "id": 8859323038,
+  "lat": 37.4760696,
+  "lon": 126.9371021
+},
+{
+  "type": "node",
+  "id": 8859323039,
+  "lat": 37.4767733,
+  "lon": 126.9368523
+},
+{
+  "type": "node",
+  "id": 8859333038,
+  "lat": 37.4767024,
+  "lon": 126.9367413
+},
+{
+  "type": "node",
+  "id": 8859333039,
+  "lat": 37.4760535,
+  "lon": 126.9369643
+},
+{
+  "type": "node",
+  "id": 8859333049,
+  "lat": 37.4709342,
+  "lon": 126.9371237
+},
+{
+  "type": "node",
+  "id": 8859333050,
+  "lat": 37.4706698,
+  "lon": 126.9395552
+},
+{
+  "type": "node",
+  "id": 8859333051,
+  "lat": 37.4707882,
+  "lon": 126.9410124
+},
+{
+  "type": "node",
+  "id": 8859333052,
+  "lat": 37.4708937,
+  "lon": 126.9420055
+},
+{
+  "type": "node",
+  "id": 8859333053,
+  "lat": 37.4706494,
+  "lon": 126.9431123
+},
+{
+  "type": "node",
+  "id": 9776585976,
+  "lat": 37.4709244,
+  "lon": 126.9428099
+},
+{
+  "type": "node",
+  "id": 9776585977,
+  "lat": 37.4708071,
+  "lon": 126.9428020
+},
+{
+  "type": "node",
+  "id": 9776585994,
+  "lat": 37.4764473,
+  "lon": 126.9370088
+},
+{
+  "type": "node",
+  "id": 9776585995,
+  "lat": 37.4764578,
+  "lon": 126.9368556
+},
+{
+  "type": "node",
+  "id": 10598720866,
+  "lat": 37.4710031,
+  "lon": 126.9425008
+},
+{
+  "type": "node",
+  "id": 10598720867,
+  "lat": 37.4706870,
+  "lon": 126.9390885
+},
+{
+  "type": "node",
+  "id": 10598720875,
+  "lat": 37.4753184,
+  "lon": 126.9366854
+},
+{
+  "type": "node",
+  "id": 10598720877,
+  "lat": 37.4755404,
+  "lon": 126.9367629
+},
+{
+  "type": "node",
+  "id": 10598720879,
+  "lat": 37.4754535,
+  "lon": 126.9368723
+},
+{
+  "type": "node",
+  "id": 10598720880,
+  "lat": 37.4758150,
+  "lon": 126.9369312
+},
+{
+  "type": "node",
+  "id": 8859323021,
+  "lat": 37.4698150,
+  "lon": 126.9442678
+},
+{
+  "type": "node",
+  "id": 8859333054,
+  "lat": 37.4695871,
+  "lon": 126.9443853
+},
+{
+  "type": "node",
+  "id": 8859333055,
+  "lat": 37.4681299,
+  "lon": 126.9458990,
+  "tags": {
+    "railway": "buffer_stop",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 9776585972,
+  "lat": 37.4693599,
+  "lon": 126.9447434
+},
+{
+  "type": "node",
+  "id": 9776585973,
+  "lat": 37.4687570,
+  "lon": 126.9452367
+},
+{
+  "type": "node",
+  "id": 9776585974,
+  "lat": 37.4688191,
+  "lon": 126.9453084,
+  "tags": {
+    "light_rail": "yes",
+    "name": "관악산",
+    "name:en": "Gwanaksan",
+    "name:ja": "クァナクサン",
+    "name:ko": "관악산",
+    "operator": "로템SRS",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S411",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 9776585975,
+  "lat": 37.4687700,
+  "lon": 126.9452234,
+  "tags": {
+    "light_rail": "yes",
+    "name": "관악산",
+    "name:en": "Gwanaksan",
+    "name:ja": "クァナクサン",
+    "name:ko": "관악산",
+    "operator": "로템SRS",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S411",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 9776655694,
+  "lat": 37.4694082,
+  "lon": 126.9446929
+},
+{
+  "type": "node",
+  "id": 9776655695,
+  "lat": 37.4691930,
+  "lon": 126.9447895
+},
+{
+  "type": "node",
+  "id": 8859323022,
+  "lat": 37.4704753,
+  "lon": 126.9435700
+},
+{
+  "type": "node",
+  "id": 10598720865,
+  "lat": 37.4703410,
+  "lon": 126.9435551
+},
+{
+  "type": "node",
+  "id": 8859323040,
+  "lat": 37.4771399,
+  "lon": 126.9363753
+},
+{
+  "type": "node",
+  "id": 8859323041,
+  "lat": 37.4776615,
+  "lon": 126.9347741
+},
+{
+  "type": "node",
+  "id": 8859323042,
+  "lat": 37.4779459,
+  "lon": 126.9338237
+},
+{
+  "type": "node",
+  "id": 8859323043,
+  "lat": 37.4783541,
+  "lon": 126.9328654
+},
+{
+  "type": "node",
+  "id": 8859323044,
+  "lat": 37.4795698,
+  "lon": 126.9313309
+},
+{
+  "type": "node",
+  "id": 8859323045,
+  "lat": 37.4806795,
+  "lon": 126.9302999
+},
+{
+  "type": "node",
+  "id": 8859333033,
+  "lat": 37.4804934,
+  "lon": 126.9302429
+},
+{
+  "type": "node",
+  "id": 8859333034,
+  "lat": 37.4790327,
+  "lon": 126.9317985
+},
+{
+  "type": "node",
+  "id": 8859333035,
+  "lat": 37.4783416,
+  "lon": 126.9327326
+},
+{
+  "type": "node",
+  "id": 8859333036,
+  "lat": 37.4778876,
+  "lon": 126.9337669
+},
+{
+  "type": "node",
+  "id": 8859333037,
+  "lat": 37.4772108,
+  "lon": 126.9358767
+},
+{
+  "type": "node",
+  "id": 9776585996,
+  "lat": 37.4769607,
+  "lon": 126.9363977
+},
+{
+  "type": "node",
+  "id": 9776585997,
+  "lat": 37.4769973,
+  "lon": 126.9366395
+},
+{
+  "type": "node",
+  "id": 9776586000,
+  "lat": 37.4773033,
+  "lon": 126.9358967
+},
+{
+  "type": "node",
+  "id": 9776586001,
+  "lat": 37.4780424,
+  "lon": 126.9332543
+},
+{
+  "type": "node",
+  "id": 9776586003,
+  "lat": 37.4781080,
+  "lon": 126.9332980
+},
+{
+  "type": "node",
+  "id": 9776586004,
+  "lat": 37.4781973,
+  "lon": 126.9331002,
+  "tags": {
+    "light_rail": "yes",
+    "name": "서원",
+    "name:en": "Seowon",
+    "name:ko": "서원",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S409",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 9776586005,
+  "lat": 37.4781827,
+  "lon": 126.9329546,
+  "tags": {
+    "light_rail": "yes",
+    "name": "서원",
+    "name:en": "Seowon",
+    "name:ko": "서원",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S409",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 9776586006,
+  "lat": 37.4780415,
+  "lon": 126.9334815
+},
+{
+  "type": "node",
+  "id": 9776586009,
+  "lat": 37.4802611,
+  "lon": 126.9306083
+},
+{
+  "type": "node",
+  "id": 9776586010,
+  "lat": 37.4801038,
+  "lon": 126.9306042
+},
+{
+  "type": "node",
+  "id": 10598720881,
+  "lat": 37.4774600,
+  "lon": 126.9350934
+},
+{
+  "type": "node",
+  "id": 10598720882,
+  "lat": 37.4786069,
+  "lon": 126.9323467
+},
+{
+  "type": "node",
+  "id": 2541477146,
+  "lat": 37.5060352,
+  "lon": 126.9228198
+},
+{
+  "type": "node",
+  "id": 8859323076,
+  "lat": 37.5045769,
+  "lon": 126.9222165
+},
+{
+  "type": "node",
+  "id": 8859323077,
+  "lat": 37.5058604,
+  "lon": 126.9227486
+},
+{
+  "type": "node",
+  "id": 8859323078,
+  "lat": 37.5072936,
+  "lon": 126.9233323
+},
+{
+  "type": "node",
+  "id": 8859323102,
+  "lat": 37.5082864,
+  "lon": 126.9235498
+},
+{
+  "type": "node",
+  "id": 8859323103,
+  "lat": 37.5058840,
+  "lon": 126.9226151
+},
+{
+  "type": "node",
+  "id": 9776620259,
+  "lat": 37.5059414,
+  "lon": 126.9227816,
+  "tags": {
+    "light_rail": "yes",
+    "name": "서울지방병무청",
+    "name:en": "Seoul Regional Office of Military Manpower",
+    "name:ja": "ソウルジバンビョンムチョン",
+    "name:ko": "서울지방병무청",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S403",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 9776620260,
+  "lat": 37.5059702,
+  "lon": 126.9226486,
+  "tags": {
+    "light_rail": "yes",
+    "name": "서울지방병무청",
+    "name:en": "Seoul Regional Office of Military Manpower",
+    "name:ja": "ソウルジバンビョンムチョン",
+    "name:ko": "서울지방병무청",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S403",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 11178013530,
+  "lat": 37.5063497,
+  "lon": 126.9227962
+},
+{
+  "type": "node",
+  "id": 11178013533,
+  "lat": 37.5054316,
+  "lon": 126.9225767
+},
+{
+  "type": "node",
+  "id": 8859323079,
+  "lat": 37.5110601,
+  "lon": 126.9248951
+},
+{
+  "type": "node",
+  "id": 8859323080,
+  "lat": 37.5126673,
+  "lon": 126.9252472
+},
+{
+  "type": "node",
+  "id": 8859323081,
+  "lat": 37.5128859,
+  "lon": 126.9253391
+},
+{
+  "type": "node",
+  "id": 8859323082,
+  "lat": 37.5135407,
+  "lon": 126.9258297
+},
+{
+  "type": "node",
+  "id": 8859323083,
+  "lat": 37.5136937,
+  "lon": 126.9260469
+},
+{
+  "type": "node",
+  "id": 8859323084,
+  "lat": 37.5141222,
+  "lon": 126.9267370
+},
+{
+  "type": "node",
+  "id": 8859323085,
+  "lat": 37.5143731,
+  "lon": 126.9271732
+},
+{
+  "type": "node",
+  "id": 8859323086,
+  "lat": 37.5131742,
+  "lon": 126.9254763
+},
+{
+  "type": "node",
+  "id": 8859323087,
+  "lat": 37.5150995,
+  "lon": 126.9281829
+},
+{
+  "type": "node",
+  "id": 8859323089,
+  "lat": 37.5159201,
+  "lon": 126.9284048
+},
+{
+  "type": "node",
+  "id": 8859323093,
+  "lat": 37.5158650,
+  "lon": 126.9282928
+},
+{
+  "type": "node",
+  "id": 8859323094,
+  "lat": 37.5153908,
+  "lon": 126.9281721
+},
+{
+  "type": "node",
+  "id": 8859323095,
+  "lat": 37.5148201,
+  "lon": 126.9278302
+},
+{
+  "type": "node",
+  "id": 8859323096,
+  "lat": 37.5143851,
+  "lon": 126.9270498
+},
+{
+  "type": "node",
+  "id": 8859323097,
+  "lat": 37.5138961,
+  "lon": 126.9262230
+},
+{
+  "type": "node",
+  "id": 8859323098,
+  "lat": 37.5135473,
+  "lon": 126.9256982
+},
+{
+  "type": "node",
+  "id": 8859323099,
+  "lat": 37.5132108,
+  "lon": 126.9253446
+},
+{
+  "type": "node",
+  "id": 8859323100,
+  "lat": 37.5123454,
+  "lon": 126.9250153
+},
+{
+  "type": "node",
+  "id": 8859323101,
+  "lat": 37.5110017,
+  "lon": 126.9247393
+},
+{
+  "type": "node",
+  "id": 9289708438,
+  "lat": 37.5127551,
+  "lon": 126.9251528
+},
+{
+  "type": "node",
+  "id": 9776620261,
+  "lat": 37.5126107,
+  "lon": 126.9250966
+},
+{
+  "type": "node",
+  "id": 9776620262,
+  "lat": 37.5124971,
+  "lon": 126.9252099,
+  "tags": {
+    "addr:city": "서울특별시",
+    "addr:district": "영등포구",
+    "addr:housenumber": "300",
+    "addr:postcode": "07319",
+    "addr:street": "여의대방로",
+    "addr:subdistrict": "신길동",
+    "light_rail": "yes",
+    "name": "대방",
+    "name:en": "Daebang",
+    "name:ja": "テバン(大方)",
+    "name:ko": "대방",
+    "name:ko-Latn": "Daebang",
+    "name:zh": "大方",
+    "operator": "로템SRS",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S402",
+    "start_date": "2022-05-28",
+    "wikidata": "Q137162",
+    "wikipedia": "ko:대방역"
+  }
+},
+{
+  "type": "node",
+  "id": 9776620263,
+  "lat": 37.5125156,
+  "lon": 126.9250675,
+  "tags": {
+    "addr:city": "서울특별시",
+    "addr:district": "영등포구",
+    "addr:housenumber": "300",
+    "addr:postcode": "07319",
+    "addr:street": "여의대방로",
+    "addr:subdistrict": "신길동",
+    "light_rail": "yes",
+    "name": "대방",
+    "name:en": "Daebang",
+    "name:ja": "テバン(大方)",
+    "name:ko": "대방",
+    "name:ko-Latn": "Daebang",
+    "name:zh": "大方",
+    "operator": "로템SRS",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S402",
+    "start_date": "2022-05-28",
+    "wikidata": "Q137162",
+    "wikipedia": "ko:대방역"
+  }
+},
+{
+  "type": "node",
+  "id": 9776620264,
+  "lat": 37.5137374,
+  "lon": 126.9259529
+},
+{
+  "type": "node",
+  "id": 9776620266,
+  "lat": 37.5156175,
+  "lon": 126.9282319
+},
+{
+  "type": "node",
+  "id": 9776620267,
+  "lat": 37.5151687,
+  "lon": 126.9281026
+},
+{
+  "type": "node",
+  "id": 10598725609,
+  "lat": 37.5156562,
+  "lon": 126.9283488
+},
+{
+  "type": "node",
+  "id": 10598725611,
+  "lat": 37.5147342,
+  "lon": 126.9278622
+},
+{
+  "type": "node",
+  "id": 10727071184,
+  "lat": 37.5136334,
+  "lon": 126.9258136
+},
+{
+  "type": "node",
+  "id": 11230659581,
+  "lat": 37.5153321,
+  "lon": 126.9282803
+},
+{
+  "type": "node",
+  "id": 11230659582,
+  "lat": 37.5148997,
+  "lon": 126.9280659
+},
+{
+  "type": "node",
+  "id": 11230659583,
+  "lat": 37.5150247,
+  "lon": 126.9279894
+},
+{
+  "type": "node",
+  "id": 8859323090,
+  "lat": 37.5165022,
+  "lon": 126.9287654
+},
+{
+  "type": "node",
+  "id": 9776589248,
+  "lat": 37.5180053,
+  "lon": 126.9300633,
+  "tags": {
+    "railway": "buffer_stop",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 9776589249,
+  "lat": 37.5179743,
+  "lon": 126.9301118,
+  "tags": {
+    "railway": "buffer_stop",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 9776620265,
+  "lat": 37.5161763,
+  "lon": 126.9283939
+},
+{
+  "type": "node",
+  "id": 9776620271,
+  "lat": 37.5172687,
+  "lon": 126.9294459,
+  "tags": {
+    "light_rail": "yes",
+    "name": "샛강",
+    "name:en": "Saetgang",
+    "name:ja": "セッカン",
+    "name:ko": "샛강",
+    "name:zh": "赛江",
+    "operator": "로템SRS",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S401",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 9776620272,
+  "lat": 37.5173398,
+  "lon": 126.9293465,
+  "tags": {
+    "light_rail": "yes",
+    "name": "샛강",
+    "name:en": "Saetgang",
+    "name:ja": "セッカン",
+    "name:ko": "샛강",
+    "name:zh": "赛江",
+    "operator": "로템SRS",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S401",
+    "start_date": "2022-05-28"
+  }
+},
+{
+  "type": "node",
+  "id": 10598725606,
+  "lat": 37.5165882,
+  "lon": 126.9286979
+},
+{
+  "type": "node",
+  "id": 10598725607,
+  "lat": 37.5161556,
+  "lon": 126.9285262
+},
+{
+  "type": "node",
+  "id": 10598725608,
+  "lat": 37.5164032,
+  "lon": 126.9285356
+},
+{
+  "type": "node",
+  "id": 9459739590,
+  "lat": 37.5811466,
+  "lon": 127.0215261
+},
+{
+  "type": "node",
+  "id": 2028051064,
+  "lat": 37.5784575,
+  "lon": 127.0230895
+},
+{
+  "type": "node",
+  "id": 2028051067,
+  "lat": 37.5781307,
+  "lon": 127.0231880
+},
+{
+  "type": "node",
+  "id": 4171946064,
+  "lat": 37.5766818,
+  "lon": 127.0232083
+},
+{
+  "type": "node",
+  "id": 5899527462,
+  "lat": 37.5760583,
+  "lon": 127.0232404,
+  "tags": {
+    "light_rail": "yes",
+    "name": "신설동",
+    "name:en": "Sinseol-dong",
+    "name:ko": "신설동",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 7207442615,
+  "lat": 37.5756540,
+  "lon": 127.0232630,
+  "tags": {
+    "railway": "buffer_stop"
+  }
+},
+{
+  "type": "node",
+  "id": 9459674804,
+  "lat": 37.5758603,
+  "lon": 127.0232440
+},
+{
+  "type": "node",
+  "id": 9459739591,
+  "lat": 37.5789534,
+  "lon": 127.0227096
+},
+{
+  "type": "node",
+  "id": 9459739592,
+  "lat": 37.5783040,
+  "lon": 127.0230191
+},
+{
+  "type": "node",
+  "id": 9459739593,
+  "lat": 37.5779818,
+  "lon": 127.0230859
+},
+{
+  "type": "node",
+  "id": 9459739594,
+  "lat": 37.5756560,
+  "lon": 127.0231826,
+  "tags": {
+    "railway": "buffer_stop"
+  }
+},
+{
+  "type": "node",
+  "id": 9459739656,
+  "lat": 37.5760855,
+  "lon": 127.0231571,
+  "tags": {
+    "light_rail": "yes",
+    "name": "신설동",
+    "name:en": "Sinseol-dong",
+    "name:ko": "신설동",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 287323400,
+  "lat": 37.5850853,
+  "lon": 127.0195389,
+  "tags": {
+    "light_rail": "yes",
+    "name:en": "Bomun",
+    "name:ja": "ポムン",
+    "name:ko": "보문",
+    "name:zh": "普门",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L12",
+    "wikidata": "Q490891"
+  }
+},
+{
+  "type": "node",
+  "id": 2028051075,
+  "lat": 37.5876688,
+  "lon": 127.0182132
+},
+{
+  "type": "node",
+  "id": 2028051077,
+  "lat": 37.5869661,
+  "lon": 127.0185141
+},
+{
+  "type": "node",
+  "id": 4852979188,
+  "lat": 37.5874119,
+  "lon": 127.0182546
+},
+{
+  "type": "node",
+  "id": 9459739586,
+  "lat": 37.5877580,
+  "lon": 127.0180995
+},
+{
+  "type": "node",
+  "id": 9459739587,
+  "lat": 37.5874019,
+  "lon": 127.0181479
+},
+{
+  "type": "node",
+  "id": 9459739588,
+  "lat": 37.5867957,
+  "lon": 127.0184796
+},
+{
+  "type": "node",
+  "id": 9459739589,
+  "lat": 37.5838083,
+  "lon": 127.0201201
+},
+{
+  "type": "node",
+  "id": 9459739651,
+  "lat": 37.5875532,
+  "lon": 127.0181103
+},
+{
+  "type": "node",
+  "id": 9459739652,
+  "lat": 37.5872257,
+  "lon": 127.0182166
+},
+{
+  "type": "node",
+  "id": 9459739653,
+  "lat": 37.5850612,
+  "lon": 127.0194667,
+  "tags": {
+    "light_rail": "yes",
+    "name:en": "Bomun",
+    "name:ja": "ポムン",
+    "name:ko": "보문",
+    "name:zh": "普门",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L12",
+    "wikidata": "Q490891"
+  }
+},
+{
+  "type": "node",
+  "id": 9459739655,
+  "lat": 37.5844160,
+  "lon": 127.0198004
+},
+{
+  "type": "node",
+  "id": 436860058,
+  "lat": 37.5933885,
+  "lon": 127.0163929
+},
+{
+  "type": "node",
+  "id": 2028051052,
+  "lat": 37.5898268,
+  "lon": 127.0170695
+},
+{
+  "type": "node",
+  "id": 2028051060,
+  "lat": 37.5887562,
+  "lon": 127.0181800
+},
+{
+  "type": "node",
+  "id": 2028051071,
+  "lat": 37.5897321,
+  "lon": 127.0171248
+},
+{
+  "type": "node",
+  "id": 2028051074,
+  "lat": 37.5890406,
+  "lon": 127.0180013
+},
+{
+  "type": "node",
+  "id": 2028051080,
+  "lat": 37.5902733,
+  "lon": 127.0169553
+},
+{
+  "type": "node",
+  "id": 4852979189,
+  "lat": 37.5888963,
+  "lon": 127.0181416
+},
+{
+  "type": "node",
+  "id": 4852979190,
+  "lat": 37.5899354,
+  "lon": 127.0170330
+},
+{
+  "type": "node",
+  "id": 4852979191,
+  "lat": 37.5896294,
+  "lon": 127.0172208
+},
+{
+  "type": "node",
+  "id": 4852979192,
+  "lat": 37.5896666,
+  "lon": 127.0171712
+},
+{
+  "type": "node",
+  "id": 4852979193,
+  "lat": 37.5889706,
+  "lon": 127.0180741
+},
+{
+  "type": "node",
+  "id": 4852979194,
+  "lat": 37.5888262,
+  "lon": 127.0181661
+},
+{
+  "type": "node",
+  "id": 5754623761,
+  "lat": 37.5925932,
+  "lon": 127.0165497,
+  "tags": {
+    "alt_name": "돈암",
+    "alt_name:en": "Donam",
+    "alt_name:ko": "돈암",
+    "light_rail": "yes",
+    "name": "성신여대입구",
+    "name:en": "Sungshin Women's University",
+    "name:ja": "誠信女子大入口",
+    "name:ko": "성신여대입구",
+    "name:ko-Kana": "ソンシンヨデイック",
+    "name:ko-Latn": "Seongsinyeodaeipguyeok",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "wikidata": "Q497982"
+  }
+},
+{
+  "type": "node",
+  "id": 9459739579,
+  "lat": 37.5929189,
+  "lon": 127.0163916
+},
+{
+  "type": "node",
+  "id": 9459739580,
+  "lat": 37.5914656,
+  "lon": 127.0166587
+},
+{
+  "type": "node",
+  "id": 9459739581,
+  "lat": 37.5900068,
+  "lon": 127.0169377
+},
+{
+  "type": "node",
+  "id": 9459739582,
+  "lat": 37.5896756,
+  "lon": 127.0170829
+},
+{
+  "type": "node",
+  "id": 9459739583,
+  "lat": 37.5891175,
+  "lon": 127.0178290
+},
+{
+  "type": "node",
+  "id": 9459739584,
+  "lat": 37.5889628,
+  "lon": 127.0179633
+},
+{
+  "type": "node",
+  "id": 9459739585,
+  "lat": 37.5887588,
+  "lon": 127.0180749
+},
+{
+  "type": "node",
+  "id": 9459739595,
+  "lat": 37.5888722,
+  "lon": 127.0180480
+},
+{
+  "type": "node",
+  "id": 9459739596,
+  "lat": 37.5923894,
+  "lon": 127.0165891
+},
+{
+  "type": "node",
+  "id": 9459739597,
+  "lat": 37.5928696,
+  "lon": 127.0164878
+},
+{
+  "type": "node",
+  "id": 9459739647,
+  "lat": 37.5925679,
+  "lon": 127.0164561,
+  "tags": {
+    "alt_name": "돈암",
+    "alt_name:en": "Donam",
+    "alt_name:ko": "돈암",
+    "light_rail": "yes",
+    "name": "성신여대입구",
+    "name:en": "Sungshin Women's University",
+    "name:ja": "誠信女子大入口",
+    "name:ko": "성신여대입구",
+    "name:ko-Kana": "ソンシンヨデイック",
+    "name:ko-Latn": "Seongsinyeodaeipguyeok",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "wikidata": "Q497982"
+  }
+},
+{
+  "type": "node",
+  "id": 9459739648,
+  "lat": 37.5895477,
+  "lon": 127.0172376
+},
+{
+  "type": "node",
+  "id": 9459739649,
+  "lat": 37.5899063,
+  "lon": 127.0169698
+},
+{
+  "type": "node",
+  "id": 9459739650,
+  "lat": 37.5902325,
+  "lon": 127.0168943
+},
+{
+  "type": "node",
+  "id": 2028051057,
+  "lat": 37.5976820,
+  "lon": 127.0145896
+},
+{
+  "type": "node",
+  "id": 2028051062,
+  "lat": 37.5979204,
+  "lon": 127.0144787
+},
+{
+  "type": "node",
+  "id": 3828480726,
+  "lat": 37.5964845,
+  "lon": 127.0152901
+},
+{
+  "type": "node",
+  "id": 4852979202,
+  "lat": 37.5966706,
+  "lon": 127.0151779
+},
+{
+  "type": "node",
+  "id": 4852979203,
+  "lat": 37.5971253,
+  "lon": 127.0148918
+},
+{
+  "type": "node",
+  "id": 4852979204,
+  "lat": 37.5972910,
+  "lon": 127.0147970
+},
+{
+  "type": "node",
+  "id": 4852979205,
+  "lat": 37.5974610,
+  "lon": 127.0147040
+},
+{
+  "type": "node",
+  "id": 4852979206,
+  "lat": 37.5981782,
+  "lon": 127.0144042
+},
+{
+  "type": "node",
+  "id": 4852979207,
+  "lat": 37.5986483,
+  "lon": 127.0142952
+},
+{
+  "type": "node",
+  "id": 4852979208,
+  "lat": 37.5984026,
+  "lon": 127.0143470
+},
+{
+  "type": "node",
+  "id": 9459739576,
+  "lat": 37.6003747,
+  "lon": 127.0138769
+},
+{
+  "type": "node",
+  "id": 9459739577,
+  "lat": 37.5978764,
+  "lon": 127.0143764
+},
+{
+  "type": "node",
+  "id": 2028051047,
+  "lat": 37.5956502,
+  "lon": 127.0157590
+},
+{
+  "type": "node",
+  "id": 2028051050,
+  "lat": 37.5963308,
+  "lon": 127.0153827
+},
+{
+  "type": "node",
+  "id": 2028051070,
+  "lat": 37.5953191,
+  "lon": 127.0158709
+},
+{
+  "type": "node",
+  "id": 4852979201,
+  "lat": 37.5954847,
+  "lon": 127.0158256
+},
+{
+  "type": "node",
+  "id": 9459739578,
+  "lat": 37.5954632,
+  "lon": 127.0157477
+},
+{
+  "type": "node",
+  "id": 2028051055,
+  "lat": 37.6031876,
+  "lon": 127.0132507
+},
+{
+  "type": "node",
+  "id": 2028051072,
+  "lat": 37.6034269,
+  "lon": 127.0131176
+},
+{
+  "type": "node",
+  "id": 2028051086,
+  "lat": 37.6017546,
+  "lon": 127.0136761
+},
+{
+  "type": "node",
+  "id": 3888944063,
+  "lat": 37.6035563,
+  "lon": 127.0130006
+},
+{
+  "type": "node",
+  "id": 3888944064,
+  "lat": 37.6037226,
+  "lon": 127.0127708
+},
+{
+  "type": "node",
+  "id": 3888944065,
+  "lat": 37.6042575,
+  "lon": 127.0119630
+},
+{
+  "type": "node",
+  "id": 3888944066,
+  "lat": 37.6047748,
+  "lon": 127.0116380
+},
+{
+  "type": "node",
+  "id": 3888944067,
+  "lat": 37.6056146,
+  "lon": 127.0112778
+},
+{
+  "type": "node",
+  "id": 3888944068,
+  "lat": 37.6070416,
+  "lon": 127.0105593
+},
+{
+  "type": "node",
+  "id": 3888944069,
+  "lat": 37.6078252,
+  "lon": 127.0101748
+},
+{
+  "type": "node",
+  "id": 4852979209,
+  "lat": 37.6020745,
+  "lon": 127.0136052
+},
+{
+  "type": "node",
+  "id": 4852979211,
+  "lat": 37.6039000,
+  "lon": 127.0125099
+},
+{
+  "type": "node",
+  "id": 4852979212,
+  "lat": 37.6041055,
+  "lon": 127.0122131
+},
+{
+  "type": "node",
+  "id": 4852979213,
+  "lat": 37.6043844,
+  "lon": 127.0118365
+},
+{
+  "type": "node",
+  "id": 4852979214,
+  "lat": 37.6045364,
+  "lon": 127.0117226
+},
+{
+  "type": "node",
+  "id": 4852979215,
+  "lat": 37.6033085,
+  "lon": 127.0131884
+},
+{
+  "type": "node",
+  "id": 4852979216,
+  "lat": 37.6027635,
+  "lon": 127.0134067,
+  "tags": {
+    "light_rail": "yes",
+    "name": "정릉",
+    "name:en": "Jeongneung",
+    "name:ja": "チョンヌン(貞陵)",
+    "name:ko": "정릉",
+    "name:zh": "貞陵",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L10",
+    "wikidata": "Q28943581",
+    "wikipedia": "ko:정릉역"
+  }
+},
+{
+  "type": "node",
+  "id": 4852979217,
+  "lat": 37.6075290,
+  "lon": 127.0103161
+},
+{
+  "type": "node",
+  "id": 5072347675,
+  "lat": 37.6049175,
+  "lon": 127.0115732
+},
+{
+  "type": "node",
+  "id": 9459739569,
+  "lat": 37.6076223,
+  "lon": 127.0102005
+},
+{
+  "type": "node",
+  "id": 9459739570,
+  "lat": 37.6047885,
+  "lon": 127.0115684
+},
+{
+  "type": "node",
+  "id": 9459739571,
+  "lat": 37.6042511,
+  "lon": 127.0118746
+},
+{
+  "type": "node",
+  "id": 9459739572,
+  "lat": 37.6039472,
+  "lon": 127.0123304
+},
+{
+  "type": "node",
+  "id": 9459739573,
+  "lat": 37.6035065,
+  "lon": 127.0129173
+},
+{
+  "type": "node",
+  "id": 9459739574,
+  "lat": 37.6031928,
+  "lon": 127.0132019
+},
+{
+  "type": "node",
+  "id": 9459739575,
+  "lat": 37.6023190,
+  "lon": 127.0134723
+},
+{
+  "type": "node",
+  "id": 9459739642,
+  "lat": 37.6053790,
+  "lon": 127.0113145
+},
+{
+  "type": "node",
+  "id": 9459739643,
+  "lat": 37.6044334,
+  "lon": 127.0117115
+},
+{
+  "type": "node",
+  "id": 9459739644,
+  "lat": 37.6043396,
+  "lon": 127.0117713
+},
+{
+  "type": "node",
+  "id": 9459739645,
+  "lat": 37.6046080,
+  "lon": 127.0116218
+},
+{
+  "type": "node",
+  "id": 9459739646,
+  "lat": 37.6027532,
+  "lon": 127.0133380,
+  "tags": {
+    "light_rail": "yes",
+    "name": "정릉",
+    "name:en": "Jeongneung",
+    "name:ja": "チョンヌン(貞陵)",
+    "name:ko": "정릉",
+    "name:zh": "貞陵",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L10",
+    "wikidata": "Q28943581",
+    "wikipedia": "ko:정릉역"
+  }
+},
+{
+  "type": "node",
+  "id": 3888944078,
+  "lat": 37.6123427,
+  "lon": 127.0081339
+},
+{
+  "type": "node",
+  "id": 3888944080,
+  "lat": 37.6132483,
+  "lon": 127.0081250
+},
+{
+  "type": "node",
+  "id": 3888944082,
+  "lat": 37.6134511,
+  "lon": 127.0083972
+},
+{
+  "type": "node",
+  "id": 3888944083,
+  "lat": 37.6135622,
+  "lon": 127.0085531
+},
+{
+  "type": "node",
+  "id": 3888944084,
+  "lat": 37.6138523,
+  "lon": 127.0087368
+},
+{
+  "type": "node",
+  "id": 4852979523,
+  "lat": 37.6121207,
+  "lon": 127.0082655
+},
+{
+  "type": "node",
+  "id": 4852979524,
+  "lat": 37.6125431,
+  "lon": 127.0079974
+},
+{
+  "type": "node",
+  "id": 4852979525,
+  "lat": 37.6130847,
+  "lon": 127.0079256
+},
+{
+  "type": "node",
+  "id": 4852979526,
+  "lat": 37.6120218,
+  "lon": 127.0083344,
+  "tags": {
+    "light_rail": "yes",
+    "name": "북한산보국문",
+    "name:en": "Bukhansan Bogungmun",
+    "name:ja": "プカンサンボグンムン",
+    "name:ko": "북한산보국문",
+    "name:zh": "北漢山輔國門",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4852989038,
+  "lat": 37.6129616,
+  "lon": 127.0078752
+},
+{
+  "type": "node",
+  "id": 4852989039,
+  "lat": 37.6136568,
+  "lon": 127.0086490
+},
+{
+  "type": "node",
+  "id": 9459739560,
+  "lat": 37.6141050,
+  "lon": 127.0086306
+},
+{
+  "type": "node",
+  "id": 9459739561,
+  "lat": 37.6136938,
+  "lon": 127.0084577
+},
+{
+  "type": "node",
+  "id": 9459739562,
+  "lat": 37.6132440,
+  "lon": 127.0079460
+},
+{
+  "type": "node",
+  "id": 9459739563,
+  "lat": 37.6128954,
+  "lon": 127.0078166
+},
+{
+  "type": "node",
+  "id": 9459739564,
+  "lat": 37.6123722,
+  "lon": 127.0080014
+},
+{
+  "type": "node",
+  "id": 9459739599,
+  "lat": 37.6126737,
+  "lon": 127.0078500
+},
+{
+  "type": "node",
+  "id": 9459739600,
+  "lat": 37.6131142,
+  "lon": 127.0078559
+},
+{
+  "type": "node",
+  "id": 9459739601,
+  "lat": 37.6130035,
+  "lon": 127.0078191
+},
+{
+  "type": "node",
+  "id": 9459739602,
+  "lat": 37.6128078,
+  "lon": 127.0078187
+},
+{
+  "type": "node",
+  "id": 9459739603,
+  "lat": 37.6128313,
+  "lon": 127.0078683
+},
+{
+  "type": "node",
+  "id": 9459739605,
+  "lat": 37.6139169,
+  "lon": 127.0085871
+},
+{
+  "type": "node",
+  "id": 9459739640,
+  "lat": 37.6125528,
+  "lon": 127.0078874
+},
+{
+  "type": "node",
+  "id": 9459739641,
+  "lat": 37.6119626,
+  "lon": 127.0082576,
+  "tags": {
+    "light_rail": "yes",
+    "name": "북한산보국문",
+    "name:en": "Bukhansan Bogungmun",
+    "name:ja": "プカンサンボグンムン",
+    "name:ko": "북한산보국문",
+    "name:zh": "北漢山輔國門",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 9459739664,
+  "lat": 37.6135480,
+  "lon": 127.0083324
+},
+{
+  "type": "node",
+  "id": 9459739665,
+  "lat": 37.6131666,
+  "lon": 127.0080113
+},
+{
+  "type": "node",
+  "id": 9459739666,
+  "lat": 37.6127249,
+  "lon": 127.0078971
+},
+{
+  "type": "node",
+  "id": 3888944086,
+  "lat": 37.6167855,
+  "lon": 127.0087572
+},
+{
+  "type": "node",
+  "id": 3888944087,
+  "lat": 37.6169938,
+  "lon": 127.0086559
+},
+{
+  "type": "node",
+  "id": 3888944088,
+  "lat": 37.6174579,
+  "lon": 127.0085065
+},
+{
+  "type": "node",
+  "id": 3888944089,
+  "lat": 37.6182273,
+  "lon": 127.0085487
+},
+{
+  "type": "node",
+  "id": 3888944090,
+  "lat": 37.6184239,
+  "lon": 127.0086101
+},
+{
+  "type": "node",
+  "id": 4852989046,
+  "lat": 37.6172673,
+  "lon": 127.0085475
+},
+{
+  "type": "node",
+  "id": 4852989047,
+  "lat": 37.6176884,
+  "lon": 127.0084893
+},
+{
+  "type": "node",
+  "id": 4852989048,
+  "lat": 37.6180102,
+  "lon": 127.0085112
+},
+{
+  "type": "node",
+  "id": 4852989049,
+  "lat": 37.6185870,
+  "lon": 127.0086978
+},
+{
+  "type": "node",
+  "id": 9459739553,
+  "lat": 37.6185765,
+  "lon": 127.0085937
+},
+{
+  "type": "node",
+  "id": 9459739554,
+  "lat": 37.6183413,
+  "lon": 127.0084700
+},
+{
+  "type": "node",
+  "id": 9459739555,
+  "lat": 37.6176056,
+  "lon": 127.0083424
+},
+{
+  "type": "node",
+  "id": 9459739556,
+  "lat": 37.6172579,
+  "lon": 127.0083782
+},
+{
+  "type": "node",
+  "id": 9459739557,
+  "lat": 37.6165828,
+  "lon": 127.0086588
+},
+{
+  "type": "node",
+  "id": 9459739558,
+  "lat": 37.6162819,
+  "lon": 127.0087409
+},
+{
+  "type": "node",
+  "id": 9459739607,
+  "lat": 37.6186914,
+  "lon": 127.0086821
+},
+{
+  "type": "node",
+  "id": 3888944070,
+  "lat": 37.6089682,
+  "lon": 127.0097073
+},
+{
+  "type": "node",
+  "id": 3888944071,
+  "lat": 37.6092532,
+  "lon": 127.0096385
+},
+{
+  "type": "node",
+  "id": 3888944072,
+  "lat": 37.6098013,
+  "lon": 127.0095185
+},
+{
+  "type": "node",
+  "id": 3888944073,
+  "lat": 37.6100252,
+  "lon": 127.0094708
+},
+{
+  "type": "node",
+  "id": 3888944074,
+  "lat": 37.6103673,
+  "lon": 127.0093296
+},
+{
+  "type": "node",
+  "id": 3888944075,
+  "lat": 37.6107852,
+  "lon": 127.0090663
+},
+{
+  "type": "node",
+  "id": 3888944076,
+  "lat": 37.6109836,
+  "lon": 127.0089232
+},
+{
+  "type": "node",
+  "id": 4852979218,
+  "lat": 37.6085000,
+  "lon": 127.0098798
+},
+{
+  "type": "node",
+  "id": 4852979219,
+  "lat": 37.6095230,
+  "lon": 127.0095732
+},
+{
+  "type": "node",
+  "id": 4852979220,
+  "lat": 37.6101930,
+  "lon": 127.0093998
+},
+{
+  "type": "node",
+  "id": 4852979521,
+  "lat": 37.6105830,
+  "lon": 127.0091842
+},
+{
+  "type": "node",
+  "id": 4852979522,
+  "lat": 37.6112104,
+  "lon": 127.0087727
+},
+{
+  "type": "node",
+  "id": 4852989041,
+  "lat": 37.6140949,
+  "lon": 127.0087802
+},
+{
+  "type": "node",
+  "id": 9459739565,
+  "lat": 37.6107328,
+  "lon": 127.0089708
+},
+{
+  "type": "node",
+  "id": 9459739566,
+  "lat": 37.6102786,
+  "lon": 127.0092717
+},
+{
+  "type": "node",
+  "id": 9459739567,
+  "lat": 37.6100077,
+  "lon": 127.0093942
+},
+{
+  "type": "node",
+  "id": 9459739568,
+  "lat": 37.6089646,
+  "lon": 127.0096494
+},
+{
+  "type": "node",
+  "id": 9459739604,
+  "lat": 37.6140316,
+  "lon": 127.0087763
+},
+{
+  "type": "node",
+  "id": 3888944085,
+  "lat": 37.6165606,
+  "lon": 127.0088442
+},
+{
+  "type": "node",
+  "id": 3888944091,
+  "lat": 37.6187421,
+  "lon": 127.0088541
+},
+{
+  "type": "node",
+  "id": 3888944092,
+  "lat": 37.6190029,
+  "lon": 127.0093078
+},
+{
+  "type": "node",
+  "id": 3888944093,
+  "lat": 37.6200064,
+  "lon": 127.0116598
+},
+{
+  "type": "node",
+  "id": 3888944094,
+  "lat": 37.6201199,
+  "lon": 127.0121935
+},
+{
+  "type": "node",
+  "id": 3888944095,
+  "lat": 37.6201776,
+  "lon": 127.0130977
+},
+{
+  "type": "node",
+  "id": 4852989040,
+  "lat": 37.6150208,
+  "lon": 127.0088603
+},
+{
+  "type": "node",
+  "id": 4852989043,
+  "lat": 37.6158448,
+  "lon": 127.0089125
+},
+{
+  "type": "node",
+  "id": 4852989044,
+  "lat": 37.6161188,
+  "lon": 127.0088924
+},
+{
+  "type": "node",
+  "id": 4852989045,
+  "lat": 37.6163893,
+  "lon": 127.0088807
+},
+{
+  "type": "node",
+  "id": 4852989050,
+  "lat": 37.6186689,
+  "lon": 127.0087699
+},
+{
+  "type": "node",
+  "id": 4852989051,
+  "lat": 37.6188469,
+  "lon": 127.0090183
+},
+{
+  "type": "node",
+  "id": 4852989052,
+  "lat": 37.6190844,
+  "lon": 127.0094828
+},
+{
+  "type": "node",
+  "id": 4852989053,
+  "lat": 37.6200840,
+  "lon": 127.0119689
+},
+{
+  "type": "node",
+  "id": 4852989054,
+  "lat": 37.6201416,
+  "lon": 127.0123933
+},
+{
+  "type": "node",
+  "id": 4852989055,
+  "lat": 37.6201867,
+  "lon": 127.0126677
+},
+{
+  "type": "node",
+  "id": 4852989056,
+  "lat": 37.6200940,
+  "lon": 127.0152226
+},
+{
+  "type": "node",
+  "id": 4852989058,
+  "lat": 37.6201309,
+  "lon": 127.0137405,
+  "tags": {
+    "light_rail": "yes",
+    "name": "솔샘",
+    "name:en": "Solsaem",
+    "name:ja": "ソルセム(松泉)",
+    "name:ko": "솔샘",
+    "name:zh": "松泉",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L08",
+    "wikidata": "Q28943579"
+  }
+},
+{
+  "type": "node",
+  "id": 9459739549,
+  "lat": 37.6202630,
+  "lon": 127.0127868
+},
+{
+  "type": "node",
+  "id": 9459739550,
+  "lat": 37.6201826,
+  "lon": 127.0120068
+},
+{
+  "type": "node",
+  "id": 9459739551,
+  "lat": 37.6198451,
+  "lon": 127.0110779
+},
+{
+  "type": "node",
+  "id": 9459739552,
+  "lat": 37.6187981,
+  "lon": 127.0088171
+},
+{
+  "type": "node",
+  "id": 9459739559,
+  "lat": 37.6157535,
+  "lon": 127.0087728
+},
+{
+  "type": "node",
+  "id": 9459739608,
+  "lat": 37.6190825,
+  "lon": 127.0093694
+},
+{
+  "type": "node",
+  "id": 9459739610,
+  "lat": 37.6200570,
+  "lon": 127.0116014
+},
+{
+  "type": "node",
+  "id": 9459739611,
+  "lat": 37.6202357,
+  "lon": 127.0123944
+},
+{
+  "type": "node",
+  "id": 9459739639,
+  "lat": 37.6202204,
+  "lon": 127.0137122,
+  "tags": {
+    "light_rail": "yes",
+    "name": "솔샘",
+    "name:en": "Solsaem",
+    "name:ja": "ソルセム(松泉)",
+    "name:ko": "솔샘",
+    "name:zh": "松泉",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L08",
+    "wikidata": "Q28943579"
+  }
+},
+{
+  "type": "node",
+  "id": 3888944096,
+  "lat": 37.6199515,
+  "lon": 127.0175942
+},
+{
+  "type": "node",
+  "id": 3888944097,
+  "lat": 37.6197349,
+  "lon": 127.0198265
+},
+{
+  "type": "node",
+  "id": 3888944098,
+  "lat": 37.6196724,
+  "lon": 127.0201960
+},
+{
+  "type": "node",
+  "id": 3888944099,
+  "lat": 37.6196792,
+  "lon": 127.0204402
+},
+{
+  "type": "node",
+  "id": 3888944100,
+  "lat": 37.6197408,
+  "lon": 127.0205877
+},
+{
+  "type": "node",
+  "id": 3888944101,
+  "lat": 37.6198492,
+  "lon": 127.0207003
+},
+{
+  "type": "node",
+  "id": 3888944102,
+  "lat": 37.6200765,
+  "lon": 127.0207191
+},
+{
+  "type": "node",
+  "id": 3888944103,
+  "lat": 37.6202316,
+  "lon": 127.0207084
+},
+{
+  "type": "node",
+  "id": 4852989059,
+  "lat": 37.6199151,
+  "lon": 127.0179776
+},
+{
+  "type": "node",
+  "id": 4852989060,
+  "lat": 37.6198917,
+  "lon": 127.0184348
+},
+{
+  "type": "node",
+  "id": 4852989061,
+  "lat": 37.6198531,
+  "lon": 127.0188407
+},
+{
+  "type": "node",
+  "id": 4852989062,
+  "lat": 37.6198101,
+  "lon": 127.0193095
+},
+{
+  "type": "node",
+  "id": 4852989063,
+  "lat": 37.6203780,
+  "lon": 127.0206896
+},
+{
+  "type": "node",
+  "id": 4852989064,
+  "lat": 37.6196673,
+  "lon": 127.0203006
+},
+{
+  "type": "node",
+  "id": 4852989065,
+  "lat": 37.6199501,
+  "lon": 127.0207204
+},
+{
+  "type": "node",
+  "id": 9459739539,
+  "lat": 37.6208063,
+  "lon": 127.0205655
+},
+{
+  "type": "node",
+  "id": 9459739540,
+  "lat": 37.6203532,
+  "lon": 127.0206473
+},
+{
+  "type": "node",
+  "id": 9459739541,
+  "lat": 37.6200047,
+  "lon": 127.0206868
+},
+{
+  "type": "node",
+  "id": 9459739542,
+  "lat": 37.6199157,
+  "lon": 127.0206807
+},
+{
+  "type": "node",
+  "id": 9459739543,
+  "lat": 37.6198244,
+  "lon": 127.0206200
+},
+{
+  "type": "node",
+  "id": 9459739544,
+  "lat": 37.6197667,
+  "lon": 127.0205229
+},
+{
+  "type": "node",
+  "id": 9459739545,
+  "lat": 37.6197114,
+  "lon": 127.0203803
+},
+{
+  "type": "node",
+  "id": 9459739546,
+  "lat": 37.6196994,
+  "lon": 127.0201921
+},
+{
+  "type": "node",
+  "id": 9459739547,
+  "lat": 37.6198684,
+  "lon": 127.0191254
+},
+{
+  "type": "node",
+  "id": 9459739548,
+  "lat": 37.6200367,
+  "lon": 127.0170794
+},
+{
+  "type": "node",
+  "id": 9459739638,
+  "lat": 37.6200849,
+  "lon": 127.0162960
+},
+{
+  "type": "node",
+  "id": 3888944104,
+  "lat": 37.6215385,
+  "lon": 127.0204076
+},
+{
+  "type": "node",
+  "id": 3888944105,
+  "lat": 37.6219212,
+  "lon": 127.0202080
+},
+{
+  "type": "node",
+  "id": 3888944106,
+  "lat": 37.6220587,
+  "lon": 127.0201146
+},
+{
+  "type": "node",
+  "id": 3888944107,
+  "lat": 37.6236593,
+  "lon": 127.0187009
+},
+{
+  "type": "node",
+  "id": 3888944108,
+  "lat": 37.6238813,
+  "lon": 127.0185697
+},
+{
+  "type": "node",
+  "id": 3888944109,
+  "lat": 37.6240544,
+  "lon": 127.0185073
+},
+{
+  "type": "node",
+  "id": 3888944110,
+  "lat": 37.6261218,
+  "lon": 127.0182994
+},
+{
+  "type": "node",
+  "id": 4852989066,
+  "lat": 37.6211740,
+  "lon": 127.0205140,
+  "tags": {
+    "light_rail": "yes",
+    "name": "삼양사거리",
+    "name:en": "Samyang Sageori",
+    "name:ja": "サミャンサゴリ(三陽十字路口)",
+    "name:ko": "삼양사거리",
+    "name:zh": "三陽十字路口",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L07",
+    "wikidata": "Q28943578"
+  }
+},
+{
+  "type": "node",
+  "id": 4852989067,
+  "lat": 37.6217340,
+  "lon": 127.0203296
+},
+{
+  "type": "node",
+  "id": 4852989068,
+  "lat": 37.6222344,
+  "lon": 127.0199657
+},
+{
+  "type": "node",
+  "id": 4852989069,
+  "lat": 37.6225135,
+  "lon": 127.0197356
+},
+{
+  "type": "node",
+  "id": 4852989070,
+  "lat": 37.6227380,
+  "lon": 127.0195080
+},
+{
+  "type": "node",
+  "id": 4852989071,
+  "lat": 37.6230967,
+  "lon": 127.0191742
+},
+{
+  "type": "node",
+  "id": 4852989072,
+  "lat": 37.6233100,
+  "lon": 127.0189751
+},
+{
+  "type": "node",
+  "id": 4852989073,
+  "lat": 37.6234719,
+  "lon": 127.0188380
+},
+{
+  "type": "node",
+  "id": 4852989074,
+  "lat": 37.6242288,
+  "lon": 127.0184626
+},
+{
+  "type": "node",
+  "id": 4852989075,
+  "lat": 37.6244690,
+  "lon": 127.0184241
+},
+{
+  "type": "node",
+  "id": 4852989076,
+  "lat": 37.6265919,
+  "lon": 127.0182423
+},
+{
+  "type": "node",
+  "id": 4852989079,
+  "lat": 37.6269761,
+  "lon": 127.0182242,
+  "tags": {
+    "light_rail": "yes",
+    "name": "삼양",
+    "name:en": "Samyang",
+    "name:ja": "サミャン(三陽)",
+    "name:ko": "삼양",
+    "name:zh": "三陽",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L06",
+    "wikidata": "Q28943577"
+  }
+},
+{
+  "type": "node",
+  "id": 9459739530,
+  "lat": 37.6265655,
+  "lon": 127.0181845
+},
+{
+  "type": "node",
+  "id": 9459739531,
+  "lat": 37.6247120,
+  "lon": 127.0183035
+},
+{
+  "type": "node",
+  "id": 9459739532,
+  "lat": 37.6238753,
+  "lon": 127.0184617
+},
+{
+  "type": "node",
+  "id": 9459739533,
+  "lat": 37.6231639,
+  "lon": 127.0189925
+},
+{
+  "type": "node",
+  "id": 9459739534,
+  "lat": 37.6222422,
+  "lon": 127.0198703
+},
+{
+  "type": "node",
+  "id": 9459739535,
+  "lat": 37.6220501,
+  "lon": 127.0200556
+},
+{
+  "type": "node",
+  "id": 9459739536,
+  "lat": 37.6219011,
+  "lon": 127.0201800
+},
+{
+  "type": "node",
+  "id": 9459739537,
+  "lat": 37.6217304,
+  "lon": 127.0202825
+},
+{
+  "type": "node",
+  "id": 9459739538,
+  "lat": 37.6214857,
+  "lon": 127.0203720
+},
+{
+  "type": "node",
+  "id": 9459739613,
+  "lat": 37.6237032,
+  "lon": 127.0185602
+},
+{
+  "type": "node",
+  "id": 9459739636,
+  "lat": 37.6269639,
+  "lon": 127.0181389,
+  "tags": {
+    "light_rail": "yes",
+    "name": "삼양",
+    "name:en": "Samyang",
+    "name:ja": "サミャン(三陽)",
+    "name:ko": "삼양",
+    "name:zh": "三陽",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L06",
+    "wikidata": "Q28943577"
+  }
+},
+{
+  "type": "node",
+  "id": 9459739637,
+  "lat": 37.6211486,
+  "lon": 127.0204838,
+  "tags": {
+    "light_rail": "yes",
+    "name": "삼양",
+    "name:en": "Samyang",
+    "name:ja": "サミャン(三陽)",
+    "name:ko": "삼양",
+    "name:zh": "三陽",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L06",
+    "wikidata": "Q28943577"
+  }
+},
+{
+  "type": "node",
+  "id": 3888944111,
+  "lat": 37.6280863,
+  "lon": 127.0181290
+},
+{
+  "type": "node",
+  "id": 3888944112,
+  "lat": 37.6295143,
+  "lon": 127.0179966
+},
+{
+  "type": "node",
+  "id": 4852989078,
+  "lat": 37.6276249,
+  "lon": 127.0181824
+},
+{
+  "type": "node",
+  "id": 4852989080,
+  "lat": 37.6312540,
+  "lon": 127.0178177
+},
+{
+  "type": "node",
+  "id": 4852989081,
+  "lat": 37.6330354,
+  "lon": 127.0176506
+},
+{
+  "type": "node",
+  "id": 9459739528,
+  "lat": 37.6315186,
+  "lon": 127.0176380
+},
+{
+  "type": "node",
+  "id": 9459739529,
+  "lat": 37.6289720,
+  "lon": 127.0179090
+},
+{
+  "type": "node",
+  "id": 9459739617,
+  "lat": 37.6335183,
+  "lon": 127.0175039
+},
+{
+  "type": "node",
+  "id": 9459739635,
+  "lat": 37.6340359,
+  "lon": 127.0174308,
+  "tags": {
+    "light_rail": "yes",
+    "name": "화계",
+    "name:en": "Hwagye",
+    "name:ja": "ファゲ(華溪)",
+    "name:ko": "화계",
+    "name:zh": "華溪",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L05",
+    "wikidata": "Q28943576"
+  }
+},
+{
+  "type": "node",
+  "id": 3888944113,
+  "lat": 37.6340617,
+  "lon": 127.0175414,
+  "tags": {
+    "light_rail": "yes",
+    "name": "화계",
+    "name:en": "Hwagye",
+    "name:ja": "ファゲ(華溪)",
+    "name:ko": "화계",
+    "name:zh": "華溪",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L05",
+    "wikidata": "Q28943576"
+  }
+},
+{
+  "type": "node",
+  "id": 3888944114,
+  "lat": 37.6387583,
+  "lon": 127.0170482
+},
+{
+  "type": "node",
+  "id": 3888944115,
+  "lat": 37.6403157,
+  "lon": 127.0169366
+},
+{
+  "type": "node",
+  "id": 4852984862,
+  "lat": 37.6361547,
+  "lon": 127.0172544
+},
+{
+  "type": "node",
+  "id": 4852984863,
+  "lat": 37.6370635,
+  "lon": 127.0171621
+},
+{
+  "type": "node",
+  "id": 4852984864,
+  "lat": 37.6376921,
+  "lon": 127.0171105
+},
+{
+  "type": "node",
+  "id": 4852984865,
+  "lat": 37.6382294,
+  "lon": 127.0170794
+},
+{
+  "type": "node",
+  "id": 4852984866,
+  "lat": 37.6396475,
+  "lon": 127.0169897
+},
+{
+  "type": "node",
+  "id": 4852989082,
+  "lat": 37.6356321,
+  "lon": 127.0173037
+},
+{
+  "type": "node",
+  "id": 9459739526,
+  "lat": 37.6376605,
+  "lon": 127.0170548
+},
+{
+  "type": "node",
+  "id": 9459739527,
+  "lat": 37.6342171,
+  "lon": 127.0174049
+},
+{
+  "type": "node",
+  "id": 9459739523,
+  "lat": 37.6470443,
+  "lon": 127.0147379
+},
+{
+  "type": "node",
+  "id": 9459739621,
+  "lat": 37.6463701,
+  "lon": 127.0151513
+},
+{
+  "type": "node",
+  "id": 9459739622,
+  "lat": 37.6463204,
+  "lon": 127.0150690
+},
+{
+  "type": "node",
+  "id": 3888944116,
+  "lat": 37.6406886,
+  "lon": 127.0169025
+},
+{
+  "type": "node",
+  "id": 3888944117,
+  "lat": 37.6411628,
+  "lon": 127.0168142
+},
+{
+  "type": "node",
+  "id": 3888944118,
+  "lat": 37.6448853,
+  "lon": 127.0157651
+},
+{
+  "type": "node",
+  "id": 3888944119,
+  "lat": 37.6454551,
+  "lon": 127.0155472
+},
+{
+  "type": "node",
+  "id": 4852984867,
+  "lat": 37.6416637,
+  "lon": 127.0166858
+},
+{
+  "type": "node",
+  "id": 4852984868,
+  "lat": 37.6425943,
+  "lon": 127.0164537
+},
+{
+  "type": "node",
+  "id": 4852984869,
+  "lat": 37.6414472,
+  "lon": 127.0167500
+},
+{
+  "type": "node",
+  "id": 4852984870,
+  "lat": 37.6420937,
+  "lon": 127.0165811,
+  "tags": {
+    "light_rail": "yes",
+    "name": "가오리",
+    "name:en": "Gaori",
+    "name:ja": "カオリ(加五里)",
+    "name:ko": "가오리",
+    "name:zh": "加五里",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L04",
+    "wikidata": "Q28943575"
+  }
+},
+{
+  "type": "node",
+  "id": 4852984871,
+  "lat": 37.6431992,
+  "lon": 127.0162789
+},
+{
+  "type": "node",
+  "id": 9459739524,
+  "lat": 37.6453085,
+  "lon": 127.0155024
+},
+{
+  "type": "node",
+  "id": 9459739525,
+  "lat": 37.6409501,
+  "lon": 127.0168059
+},
+{
+  "type": "node",
+  "id": 9459739619,
+  "lat": 37.6435898,
+  "lon": 127.0160838
+},
+{
+  "type": "node",
+  "id": 9459739620,
+  "lat": 37.6448704,
+  "lon": 127.0156867
+},
+{
+  "type": "node",
+  "id": 9459739634,
+  "lat": 37.6420351,
+  "lon": 127.0165155,
+  "tags": {
+    "light_rail": "yes",
+    "name": "가오리",
+    "name:en": "Gaori",
+    "name:ja": "カオリ(加五里)",
+    "name:ko": "가오리",
+    "name:zh": "加五里",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L04",
+    "wikidata": "Q28943575"
+  }
+},
+{
+  "type": "node",
+  "id": 3888944120,
+  "lat": 37.6482309,
+  "lon": 127.0142202
+},
+{
+  "type": "node",
+  "id": 3888944121,
+  "lat": 37.6500046,
+  "lon": 127.0134118
+},
+{
+  "type": "node",
+  "id": 3888944122,
+  "lat": 37.6513014,
+  "lon": 127.0127818
+},
+{
+  "type": "node",
+  "id": 3888944123,
+  "lat": 37.6515902,
+  "lon": 127.0126638
+},
+{
+  "type": "node",
+  "id": 3888944124,
+  "lat": 37.6520952,
+  "lon": 127.0125399
+},
+{
+  "type": "node",
+  "id": 3888944125,
+  "lat": 37.6522655,
+  "lon": 127.0125190
+},
+{
+  "type": "node",
+  "id": 3888944126,
+  "lat": 37.6524991,
+  "lon": 127.0125190
+},
+{
+  "type": "node",
+  "id": 3888944127,
+  "lat": 37.6528389,
+  "lon": 127.0125619
+},
+{
+  "type": "node",
+  "id": 4852984874,
+  "lat": 37.6493790,
+  "lon": 127.0136969,
+  "tags": {
+    "alt_name": "덕성여대",
+    "light_rail": "yes",
+    "name": "4.19민주묘지",
+    "name:en": "April 19th National Cemetery",
+    "name:ja": "サ.イルグミンジュミョジ(4.19民主墓地)",
+    "name:ko": "4.19민주묘지",
+    "name:zh": "四一九民主墓地",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L03",
+    "wikidata": "Q28943574"
+  }
+},
+{
+  "type": "node",
+  "id": 9459739519,
+  "lat": 37.6526616,
+  "lon": 127.0124541
+},
+{
+  "type": "node",
+  "id": 9459739520,
+  "lat": 37.6522777,
+  "lon": 127.0124184
+},
+{
+  "type": "node",
+  "id": 9459739521,
+  "lat": 37.6515463,
+  "lon": 127.0126021
+},
+{
+  "type": "node",
+  "id": 9459739522,
+  "lat": 37.6493136,
+  "lon": 127.0136761
+},
+{
+  "type": "node",
+  "id": 9459739624,
+  "lat": 37.6520464,
+  "lon": 127.0124523
+},
+{
+  "type": "node",
+  "id": 9459739632,
+  "lat": 37.6493635,
+  "lon": 127.0136521,
+  "tags": {
+    "alt_name": "덕성여대",
+    "light_rail": "yes",
+    "name": "4.19민주묘지",
+    "name:en": "April 19th National Cemetery",
+    "name:ja": "サ.イルグミンジュミョジ(4.19民主墓地)",
+    "name:ko": "4.19민주묘지",
+    "name:zh": "四一九民主墓地",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L03",
+    "wikidata": "Q28943574"
+  }
+},
+{
+  "type": "node",
+  "id": 9459739633,
+  "lat": 37.6472988,
+  "lon": 127.0146169
+},
+{
+  "type": "node",
+  "id": 3888944128,
+  "lat": 37.6563837,
+  "lon": 127.0133518
+},
+{
+  "type": "node",
+  "id": 3888944129,
+  "lat": 37.6583175,
+  "lon": 127.0137152
+},
+{
+  "type": "node",
+  "id": 3888944130,
+  "lat": 37.6590692,
+  "lon": 127.0138654
+},
+{
+  "type": "node",
+  "id": 3888944131,
+  "lat": 37.6592560,
+  "lon": 127.0138762
+},
+{
+  "type": "node",
+  "id": 3888944132,
+  "lat": 37.6594217,
+  "lon": 127.0138601
+},
+{
+  "type": "node",
+  "id": 4852984875,
+  "lat": 37.6559701,
+  "lon": 127.0132691,
+  "tags": {
+    "light_rail": "yes",
+    "name": "솔밭공원",
+    "name:en": "Solbat Park",
+    "name:ja": "ソルバッコンウォン(松林公園)",
+    "name:ko": "솔밭공원",
+    "name:zh": "松林公園",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L02",
+    "wikidata": "Q28943573"
+  }
+},
+{
+  "type": "node",
+  "id": 9459674815,
+  "lat": 37.6601686,
+  "lon": 127.0135820
+},
+{
+  "type": "node",
+  "id": 9459674816,
+  "lat": 37.6593889,
+  "lon": 127.0138117
+},
+{
+  "type": "node",
+  "id": 9459739517,
+  "lat": 37.6590414,
+  "lon": 127.0137912
+},
+{
+  "type": "node",
+  "id": 9459739518,
+  "lat": 37.6556399,
+  "lon": 127.0130911
+},
+{
+  "type": "node",
+  "id": 9459739625,
+  "lat": 37.6563469,
+  "lon": 127.0132425
+},
+{
+  "type": "node",
+  "id": 9459739631,
+  "lat": 37.6559343,
+  "lon": 127.0131587,
+  "tags": {
+    "light_rail": "yes",
+    "name": "솔밭공원",
+    "name:en": "Solbat Park",
+    "name:ja": "ソルバッコンウォン(松林公園)",
+    "name:ko": "솔밭공원",
+    "name:zh": "松林公園",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L02",
+    "wikidata": "Q28943573"
+  }
+},
+{
+  "type": "node",
+  "id": 9459739657,
+  "lat": 37.6550751,
+  "lon": 127.0129703
+},
+{
+  "type": "node",
+  "id": 9459739658,
+  "lat": 37.6546899,
+  "lon": 127.0129736
+},
+{
+  "type": "node",
+  "id": 9459739663,
+  "lat": 37.6564168,
+  "lon": 127.0132562
+},
+{
+  "type": "node",
+  "id": 3888944133,
+  "lat": 37.6615917,
+  "lon": 127.0132405
+},
+{
+  "type": "node",
+  "id": 3888944134,
+  "lat": 37.6620906,
+  "lon": 127.0130903
+},
+{
+  "type": "node",
+  "id": 3888944135,
+  "lat": 37.6623073,
+  "lon": 127.0129776
+},
+{
+  "type": "node",
+  "id": 4852984876,
+  "lat": 37.6633908,
+  "lon": 127.0124238,
+  "tags": {
+    "light_rail": "yes",
+    "name": "북한산우이",
+    "name:en": "Bukhansan Ui",
+    "name:ja": "プカンサンウイ(北漢山牛耳)",
+    "name:ko": "북한산우이",
+    "name:zh": "北汉山牛耳",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L01",
+    "wikidata": "Q29160503"
+  }
+},
+{
+  "type": "node",
+  "id": 9459674805,
+  "lat": 37.6623141,
+  "lon": 127.0129213
+},
+{
+  "type": "node",
+  "id": 9459674814,
+  "lat": 37.6620019,
+  "lon": 127.0130525
+},
+{
+  "type": "node",
+  "id": 9459739628,
+  "lat": 37.6630587,
+  "lon": 127.0125333
+},
+{
+  "type": "node",
+  "id": 9459739629,
+  "lat": 37.6630792,
+  "lon": 127.0125904
+},
+{
+  "type": "node",
+  "id": 9459739630,
+  "lat": 37.6633606,
+  "lon": 127.0123479,
+  "tags": {
+    "light_rail": "yes",
+    "name": "북한산우이",
+    "name:en": "Bukhansan Ui",
+    "name:ja": "プカンサンウイ(北漢山牛耳)",
+    "name:ko": "북한산우이",
+    "name:zh": "北汉山牛耳",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "L01",
+    "wikidata": "Q29160503"
+  }
+},
+{
+  "type": "way",
+  "id": 957436186,
+  "center": {
+    "lat": 37.4930439,
+    "lon": 126.9315615
+  },
+  "nodes": [
+    9776585974,
+    9776585972,
+    9776655694,
+    8859323021,
+    8859323022,
+    8859323023,
+    9776585976,
+    10598720866,
+    8859323024,
+    8859323025,
+    8859323026,
+    8859323027,
+    8859323028,
+    9776585981,
+    8859323029,
+    9776585985,
+    8859323030,
+    8859323031,
+    9776585980,
+    10598720872,
+    8859323032,
+    10598720870,
+    9776585989,
+    8859323034,
+    8859323035,
+    10598720876,
+    10598720878,
+    10598720875,
+    10598720879,
+    8859323037,
+    8859323038,
+    9776585994,
+    8859323039,
+    9776585997,
+    8859323040,
+    9776586000,
+    8859323041,
+    8859323042,
+    9776586006,
+    9776586003,
+    9776586004,
+    8859323043,
+    8859323044,
+    9776586009,
+    8859323045,
+    9776586008,
+    8859323046,
+    8859323047,
+    9776586013,
+    8859323048,
+    9776586012,
+    8859323049,
+    8859323050,
+    9776586016,
+    8859323051,
+    8859323052,
+    10598720883,
+    570954351,
+    8859323054,
+    8859323055,
+    9776589241,
+    8859323056,
+    8859323057,
+    8859323058,
+    8859323059,
+    8859323060,
+    9776589242,
+    9776589221,
+    10598720900,
+    8859323061,
+    10598720901,
+    8859323064,
+    8859323065,
+    8859323066,
+    8859323067,
+    8859323068,
+    8859323069,
+    10598720904,
+    8859323070,
+    8859323071,
+    8859323072,
+    8859323073,
+    9776589244,
+    9776589246,
+    8859323074,
+    8859323075,
+    8859323076,
+    11178013533,
+    8859323077,
+    9776620259,
+    2541477146,
+    8859323078,
+    8859323079,
+    9776620262,
+    8859323080,
+    8859323081,
+    8859323086,
+    8859323082,
+    8859323083,
+    8859323084,
+    8859323085,
+    10598725611,
+    11230659582,
+    8859323087,
+    11230659581,
+    10598725609,
+    8859323089,
+    10598725607,
+    8859323090,
+    9776620271
+  ],
+  "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1700",
+    "layer": "-3",
+    "name": "신림선",
+    "name:en": "Sillim Line",
+    "name:ja": "新林線",
+    "name:ko": "신림선",
+    "name:ko-Hani": "新林線",
+    "name:zh": "新林線",
+    "name:zh-Hans": "新林线",
+    "name:zh-Hant": "新林線",
+    "network": "수도권 전철",
+    "oneway": "yes",
+    "operator": "로템SRS",
+    "operator:en": "Rotem SRS",
+    "operator:type": "private",
+    "owner": "서울특별시",
+    "railway": "light_rail",
+    "railway:ato": "dto",
+    "railway:cbtc": "RF",
+    "railway:ktcs": "M",
+    "railway:radio": "lte-r",
+    "start_date": "2022-05-28",
+    "tunnel": "yes",
+    "usage": "main",
+    "voltage": "750",
+    "wikidata": "Q3832768",
+    "wikipedia": "ko:서울 경전철 신림선",
+    "workrules": "KR:URA"
+  }
+},
+{
+  "type": "way",
+  "id": 957436187,
+  "center": {
+    "lat": 37.4930549,
+    "lon": 126.9314374
+  },
+  "nodes": [
+    9776620272,
+    10598725606,
+    10598725608,
+    9776620265,
+    8859323093,
+    9776620266,
+    8859323094,
+    9776620267,
+    11230659583,
+    8859323095,
+    8859323096,
+    8859323097,
+    9776620264,
+    10727071184,
+    8859323098,
+    8859323099,
+    9289708438,
+    9776620261,
+    9776620263,
+    8859323100,
+    8859323101,
+    8859323102,
+    11178013530,
+    9776620260,
+    8859323103,
+    9776589245,
+    8859323104,
+    9776589243,
+    8859323105,
+    8859323106,
+    10598725605,
+    8859323107,
+    10091509832,
+    8859323108,
+    8859323109,
+    8859323110,
+    9776589222,
+    8859323111,
+    10598720902,
+    8859323112,
+    10598720898,
+    10598720899,
+    8859323115,
+    8859323116,
+    8859333017,
+    8859333018,
+    10598720897,
+    8859333019,
+    8859333020,
+    9776655341,
+    10598720896,
+    10598720895,
+    5733236365,
+    10598720888,
+    8555618635,
+    9776589240,
+    8859333021,
+    9776589218,
+    8859333023,
+    8859333024,
+    8859333026,
+    9776586015,
+    8859333027,
+    8859333029,
+    8859333030,
+    9776586014,
+    8859333031,
+    8859333032,
+    9776586007,
+    8859333033,
+    9776586010,
+    8859333034,
+    10598720882,
+    8859333035,
+    9776586005,
+    9776586001,
+    8859333036,
+    10598720881,
+    8859333037,
+    9776585996,
+    8859333038,
+    9776585995,
+    8859333039,
+    10598720880,
+    10598720877,
+    8859333040,
+    8859333041,
+    8859333042,
+    9776585987,
+    8859333043,
+    10598720874,
+    8859333044,
+    10598720871,
+    9776585991,
+    10598720873,
+    8859333045,
+    9776585979,
+    9776585984,
+    8859333046,
+    9776585986,
+    9776585983,
+    10598720869,
+    8859333047,
+    10598720868,
+    9776585982,
+    8859333048,
+    8859333049,
+    10598720867,
+    8859333050,
+    8859333051,
+    8859333052,
+    9776585977,
+    8859333053,
+    10598720865,
+    8859333054,
+    9776655695,
+    9776585975
+  ],
+  "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1700",
+    "layer": "-3",
+    "name": "신림선",
+    "name:en": "Sillim Line",
+    "name:ja": "新林線",
+    "name:ko": "신림선",
+    "name:ko-Hani": "新林線",
+    "name:zh": "新林線",
+    "name:zh-Hans": "新林线",
+    "name:zh-Hant": "新林線",
+    "network": "수도권 전철",
+    "oneway": "yes",
+    "operator": "로템SRS",
+    "operator:en": "Rotem SRS",
+    "operator:type": "private",
+    "owner": "서울특별시",
+    "railway": "light_rail",
+    "railway:ato": "dto",
+    "railway:cbtc": "RF",
+    "railway:ktcs": "M",
+    "railway:radio": "lte-r",
+    "start_date": "2022-05-28",
+    "tunnel": "yes",
+    "usage": "main",
+    "voltage": "750",
+    "wikidata": "Q3832768",
+    "wikipedia": "ko:서울 경전철 신림선",
+    "workrules": "KR:URA"
+  }
+},
+{
+  "type": "way",
+  "id": 1064525895,
+  "center": {
+    "lat": 37.4684500,
+    "lon": 126.9455612
+  },
+  "nodes": [
+    9776585975,
+    9776585973,
+    8859333055
+  ],
+  "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1700",
+    "layer": "-3",
+    "name": "신림선",
+    "name:en": "Sillim Line",
+    "name:ja": "新林線",
+    "name:ko": "신림선",
+    "name:ko-Hani": "新林線",
+    "name:zh": "新林線",
+    "name:zh-Hans": "新林线",
+    "name:zh-Hant": "新林線",
+    "network": "수도권 전철",
+    "oneway": "yes",
+    "operator": "로템SRS",
+    "operator:en": "Rotem SRS",
+    "operator:type": "private",
+    "owner": "서울특별시",
+    "railway": "light_rail",
+    "railway:ato": "dto",
+    "railway:cbtc": "RF",
+    "railway:ktcs": "M",
+    "railway:radio": "lte-r",
+    "service": "yard",
+    "start_date": "2022-05-28",
+    "tunnel": "yes",
+    "voltage": "750",
+    "workrules": "KR:URA"
+  }
+},
+{
+  "type": "way",
+  "id": 1064524185,
+  "center": {
+    "lat": 37.5176726,
+    "lon": 126.9297049
+  },
+  "nodes": [
+    9776589248,
+    9776620272
+  ],
+  "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1700",
+    "layer": "-3",
+    "name": "신림선",
+    "name:en": "Sillim Line",
+    "name:ja": "新林線",
+    "name:ko": "신림선",
+    "name:ko-Hani": "新林線",
+    "name:zh": "新林線",
+    "name:zh-Hans": "新林线",
+    "name:zh-Hant": "新林線",
+    "network": "수도권 전철",
+    "oneway": "yes",
+    "operator": "로템SRS",
+    "operator:en": "Rotem SRS",
+    "operator:type": "private",
+    "owner": "서울특별시",
+    "railway": "light_rail",
+    "railway:ato": "dto",
+    "railway:cbtc": "RF",
+    "railway:ktcs": "M",
+    "railway:radio": "lte-r",
+    "service": "yard",
+    "start_date": "2022-05-28",
+    "tunnel": "yes",
+    "voltage": "750",
+    "workrules": "KR:URA"
+  }
+},
+{
+  "type": "way",
+  "id": 1064524186,
+  "center": {
+    "lat": 37.5176215,
+    "lon": 126.9297789
+  },
+  "nodes": [
+    9776620271,
+    9776589249
+  ],
+  "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1700",
+    "layer": "-3",
+    "name": "신림선",
+    "name:en": "Sillim Line",
+    "name:ja": "新林線",
+    "name:ko": "신림선",
+    "name:ko-Hani": "新林線",
+    "name:zh": "新林線",
+    "name:zh-Hans": "新林线",
+    "name:zh-Hant": "新林線",
+    "network": "수도권 전철",
+    "oneway": "yes",
+    "operator": "로템SRS",
+    "operator:en": "Rotem SRS",
+    "operator:type": "private",
+    "owner": "서울특별시",
+    "railway": "light_rail",
+    "railway:ato": "dto",
+    "railway:cbtc": "RF",
+    "railway:ktcs": "M",
+    "railway:radio": "lte-r",
+    "service": "yard",
+    "start_date": "2022-05-28",
+    "tunnel": "yes",
+    "voltage": "750",
+    "workrules": "KR:URA"
+  }
+},
+{
+  "type": "way",
+  "id": 192247534,
+  "center": {
+    "lat": 37.5922791,
+    "lon": 127.0165601
+  },
+  "nodes": [
+    5899527462,
+    4171946064,
+    2028051067,
+    2028051064,
+    287323400,
+    2028051077,
+    4852979188,
+    2028051075,
+    2028051060,
+    4852979194,
+    4852979189,
+    4852979193,
+    2028051074,
+    4852979191,
+    4852979192,
+    2028051071,
+    2028051052,
+    4852979190,
+    2028051080,
+    9459739596,
+    5754623761,
+    9459739597,
+    436860058,
+    2028051070,
+    4852979201,
+    2028051047,
+    2028051050,
+    3828480726,
+    4852979202,
+    4852979203,
+    4852979204,
+    4852979205,
+    2028051057,
+    2028051062,
+    4852979206,
+    4852979208,
+    4852979207,
+    2028051086,
+    4852979209,
+    4852979216,
+    2028051055,
+    4852979215,
+    2028051072,
+    3888944063,
+    3888944064,
+    4852979211,
+    4852979212,
+    3888944065,
+    4852979213,
+    4852979214,
+    3888944066,
+    5072347675,
+    3888944067,
+    3888944068,
+    4852979217,
+    3888944069,
+    4852979218
+  ],
+  "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "layer": "-3",
+    "maxspeed": "80",
+    "name": "우이신설선",
+    "name:en": "Ui-Sinseol Line",
+    "name:ja": "牛耳新設線",
+    "name:ko": "우이신설선",
+    "name:zh": "牛耳新設線",
+    "name:zh-Hans": "牛耳新设线",
+    "name:zh-Hant": "牛耳新設線",
+    "network": "수도권 전철",
+    "oneway": "yes",
+    "operator": "우이신설경전철운영(주)",
+    "operator:en": "Ui-Sinseol LRT Operation Co., Ltd.",
+    "operator:ko": "우이신설경전철운영(주)",
+    "operator:type": "private",
+    "operator:wikidata": "Q97340011",
+    "owner": "서울특별시",
+    "owner:en": "Seoul Special Metropolitan City",
+    "owner:type": "government",
+    "railway": "light_rail",
+    "railway:atc": "yes",
+    "railway:ato": "dto",
+    "start_date": "2017-09-02",
+    "tunnel": "yes",
+    "usage": "main",
+    "voltage": "750",
+    "workrules": "KR:URA"
+  }
+},
+{
+  "type": "way",
+  "id": 1026020324,
+  "center": {
+    "lat": 37.6160099,
+    "lon": 127.0154869
+  },
+  "nodes": [
+    9459739631,
+    9459739518,
+    9459739657,
+    9459739519,
+    9459739520,
+    9459739624,
+    9459739521,
+    9459739632,
+    9459739522,
+    9459739633,
+    9459739523,
+    9459739622,
+    9459739524,
+    9459739620,
+    9459739619,
+    9459739634,
+    9459739525,
+    9459739526,
+    9459739527,
+    9459739635,
+    9459739617,
+    9459739528,
+    9459739529,
+    9459739636,
+    9459739530,
+    9459739531,
+    9459739532,
+    9459739613,
+    9459739533,
+    9459739534,
+    9459739535,
+    9459739536,
+    9459739537,
+    9459739538,
+    9459739637,
+    9459739539,
+    9459739540,
+    9459739541,
+    9459739542,
+    9459739543,
+    9459739544,
+    9459739545,
+    9459739546,
+    9459739547,
+    9459739548,
+    9459739638,
+    9459739639,
+    9459739549,
+    9459739611,
+    9459739550,
+    9459739610,
+    9459739551,
+    9459739608,
+    9459739552,
+    9459739607,
+    9459739553,
+    9459739554,
+    9459739555,
+    9459739556,
+    9459739557,
+    9459739558,
+    9459739559,
+    9459739560,
+    9459739605,
+    9459739561,
+    9459739664,
+    9459739562,
+    9459739600,
+    9459739601,
+    9459739563,
+    9459739602,
+    9459739599,
+    9459739640,
+    9459739564,
+    9459739641,
+    9459739565,
+    9459739566,
+    9459739567,
+    9459739568,
+    9459739569,
+    9459739642,
+    9459739570,
+    9459739645,
+    9459739643,
+    9459739644,
+    9459739571,
+    9459739572,
+    9459739573,
+    9459739574,
+    9459739646,
+    9459739575,
+    9459739576,
+    9459739577,
+    9459739578,
+    9459739579,
+    9459739647,
+    9459739580,
+    9459739650,
+    9459739581,
+    9459739649,
+    9459739582,
+    9459739648,
+    9459739583,
+    9459739584,
+    9459739595,
+    9459739585,
+    9459739586,
+    9459739651,
+    9459739587,
+    9459739652,
+    9459739588,
+    9459739653,
+    9459739655,
+    9459739589,
+    9459739590,
+    9459739591,
+    9459739592,
+    9459739593,
+    9459739656
+  ],
+  "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "layer": "-3",
+    "maxspeed": "80",
+    "name": "우이신설선",
+    "name:en": "Ui-Sinseol Line",
+    "name:ja": "牛耳新設線",
+    "name:ko": "우이신설선",
+    "name:zh": "牛耳新設線",
+    "name:zh-Hans": "牛耳新设线",
+    "name:zh-Hant": "牛耳新設線",
+    "network": "수도권 전철",
+    "oneway": "yes",
+    "operator": "우이신설경전철운영(주)",
+    "operator:en": "Ui-Sinseol LRT Operation Co., Ltd.",
+    "operator:ko": "우이신설경전철운영(주)",
+    "operator:type": "private",
+    "operator:wikidata": "Q97340011",
+    "owner": "서울특별시",
+    "owner:en": "Seoul Special Metropolitan City",
+    "owner:type": "government",
+    "railway": "light_rail",
+    "railway:atc": "yes",
+    "railway:ato": "dto",
+    "start_date": "2017-09-02",
+    "tunnel": "yes",
+    "usage": "main",
+    "voltage": "750",
+    "workrules": "KR:URA"
+  }
+},
+{
+  "type": "way",
+  "id": 1026020329,
+  "center": {
+    "lat": 37.5758708,
+    "lon": 127.0231699
+  },
+  "nodes": [
+    9459739656,
+    9459739594
+  ],
+  "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "layer": "-3",
+    "oneway": "yes",
+    "operator": "우이신설경전철;우이신설경전철운행",
+    "railway": "light_rail",
+    "service": "yard",
+    "tunnel": "yes",
+    "voltage": "750"
+  }
+},
+{
+  "type": "way",
+  "id": 1026020330,
+  "center": {
+    "lat": 37.5758561,
+    "lon": 127.0232517
+  },
+  "nodes": [
+    7207442615,
+    9459674804,
+    5899527462
+  ],
+  "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "layer": "-3",
+    "oneway": "yes",
+    "operator": "우이신설경전철;우이신설경전철운행",
+    "railway": "light_rail",
+    "service": "yard",
+    "tunnel": "yes",
+    "voltage": "750"
+  }
+},
+{
+  "type": "way",
+  "id": 554331554,
+  "center": {
+    "lat": 37.6378187,
+    "lon": 127.0166197
+  },
+  "nodes": [
+    4852989058,
+    4852989056,
+    3888944096,
+    4852989059,
+    4852989060,
+    4852989061,
+    4852989062,
+    3888944097,
+    3888944098,
+    4852989064,
+    3888944099,
+    3888944100,
+    3888944101,
+    4852989065,
+    3888944102,
+    3888944103,
+    4852989063,
+    4852989066,
+    3888944104,
+    4852989067,
+    3888944105,
+    3888944106,
+    4852989068,
+    4852989069,
+    4852989070,
+    4852989071,
+    4852989072,
+    4852989073,
+    3888944107,
+    3888944108,
+    3888944109,
+    4852989074,
+    4852989075,
+    3888944110,
+    4852989076,
+    4852989079,
+    4852989078,
+    3888944111,
+    3888944112,
+    4852989080,
+    4852989081,
+    3888944113,
+    4852989082,
+    4852984862,
+    4852984863,
+    4852984864,
+    4852984865,
+    3888944114,
+    4852984866,
+    3888944115,
+    3888944116,
+    3888944117,
+    4852984869,
+    4852984867,
+    4852984870,
+    4852984868,
+    4852984871,
+    3888944118,
+    3888944119,
+    9459739621,
+    3888944120,
+    4852984874,
+    3888944121,
+    3888944122,
+    3888944123,
+    3888944124,
+    3888944125,
+    3888944126,
+    3888944127,
+    9459739658,
+    4852984875
+  ],
+  "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "layer": "-1",
+    "maxspeed": "80",
+    "name": "우이신설선",
+    "name:en": "Ui-Sinseol Line",
+    "name:ja": "牛耳新設線",
+    "name:ko": "우이신설선",
+    "name:zh": "牛耳新設線",
+    "name:zh-Hans": "牛耳新设线",
+    "name:zh-Hant": "牛耳新設線",
+    "network": "수도권 전철",
+    "oneway": "yes",
+    "operator": "우이신설경전철운영(주)",
+    "operator:en": "Ui-Sinseol LRT Operation Co., Ltd.",
+    "operator:ko": "우이신설경전철운영(주)",
+    "operator:type": "private",
+    "operator:wikidata": "Q97340011",
+    "owner": "서울특별시",
+    "owner:en": "Seoul Special Metropolitan City",
+    "owner:type": "government",
+    "railway": "light_rail",
+    "railway:atc": "yes",
+    "railway:ato": "dto",
+    "start_date": "2017-09-02",
+    "tunnel": "yes",
+    "usage": "main",
+    "voltage": "750",
+    "workrules": "KR:URA"
+  }
+},
+{
+  "type": "way",
+  "id": 1026020328,
+  "center": {
+    "lat": 37.6143433,
+    "lon": 127.0108044
+  },
+  "nodes": [
+    4852979218,
+    3888944070,
+    3888944071,
+    4852979219,
+    3888944072,
+    3888944073,
+    4852979220,
+    3888944074,
+    4852979521,
+    3888944075,
+    3888944076,
+    4852979522,
+    4852979526,
+    4852979523,
+    3888944078,
+    4852979524,
+    9459739666,
+    9459739603,
+    4852989038,
+    4852979525,
+    9459739665,
+    3888944080,
+    3888944082,
+    3888944083,
+    4852989039,
+    3888944084,
+    9459739604,
+    4852989041,
+    4852989040,
+    4852989043,
+    4852989044,
+    4852989045,
+    3888944085,
+    3888944086,
+    3888944087,
+    4852989046,
+    3888944088,
+    4852989047,
+    4852989048,
+    3888944089,
+    3888944090,
+    4852989049,
+    4852989050,
+    3888944091,
+    4852989051,
+    3888944092,
+    4852989052,
+    3888944093,
+    4852989053,
+    3888944094,
+    4852989054,
+    4852989055,
+    3888944095,
+    4852989058
+  ],
+  "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "layer": "-3",
+    "maxspeed": "80",
+    "name": "우이신설선",
+    "name:en": "Ui-Sinseol Line",
+    "name:ja": "牛耳新設線",
+    "name:ko": "우이신설선",
+    "name:zh": "牛耳新設線",
+    "name:zh-Hans": "牛耳新设线",
+    "name:zh-Hant": "牛耳新設線",
+    "network": "수도권 전철",
+    "oneway": "yes",
+    "operator": "우이신설경전철운영(주)",
+    "operator:en": "Ui-Sinseol LRT Operation Co., Ltd.",
+    "operator:ko": "우이신설경전철운영(주)",
+    "operator:type": "private",
+    "operator:wikidata": "Q97340011",
+    "owner": "서울특별시",
+    "owner:en": "Seoul Special Metropolitan City",
+    "owner:type": "government",
+    "railway": "light_rail",
+    "railway:atc": "yes",
+    "railway:ato": "dto",
+    "start_date": "2017-09-02",
+    "tunnel": "yes",
+    "usage": "main",
+    "voltage": "750",
+    "workrules": "KR:URA"
+  }
+},
+{
+  "type": "way",
+  "id": 1026020334,
+  "center": {
+    "lat": 37.6596804,
+    "lon": 127.0131500
+  },
+  "nodes": [
+    4852984875,
+    3888944128,
+    3888944129,
+    3888944130,
+    3888944131,
+    3888944132,
+    3888944133,
+    3888944134,
+    3888944135,
+    9459739629,
+    4852984876
+  ],
+  "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "layer": "-1",
+    "maxspeed": "80",
+    "name": "우이신설선",
+    "name:en": "Ui-Sinseol Line",
+    "name:ja": "牛耳新設線",
+    "name:ko": "우이신설선",
+    "name:zh": "牛耳新設線",
+    "name:zh-Hans": "牛耳新设线",
+    "name:zh-Hant": "牛耳新設線",
+    "network": "수도권 전철",
+    "oneway": "yes",
+    "operator": "우이신설경전철운영(주)",
+    "operator:en": "Ui-Sinseol LRT Operation Co., Ltd.",
+    "operator:ko": "우이신설경전철운영(주)",
+    "operator:type": "private",
+    "operator:wikidata": "Q97340011",
+    "owner": "서울특별시",
+    "owner:en": "Seoul Special Metropolitan City",
+    "owner:type": "government",
+    "railway": "light_rail",
+    "railway:atc": "yes",
+    "railway:ato": "dto",
+    "start_date": "2017-09-02",
+    "tunnel": "yes",
+    "usage": "main",
+    "voltage": "750",
+    "workrules": "KR:URA"
+  }
+},
+{
+  "type": "way",
+  "id": 1026020335,
+  "center": {
+    "lat": 37.6596475,
+    "lon": 127.0130798
+  },
+  "nodes": [
+    9459739630,
+    9459739628,
+    9459674805,
+    9459674814,
+    9459674815,
+    9459674816,
+    9459739517,
+    9459739663,
+    9459739625,
+    9459739631
+  ],
+  "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "layer": "-3",
+    "maxspeed": "80",
+    "name": "우이신설선",
+    "name:en": "Ui-Sinseol Line",
+    "name:ja": "牛耳新設線",
+    "name:ko": "우이신설선",
+    "name:zh": "牛耳新設線",
+    "name:zh-Hans": "牛耳新设线",
+    "name:zh-Hant": "牛耳新設線",
+    "network": "수도권 전철",
+    "oneway": "yes",
+    "operator": "우이신설경전철운영(주)",
+    "operator:en": "Ui-Sinseol LRT Operation Co., Ltd.",
+    "operator:ko": "우이신설경전철운영(주)",
+    "operator:type": "private",
+    "operator:wikidata": "Q97340011",
+    "owner": "서울특별시",
+    "owner:en": "Seoul Special Metropolitan City",
+    "owner:type": "government",
+    "railway": "light_rail",
+    "railway:atc": "yes",
+    "railway:ato": "dto",
+    "start_date": "2017-09-02",
+    "tunnel": "yes",
+    "usage": "main",
+    "voltage": "750",
+    "workrules": "KR:URA"
+  }
+}
+
+  ]
+}

@@ -1,0 +1,7 @@
+city,status,network_source,population_source
+New York,completed,OSM Overpass subway/light_rail urban core,Configured metro total + station-kernel grid fallback
+London,completed,OSM Overpass subway/light_rail urban core,Configured metro total + station-kernel grid fallback
+Paris,fetch_failed,OSM Overpass subway core attempt timed out before full city output,not_generated
+Tokyo,fetch_incomplete,OSM Overpass subway core attempt did not finish in this run window,not_generated
+Seoul,completed,OSM Overpass subway/light_rail urban core,Configured metro total + station-kernel grid fallback
+Hong Kong,completed,OSM Overpass subway/light_rail urban core,Configured metro total + station-kernel grid fallback

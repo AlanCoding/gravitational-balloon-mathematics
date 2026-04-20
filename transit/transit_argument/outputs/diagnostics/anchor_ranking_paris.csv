@@ -1,0 +1,5 @@
+city,anchor_station_id,anchor_name,reachable_stations_60min,reachable_stations_120min,weighted_reach_score
+Paris,ch telet::48.8597::2.3458,Châtelet,628,628,61228.688011280945
+Paris,saint lazare::48.8756::2.3241,Saint-Lazare,628,628,60839.13769071935
+Paris,gare du nord::48.8797::2.3564,Gare du Nord,628,628,59338.62502678014
+Paris,nation::48.8476::2.3955,Nation,628,628,57087.55655892478

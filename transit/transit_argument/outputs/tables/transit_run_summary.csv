@@ -1,0 +1,2 @@
+city,city_slug,station_count,edge_count,chosen_anchor,reachable_population_60min,reachable_population_120min,raw_source,source_notes
+Paris,paris,630,5116,Châtelet,12299999.999999998,12299999.999999998,data/raw/paris/overpass_transit.json,"OpenStreetMap via Overpass, with static travel-time approximation"

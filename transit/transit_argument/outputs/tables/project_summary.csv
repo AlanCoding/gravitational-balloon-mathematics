@@ -1,0 +1,7 @@
+section,subject,metric_a,value_a,metric_b,value_b,notes
+transit,Hong Kong,reachable_population_60min,5967600.986054388,reachable_population_120min,7500000.0,anchor=太子 Prince Edward; stations=529
+transit,London,reachable_population_60min,14351049.038008036,reachable_population_120min,14584658.005481731,anchor=Oxford Circus; stations=1001
+transit,New York,reachable_population_60min,17266796.918894246,reachable_population_120min,19500000.0,anchor=34th Street–Herald Square; stations=2028
+transit,Seoul,reachable_population_60min,24657164.81672037,reachable_population_120min,26000000.000000004,anchor=시청; stations=975
+thermal_sphere,1B-person breathable sphere,best_case_surface_temperature_K,303.15,required_radius_m,57648.63816004547,Blackbody sphere outer surface requirement
+thermal_lattice,1B-person habitat lattice,selected_spacing_m,3000.0,thermal_margin_vs_load,4.770349655521658,"First spacing meeting open-sky threshold, else widest tested spacing"

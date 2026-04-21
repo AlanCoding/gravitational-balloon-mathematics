@@ -152,6 +152,68 @@ def build_case(case_name: str, raw: dict[str, object]) -> MobilityCase:
     )
 
 
+def compute_atmosphere_channel_thermal(raw_case: dict[str, object], watts_per_person: float) -> pd.DataFrame:
+    dims = tuple(int(value) for value in raw_case["grid_shape"])
+    channel = raw_case["thermal_channel"]
+    people_per_node = float(raw_case["people_per_node"])
+    spacing_m = float(raw_case["cell_spacing_m"])
+    line_node_count = dims[0]
+    side_length_m = line_node_count * spacing_m
+    line_population = line_node_count * people_per_node
+    line_heat_w = line_population * watts_per_person
+
+    channel_width_m = float(channel["channel_width_m"])
+    channel_height_m = float(channel["channel_height_m"])
+    channel_area_m2 = channel_width_m * channel_height_m
+    channel_volume_m3 = channel_area_m2 * side_length_m
+    air_density = float(channel["air_density_kg_m3"])
+    air_specific_heat = float(channel["air_specific_heat_j_kg_k"])
+    air_mass_kg = channel_volume_m3 * air_density
+    heat_capacity_j_k = air_mass_kg * air_specific_heat
+    heating_rate_k_s = line_heat_w / heat_capacity_j_k
+
+    bulk_air_speed_m_s = float(channel["bulk_air_speed_m_s"])
+    residence_time_s = side_length_m / bulk_air_speed_m_s
+    channel_airflow_kg_s = channel_area_m2 * bulk_air_speed_m_s * air_density
+    single_pass_delta_t_k = line_heat_w / (channel_airflow_kg_s * air_specific_heat)
+
+    max_allowed_delta_t_k = float(channel["max_allowed_delta_t_k"])
+    required_air_mass_flow_kg_s = line_heat_w / (air_specific_heat * max_allowed_delta_t_k)
+    required_air_speed_m_s = required_air_mass_flow_kg_s / (air_density * channel_area_m2)
+
+    return pd.DataFrame(
+        [
+            {
+                "case": str(raw_case["label"]),
+                "line_node_count": line_node_count,
+                "side_length_m": side_length_m,
+                "line_population": line_population,
+                "watts_per_person": watts_per_person,
+                "line_heat_W": line_heat_w,
+                "channel_width_m": channel_width_m,
+                "channel_height_m": channel_height_m,
+                "channel_cross_section_area_m2": channel_area_m2,
+                "channel_volume_m3": channel_volume_m3,
+                "air_density_kg_m3": air_density,
+                "air_specific_heat_j_kg_k": air_specific_heat,
+                "channel_air_mass_kg": air_mass_kg,
+                "channel_heat_capacity_j_k": heat_capacity_j_k,
+                "bulk_air_speed_m_s": bulk_air_speed_m_s,
+                "air_residence_time_s": residence_time_s,
+                "channel_air_mass_flow_kg_s": channel_airflow_kg_s,
+                "air_heating_rate_k_per_s": heating_rate_k_s,
+                "air_heating_rate_k_per_hour": heating_rate_k_s * 3600.0,
+                "single_pass_delta_t_k": single_pass_delta_t_k,
+                "max_allowed_delta_t_k": max_allowed_delta_t_k,
+                "required_air_mass_flow_kg_s_for_limit": required_air_mass_flow_kg_s,
+                "required_air_speed_m_s_for_limit": required_air_speed_m_s,
+                "within_limit_at_configured_speed": single_pass_delta_t_k <= max_allowed_delta_t_k,
+                "notes": str(channel["notes"]),
+            }
+        ]
+    )
+
+
 def _occupancy_mask(case: MobilityCase) -> np.ndarray:
     dims = case.grid_shape
     total_cells = dims[0] * dims[1] * dims[2]

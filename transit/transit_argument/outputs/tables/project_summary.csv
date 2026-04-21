@@ -9,3 +9,4 @@ thermal_sphere,1B-person breathable sphere,best_case_surface_temperature_K,303.1
 thermal_lattice,1B-person habitat lattice,selected_spacing_m,3000.0,thermal_margin_vs_load,4.770349655521658,"First spacing meeting open-sky threshold, else widest tested spacing"
 space_city_mobility,gravity_wheels_in_atmosphere,median_travel_time_min,56.22861861861862,p90_travel_time_min,72.34616473616474,mean_net_kinetic_energy_kwh=0.153
 space_city_mobility,rotating_habitats_in_vacuum,median_travel_time_min,66.07961130625372,p90_travel_time_min,85.6942815621154,mean_net_kinetic_energy_kwh=1.456
+space_city_thermal,gravity_wheels_in_atmosphere,single_pass_delta_t_k,0.3316749585406301,required_air_speed_m_s_for_limit,0.3316749585406301,line_heat_W=2.000e+09

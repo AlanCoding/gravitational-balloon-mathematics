@@ -160,6 +160,18 @@ SPACE_CITY_ASSUMPTIONS = {
         "transfer_time_min": 5.0,
         "bucket_minutes": 5,
         "max_bucket_minutes": 240,
+        "thermal_channel": {
+            "channel_width_m": 1_000.0,
+            "channel_height_m": 1_000.0,
+            "air_density_kg_m3": 1.2,
+            "air_specific_heat_j_kg_k": 1_005.0,
+            "bulk_air_speed_m_s": 5.0,
+            "max_allowed_delta_t_k": 5.0,
+            "notes": (
+                "Single square ventilation / transport channel running the full length of one side. "
+                "The adjacent habitat line dumps waste heat into that channel's passing air stream."
+            ),
+        },
         "tiers": [
             {
                 "name": "local_float_shuttle",

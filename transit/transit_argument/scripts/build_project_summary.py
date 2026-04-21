@@ -96,6 +96,22 @@ def main() -> None:
                 }
             )
 
+    channel_path = TABLE_DIR / "space_city_atmosphere_channel_thermal.csv"
+    channel = pd.read_csv(channel_path) if channel_path.exists() else pd.DataFrame()
+    if not channel.empty:
+        row = channel.iloc[0]
+        rows.append(
+            {
+                "section": "space_city_thermal",
+                "subject": row["case"],
+                "metric_a": "single_pass_delta_t_k",
+                "value_a": row["single_pass_delta_t_k"],
+                "metric_b": "required_air_speed_m_s_for_limit",
+                "value_b": row["required_air_speed_m_s_for_limit"],
+                "notes": f"line_heat_W={row['line_heat_W']:.3e}",
+            }
+        )
+
     write_dataframe(TABLE_DIR / "project_summary.csv", pd.DataFrame(rows))
 
 

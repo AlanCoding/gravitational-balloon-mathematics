@@ -62,6 +62,7 @@ If you want to re-download transit raw inputs:
 - Space-city reach curves: `outputs/tables/reachable_population_curve_space_city_<case>.csv`
 - Space-city mobility summary: `outputs/tables/space_city_trip_summary.csv`
 - Space-city vehicle tiers: `outputs/tables/space_city_tiers.csv`
+- Atmosphere channel thermal check: `outputs/tables/space_city_atmosphere_channel_thermal.csv`
 - Space-city plot: `outputs/plots/space_city_reachable_population_vs_time.png`
 - Cross-project summary: `outputs/tables/project_summary.csv`
 
@@ -92,3 +93,4 @@ This is intentionally not a timetable-accurate GTFS router. It is a transparent 
 - The vacuum case models a single-person shielded pod that docks into larger electromagnetic buses.
 - Reach curves are computed from a representative central origin, which is a reasonable proxy in a regular lattice city.
 - Transfer penalties are hand-wavy but anchored to Earth metro interchange behavior and kept explicit in the config and outputs.
+- The atmosphere case also includes a one-channel thermal check using the waste heat from one full line of adjacent habitats and the air mass flow through a square channel.

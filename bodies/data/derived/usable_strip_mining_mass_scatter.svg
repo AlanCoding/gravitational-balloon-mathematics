@@ -1,8 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
-<title>Usable strip-mining mass versus delta-v</title>
-<rect width="100%" height="100%" fill="#f4efe8"/>
-<style><![CDATA[
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1400"
+   height="900"
+   viewBox="0 0 1400 900"
+   version="1.1"
+   id="svg33"
+   sodipodi:docname="usable_strip_mining_mass_scatter.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs33" />
+  <sodipodi:namedview
+     id="namedview33"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.16"
+     inkscape:cx="703.44828"
+     inkscape:cy="450"
+     inkscape:window-width="2560"
+     inkscape:window-height="1318"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg33" />
+  <title
+     id="title1">Usable strip-mining mass versus delta-v</title>
+  <rect
+     width="100%"
+     height="100%"
+     fill="#f4efe8"
+     id="rect1" />
+  <style
+     id="style1"><![CDATA[
 text { font-family: "Georgia", "Times New Roman", serif; fill: #2d2a26; }
 .title { font-size: 60px; font-weight: 700; }
 .subtitle { font-size: 32px; }
@@ -11,68 +48,420 @@ text { font-family: "Georgia", "Times New Roman", serif; fill: #2d2a26; }
 .grid { stroke: #d8cec0; stroke-width: 1; }
 .tick { font-size: 24px; }
 ]]></style>
-<text class="title" x="175" y="68">Usable strip-mining mass versus delta-v</text>
-<text class="subtitle" x="175" y="104">Earth keeps only its land fraction, Venus is zero, and zero-mass rows are omitted from the log plot.</text>
-<line class="grid" x1="120.0" y1="110" x2="120.0" y2="760" />
-<text class="tick" x="120.0" y="788" text-anchor="middle">0</text>
-<line class="grid" x1="366.2" y1="110" x2="366.2" y2="760" />
-<text class="tick" x="366.2" y="788" text-anchor="middle">5</text>
-<line class="grid" x1="612.4" y1="110" x2="612.4" y2="760" />
-<text class="tick" x="612.4" y="788" text-anchor="middle">10</text>
-<line class="grid" x1="858.6" y1="110" x2="858.6" y2="760" />
-<text class="tick" x="858.6" y="788" text-anchor="middle">15</text>
-<line class="grid" x1="1104.8" y1="110" x2="1104.8" y2="760" />
-<text class="tick" x="1104.8" y="788" text-anchor="middle">20</text>
-<line class="grid" x1="120" y1="782.1" x2="1300" y2="782.1" />
-<text class="tick" x="106" y="788.1" text-anchor="end">1e15</text>
-<line class="grid" x1="120" y1="656.7" x2="1300" y2="656.7" />
-<text class="tick" x="106" y="662.7" text-anchor="end">1e16</text>
-<line class="grid" x1="120" y1="531.2" x2="1300" y2="531.2" />
-<text class="tick" x="106" y="537.2" text-anchor="end">1e17</text>
-<line class="grid" x1="120" y1="405.8" x2="1300" y2="405.8" />
-<text class="tick" x="106" y="411.8" text-anchor="end">1e18</text>
-<line class="grid" x1="120" y1="280.3" x2="1300" y2="280.3" />
-<text class="tick" x="106" y="286.3" text-anchor="end">1e19</text>
-<line class="grid" x1="120" y1="154.9" x2="1300" y2="154.9" />
-<text class="tick" x="106" y="160.9" text-anchor="end">1e20</text>
-<line class="grid" x1="120" y1="29.4" x2="1300" y2="29.4" />
-<text class="tick" x="106" y="35.4" text-anchor="end">1e21</text>
-<line class="axis" x1="120" y1="760" x2="1300" y2="760" />
-<line class="axis" x1="120" y1="110" x2="120" y2="760" />
-<text class="subtitle" x="710.0" y="852" text-anchor="middle">Delta-v from LEO (km/s)</text>
-<text class="subtitle" transform="translate(36 435.0) rotate(-90)" text-anchor="middle">Reachable mass (kg, log scale)</text>
-<circle cx="655.6" cy="147.6" r="9" fill="#dc2626" stroke="#2d2a26" stroke-width="1.5"/>
-<text class="legend" x="667.6" y="137.6" text-anchor="start">Mars</text>
-<circle cx="377.2" cy="175.2" r="9" fill="#6b7280" stroke="#2d2a26" stroke-width="1.5"/>
-<text class="legend" x="389.2" y="165.2" text-anchor="start">Moon</text>
-<circle cx="1181.9" cy="183.1" r="9" fill="#b45309" stroke="#2d2a26" stroke-width="1.5"/>
-<text class="legend" x="1169.9" y="173.1" text-anchor="end">Mercury</text>
-<circle cx="120.0" cy="198.6" r="9" fill="#2563eb" stroke="#2d2a26" stroke-width="1.5"/>
-<text class="legend" x="132.0" y="188.6" text-anchor="start">Earth</text>
-<circle cx="938.5" cy="223.1" r="9" fill="#7c3aed" stroke="#2d2a26" stroke-width="1.5"/>
-<text class="legend" x="926.5" y="213.1" text-anchor="end">Ceres</text>
-<circle cx="1212.6" cy="272.5" r="9" fill="#9333ea" stroke="#2d2a26" stroke-width="1.5"/>
-<text class="legend" x="1200.6" y="262.5" text-anchor="end">Pallas</text>
-<circle cx="836.4" cy="281.1" r="9" fill="#8b5cf6" stroke="#2d2a26" stroke-width="1.5"/>
-<text class="legend" x="824.4" y="271.1" text-anchor="end">Vesta</text>
-<circle cx="879.4" cy="287.1" r="9" fill="#a855f7" stroke="#2d2a26" stroke-width="1.5"/>
-<text class="legend" x="867.4" y="277.1" text-anchor="end">Hygiea</text>
-<circle cx="981.1" cy="315.2" r="9" fill="#0ea5e9" stroke="#2d2a26" stroke-width="1.5"/>
-<text class="legend" x="969.1" y="305.2" text-anchor="end">Camilla</text>
-<circle cx="1014.4" cy="330.8" r="9" fill="#6366f1" stroke="#2d2a26" stroke-width="1.5"/>
-<text class="legend" x="1002.4" y="320.8" text-anchor="end">Interamnia</text>
-<circle cx="836.3" cy="341.1" r="9" fill="#c026d3" stroke="#2d2a26" stroke-width="1.5"/>
-<text class="legend" x="824.3" y="331.1" text-anchor="end">Psyche</text>
-<circle cx="971.7" cy="343.6" r="9" fill="#4f46e5" stroke="#2d2a26" stroke-width="1.5"/>
-<text class="legend" x="959.7" y="333.6" text-anchor="end">Kalliope</text>
-<circle cx="749.0" cy="396.0" r="9" fill="#1d4ed8" stroke="#2d2a26" stroke-width="1.5"/>
-<text class="legend" x="761.0" y="386.0" text-anchor="start">Lutetia</text>
-<circle cx="783.4" cy="485.6" r="9" fill="#6366f1" stroke="#2d2a26" stroke-width="1.5"/>
-<text class="legend" x="795.4" y="475.6" text-anchor="start">Mathilde</text>
-<circle cx="810.1" cy="560.0" r="11" fill="#9aa0a6" stroke="#2d2a26" stroke-width="1.5"/>
-<text class="legend" x="798.1" y="576.0" text-anchor="end">Asteroids &lt; 1e+17 kg</text>
-<circle cx="441.7" cy="624.7" r="9" fill="#0f766e" stroke="#2d2a26" stroke-width="1.5"/>
-<text class="legend" x="453.7" y="614.7" text-anchor="start">Phobos</text>
-<circle cx="464.4" cy="722.4" r="9" fill="#14b8a6" stroke="#2d2a26" stroke-width="1.5"/>
-<text class="legend" x="476.4" y="712.4" text-anchor="start">Deimos</text>
+  <text
+     class="title"
+     x="174.13792"
+     y="56.793102"
+     id="text1">Usable strip-mining mass versus delta-v</text>
+  <text
+     class="subtitle"
+     x="405.17242"
+     y="98.827583"
+     id="text2">Earth keeps only its land fraction, Venus is zero</text>
+  <line
+     class="grid"
+     x1="120.0"
+     y1="110"
+     x2="120.0"
+     y2="760"
+     id="line2" />
+  <text
+     class="tick"
+     x="120.0"
+     y="788"
+     text-anchor="middle"
+     id="text3">0</text>
+  <line
+     class="grid"
+     x1="366.2"
+     y1="110"
+     x2="366.2"
+     y2="760"
+     id="line3" />
+  <text
+     class="tick"
+     x="366.2"
+     y="788"
+     text-anchor="middle"
+     id="text4">5</text>
+  <line
+     class="grid"
+     x1="612.4"
+     y1="110"
+     x2="612.4"
+     y2="760"
+     id="line4" />
+  <text
+     class="tick"
+     x="612.4"
+     y="788"
+     text-anchor="middle"
+     id="text5">10</text>
+  <line
+     class="grid"
+     x1="858.6"
+     y1="110"
+     x2="858.6"
+     y2="760"
+     id="line5" />
+  <text
+     class="tick"
+     x="858.6"
+     y="788"
+     text-anchor="middle"
+     id="text6">15</text>
+  <line
+     class="grid"
+     x1="1104.8"
+     y1="110"
+     x2="1104.8"
+     y2="760"
+     id="line6" />
+  <text
+     class="tick"
+     x="1104.8"
+     y="788"
+     text-anchor="middle"
+     id="text7">20</text>
+  <line
+     class="grid"
+     x1="120"
+     y1="782.1"
+     x2="1300"
+     y2="782.1"
+     id="line7" />
+  <text
+     class="tick"
+     x="106"
+     y="788.1"
+     text-anchor="end"
+     id="text8">1e15</text>
+  <line
+     class="grid"
+     x1="120"
+     y1="656.7"
+     x2="1300"
+     y2="656.7"
+     id="line8" />
+  <text
+     class="tick"
+     x="106"
+     y="662.7"
+     text-anchor="end"
+     id="text9">1e16</text>
+  <line
+     class="grid"
+     x1="120"
+     y1="531.2"
+     x2="1300"
+     y2="531.2"
+     id="line9" />
+  <text
+     class="tick"
+     x="106"
+     y="537.2"
+     text-anchor="end"
+     id="text10">1e17</text>
+  <line
+     class="grid"
+     x1="120"
+     y1="405.8"
+     x2="1300"
+     y2="405.8"
+     id="line10" />
+  <text
+     class="tick"
+     x="106"
+     y="411.8"
+     text-anchor="end"
+     id="text11">1e18</text>
+  <line
+     class="grid"
+     x1="120"
+     y1="280.3"
+     x2="1300"
+     y2="280.3"
+     id="line11" />
+  <text
+     class="tick"
+     x="106"
+     y="286.3"
+     text-anchor="end"
+     id="text12">1e19</text>
+  <line
+     class="grid"
+     x1="120"
+     y1="154.9"
+     x2="1300"
+     y2="154.9"
+     id="line12" />
+  <text
+     class="tick"
+     x="106"
+     y="160.9"
+     text-anchor="end"
+     id="text13">1e20</text>
+  <line
+     class="axis"
+     x1="120"
+     y1="760"
+     x2="1300"
+     y2="760"
+     id="line14" />
+  <line
+     class="axis"
+     x1="120"
+     y1="110"
+     x2="120"
+     y2="760"
+     id="line15" />
+  <text
+     class="subtitle"
+     x="710.0"
+     y="852"
+     text-anchor="middle"
+     id="text15">Delta-v from LEO (km/s)</text>
+  <text
+     class="subtitle"
+     transform="translate(36 435.0) rotate(-90)"
+     text-anchor="middle"
+     id="text16">Reachable mass (kg, log scale)</text>
+  <circle
+     cx="655.6"
+     cy="147.6"
+     r="9"
+     fill="#dc2626"
+     stroke="#2d2a26"
+     stroke-width="1.5"
+     id="circle16" />
+  <text
+     class="legend"
+     x="621.91034"
+     y="184.15173"
+     text-anchor="start"
+     id="text17">Mars</text>
+  <circle
+     cx="377.2"
+     cy="175.2"
+     r="9"
+     fill="#6b7280"
+     stroke="#2d2a26"
+     stroke-width="1.5"
+     id="circle17" />
+  <text
+     class="legend"
+     x="344.37244"
+     y="216.92413"
+     text-anchor="start"
+     id="text18">Moon</text>
+  <circle
+     cx="1181.9"
+     cy="183.1"
+     r="9"
+     fill="#b45309"
+     stroke="#2d2a26"
+     stroke-width="1.5"
+     id="circle18" />
+  <text
+     class="legend"
+     x="1230.2449"
+     y="161.03104"
+     text-anchor="end"
+     id="text19">Mercury</text>
+  <circle
+     cx="120.0"
+     cy="198.6"
+     r="9"
+     fill="#2563eb"
+     stroke="#2d2a26"
+     stroke-width="1.5"
+     id="circle19" />
+  <text
+     class="legend"
+     x="139.75862"
+     y="204.97931"
+     text-anchor="start"
+     id="text20">Earth</text>
+  <circle
+     cx="938.5"
+     cy="223.1"
+     r="9"
+     fill="#7c3aed"
+     stroke="#2d2a26"
+     stroke-width="1.5"
+     id="circle20" />
+  <text
+     class="legend"
+     x="968.74139"
+     y="204.47931"
+     text-anchor="end"
+     id="text21">Ceres</text>
+  <circle
+     cx="1212.6"
+     cy="272.5"
+     r="9"
+     fill="#9333ea"
+     stroke="#2d2a26"
+     stroke-width="1.5"
+     id="circle21" />
+  <text
+     class="legend"
+     x="1247.1517"
+     y="254.74138"
+     text-anchor="end"
+     id="text22">Pallas</text>
+  <circle
+     cx="836.4"
+     cy="281.1"
+     r="9"
+     fill="#8b5cf6"
+     stroke="#2d2a26"
+     stroke-width="1.5"
+     id="circle22" />
+  <text
+     class="legend"
+     x="824.4"
+     y="271.1"
+     text-anchor="end"
+     id="text23">Vesta</text>
+  <circle
+     cx="879.4"
+     cy="287.1"
+     r="9"
+     fill="#a855f7"
+     stroke="#2d2a26"
+     stroke-width="1.5"
+     id="circle23" />
+  <text
+     class="legend"
+     x="931.19312"
+     y="265.8931"
+     text-anchor="end"
+     id="text24">Hygiea</text>
+  <circle
+     cx="981.1"
+     cy="315.2"
+     r="9"
+     fill="#0ea5e9"
+     stroke="#2d2a26"
+     stroke-width="1.5"
+     id="circle24" />
+  <text
+     class="legend"
+     x="1035.4792"
+     y="297.44141"
+     text-anchor="end"
+     id="text25">Camilla</text>
+  <circle
+     cx="1014.4"
+     cy="330.8"
+     r="9"
+     fill="#6366f1"
+     stroke="#2d2a26"
+     stroke-width="1.5"
+     id="circle25" />
+  <text
+     class="legend"
+     x="1170.5034"
+     y="347.52414"
+     text-anchor="end"
+     id="text26">Interamnia</text>
+  <circle
+     cx="836.3"
+     cy="341.1"
+     r="9"
+     fill="#c026d3"
+     stroke="#2d2a26"
+     stroke-width="1.5"
+     id="circle26" />
+  <text
+     class="legend"
+     x="819.12756"
+     y="348.3414"
+     text-anchor="end"
+     id="text27">Psyche</text>
+  <circle
+     cx="971.7"
+     cy="343.6"
+     r="9"
+     fill="#4f46e5"
+     stroke="#2d2a26"
+     stroke-width="1.5"
+     id="circle27" />
+  <text
+     class="legend"
+     x="1013.1483"
+     y="376.70346"
+     text-anchor="end"
+     id="text28">Kalliope</text>
+  <circle
+     cx="749.0"
+     cy="396.0"
+     r="9"
+     fill="#1d4ed8"
+     stroke="#2d2a26"
+     stroke-width="1.5"
+     id="circle28" />
+  <text
+     class="legend"
+     x="646.34485"
+     y="398.93103"
+     text-anchor="start"
+     id="text29">Lutetia</text>
+  <circle
+     cx="783.4"
+     cy="485.6"
+     r="9"
+     fill="#6366f1"
+     stroke="#2d2a26"
+     stroke-width="1.5"
+     id="circle29" />
+  <text
+     class="legend"
+     x="657.46899"
+     y="494.56552"
+     text-anchor="start"
+     id="text30">Mathilde</text>
+  <circle
+     cx="810.1"
+     cy="560.0"
+     r="11"
+     fill="#9aa0a6"
+     stroke="#2d2a26"
+     stroke-width="1.5"
+     id="circle30" />
+  <text
+     class="legend"
+     x="798.1"
+     y="576.0"
+     text-anchor="end"
+     id="text31">Asteroids &lt; 1e+17 kg</text>
+  <circle
+     cx="441.7"
+     cy="624.7"
+     r="9"
+     fill="#0f766e"
+     stroke="#2d2a26"
+     stroke-width="1.5"
+     id="circle31" />
+  <text
+     class="legend"
+     x="453.7"
+     y="614.7"
+     text-anchor="start"
+     id="text32">Phobos</text>
+  <circle
+     cx="464.4"
+     cy="722.4"
+     r="9"
+     fill="#14b8a6"
+     stroke="#2d2a26"
+     stroke-width="1.5"
+     id="circle32" />
+  <text
+     class="legend"
+     x="476.4"
+     y="712.4"
+     text-anchor="start"
+     id="text33">Deimos</text>
 </svg>

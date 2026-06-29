@@ -1,0 +1,25 @@
+body_id,orbit_kind,orbit_center,orbit_a_km,orbit_e,orbit_i_deg,orbit_omega_deg,orbit_Omega_deg,orbit_source_id,notes
+mercury,heliocentric,Sun,57909050,0.205630,7.005,29.124,48.331,nasa_planet_orbital_elements,Approximate mean heliocentric orbital elements
+venus,heliocentric,Sun,108208000,0.006772,3.395,54.884,76.680,nasa_planet_orbital_elements,Approximate mean heliocentric orbital elements
+earth,heliocentric,Sun,149597870.7,0.016709,0.00005,102.937,0.000,nasa_planet_orbital_elements,Approximate mean heliocentric orbital elements
+moon,parent-centric,Earth,384400,0.0549,5.145,318.15,125.08,nasa_lunar_orbital_elements,Approximate mean geocentric orbital elements
+mars,heliocentric,Sun,227939200,0.0934,1.850,286.502,49.558,nasa_planet_orbital_elements,Approximate mean heliocentric orbital elements
+phobos,parent-centric,Mars,9376,0.0151,1.093,150.057,0.0,nasa_mars_moon_orbital_elements,Approximate mean areocentric orbital elements
+deimos,parent-centric,Mars,23463.2,0.00033,0.93,260.73,0.0,nasa_mars_moon_orbital_elements,Approximate mean areocentric orbital elements
+ceres,heliocentric,Sun,413700000,0.0758,10.594,73.597,80.329,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+pallas,heliocentric,Sun,414500000,0.231,34.837,310.226,173.081,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+vesta,heliocentric,Sun,353000000,0.089,7.140,150.977,103.851,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+hygiea,heliocentric,Sun,470000000,0.117,3.838,312.000,283.000,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+interamnia,heliocentric,Sun,266000000,0.155,17.300,95.000,280.000,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+psyche,heliocentric,Sun,437000000,0.136,3.100,150.000,150.000,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+camilla,heliocentric,Sun,478000000,0.037,9.900,100.000,227.000,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+kalliope,heliocentric,Sun,455000000,0.102,13.700,180.000,66.000,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+lutetia,heliocentric,Sun,390000000,0.163,3.060,97.000,80.000,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+mathilde,heliocentric,Sun,646000000,0.266,6.740,68.000,37.000,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+ida,heliocentric,Sun,458000000,0.042,1.140,20.000,103.000,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+eros,heliocentric,Sun,172000000,0.223,10.800,178.700,304.400,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+bennu,heliocentric,Sun,168000000,0.2037,6.034,66.223,2.060,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+ryugu,heliocentric,Sun,145000000,0.190,5.883,211.000,251.000,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+dinkinesh,heliocentric,Sun,177000000,0.100,2.100,200.000,80.000,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+2000_dp107,heliocentric,Sun,179000000,0.190,1.400,30.000,45.000,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+itokawa,heliocentric,Sun,187000000,0.280,1.620,162.000,69.000,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction

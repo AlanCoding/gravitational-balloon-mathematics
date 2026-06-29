@@ -1,0 +1,8 @@
+# Local JPL DASTCOM5 download package.
+dastcom5.zip
+
+# If the package is unpacked here, keep the whole tree local.
+dastcom5/
+
+# If the package is re-downloaded elsewhere in this folder, keep it local.
+*.zip

@@ -1,0 +1,6 @@
+source_id,source_kind,title,url,scope,notes
+nasa_planet_fact_sheet,external_reference,NASA Planetary Fact Sheet,https://nssdc.gsfc.nasa.gov/planetary/factsheet/,planetary bodies,Used for the major planets and Earth-Moon system reference values
+nasa_lunar_fact_sheet,external_reference,NASA Moon Fact Sheet,https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html,Earth's Moon,Historical NASA fact-sheet URL; currently redirects through NASA's NSSDC landing page
+nasa_satellite_physical_parameters,external_reference,Natural Satellite Physical Parameters,https://ssd.jpl.nasa.gov/,major moons,Reference bucket for large moons compiled from public JPL/NASA summaries
+jpl_dastcom5_local_2026-06-26,local_extraction,Local DASTCOM5 asteroid dump,./dastcom5/dat/dast5_le.dat,asteroids,Extracted from the checked-in JPL archive in this folder
+

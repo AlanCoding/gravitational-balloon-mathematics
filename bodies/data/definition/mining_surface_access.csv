@@ -1,0 +1,3 @@
+body_id,usable_fraction,source_id,notes
+earth,0.2927,earth_land_fraction_approx,Approximate land fraction of Earth; ocean-covered surface is excluded in the usable strip-mining case.
+venus,0,venus_surface_unusable_assumption,Venus is treated as fully unusable in this scenario.

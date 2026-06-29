@@ -1,0 +1,47 @@
+body_id,name,kind,parent,mass_kg,radius_km,mass_source_id,radius_source_id,notes
+mercury,Mercury,planet,Sun,3.3011e23,2439.7,nasa_planet_fact_sheet,nasa_planet_fact_sheet,Mean radius and mass from the standard planetary fact-sheet set
+venus,Venus,planet,Sun,4.8675e24,6051.8,nasa_planet_fact_sheet,nasa_planet_fact_sheet,Mean radius and mass from the standard planetary fact-sheet set
+earth,Earth,planet,Sun,5.97237e24,6371.0,nasa_planet_fact_sheet,nasa_planet_fact_sheet,Calibration body
+moon,Moon,moon,Earth,7.342e22,1737.4,nasa_lunar_fact_sheet,nasa_lunar_fact_sheet,Earth's Moon
+mars,Mars,planet,Sun,6.4171e23,3389.5,nasa_planet_fact_sheet,nasa_planet_fact_sheet,Mean radius and mass from the standard planetary fact-sheet set
+phobos,Phobos,moon,Mars,1.0659e16,11.267,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Mars moon
+deimos,Deimos,moon,Mars,1.4762e15,6.2,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Mars moon
+jupiter,Jupiter,planet,Sun,1.8982e27,69911,nasa_planet_fact_sheet,nasa_planet_fact_sheet,Mean radius and mass from the standard planetary fact-sheet set
+io,Io,moon,Jupiter,8.9319e22,1821.6,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Galilean moon
+europa,Europa,moon,Jupiter,4.7998e22,1560.8,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Galilean moon
+ganymede,Ganymede,moon,Jupiter,1.4819e23,2634.1,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Galilean moon
+callisto,Callisto,moon,Jupiter,1.0759e23,2410.3,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Galilean moon
+saturn,Saturn,planet,Sun,5.6834e26,58232,nasa_planet_fact_sheet,nasa_planet_fact_sheet,Mean radius and mass from the standard planetary fact-sheet set
+mimas,Mimas,moon,Saturn,3.7493e19,198.2,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Saturn moon
+enceladus,Enceladus,moon,Saturn,1.08022e20,252.1,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Saturn moon
+tethys,Tethys,moon,Saturn,6.17449e20,531.1,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Saturn moon
+dione,Dione,moon,Saturn,1.095452e21,561.4,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Saturn moon
+rhea,Rhea,moon,Saturn,2.306518e21,763.8,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Saturn moon
+titan,Titan,moon,Saturn,1.3452e23,2574.73,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Saturn moon
+iapetus,Iapetus,moon,Saturn,1.805635e21,734.5,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Saturn moon
+uranus,Uranus,planet,Sun,8.6810e25,25362,nasa_planet_fact_sheet,nasa_planet_fact_sheet,Mean radius and mass from the standard planetary fact-sheet set
+miranda,Miranda,moon,Uranus,6.59e19,235.8,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Uranian moon
+ariel,Ariel,moon,Uranus,1.353e21,578.9,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Uranian moon
+umbriel,Umbriel,moon,Uranus,1.172e21,584.7,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Uranian moon
+titania,Titania,moon,Uranus,3.527e21,788.9,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Uranian moon
+oberon,Oberon,moon,Uranus,3.014e21,761.4,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Uranian moon
+neptune,Neptune,planet,Sun,1.02413e26,24622,nasa_planet_fact_sheet,nasa_planet_fact_sheet,Mean radius and mass from the standard planetary fact-sheet set
+triton,Triton,moon,Neptune,2.14e22,1353.4,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Neptunian moon
+charon,Charon,moon,Pluto system,1.586e21,606.0,nasa_satellite_physical_parameters,nasa_satellite_physical_parameters,Included for Kuiper-belt context
+ceres,Ceres,asteroid,Sun,9.3835e20,469.7,jpl_dastcom5_local_2026-06-26,jpl_dastcom5_local_2026-06-26,Dwarf planet / asteroid-belt anchor body
+pallas,Pallas,asteroid,Sun,2.042162e20,256.5,jpl_dastcom5_local_2026-06-26,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+vesta,Vesta,asteroid,Sun,2.590277e20,261.385,jpl_dastcom5_local_2026-06-26,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+hygiea,Hygiea,asteroid,Sun,1.048799e20,203.56,jpl_dastcom5_local_2026-06-26,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+interamnia,Interamnia,asteroid,Sun,7.491422e19,153.156,jpl_dastcom5_local_2026-06-26,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+psyche,Psyche,asteroid,Sun,2.398753e19,111.0,jpl_dastcom5_local_2026-06-26,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+camilla,Camilla,asteroid,Sun,1.119968e19,105.185,jpl_dastcom5_local_2026-06-26,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+kalliope,Kalliope,asteroid,Sun,7.356577e18,83.768,jpl_dastcom5_local_2026-06-26,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+lutetia,Lutetia,asteroid,Sun,1.699055e18,49.0,jpl_dastcom5_local_2026-06-26,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+mathilde,Mathilde,asteroid,Sun,1.032318e17,26.4,jpl_dastcom5_local_2026-06-26,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+ida,Ida,asteroid,Sun,4.120282e16,16.0,jpl_dastcom5_local_2026-06-26,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+eros,Eros,asteroid,Sun,6.686843e15,8.42,jpl_dastcom5_local_2026-06-26,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+bennu,Bennu,asteroid,Sun,7.327210e10,0.2422,jpl_dastcom5_local_2026-06-26,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+ryugu,Ryugu,asteroid,Sun,4.494853e11,0.448,jpl_dastcom5_local_2026-06-26,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+dinkinesh,Dinkinesh,asteroid,Sun,4.944339e11,0.3595,jpl_dastcom5_local_2026-06-26,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+2000_dp107,2000 DP107,asteroid,Sun,4.830469e11,0.4315,jpl_dastcom5_local_2026-06-26,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction
+itokawa,Itokawa,asteroid,Sun,3.146397e10,0.165,jpl_dastcom5_local_2026-06-26,jpl_dastcom5_local_2026-06-26,From local DASTCOM5 extraction

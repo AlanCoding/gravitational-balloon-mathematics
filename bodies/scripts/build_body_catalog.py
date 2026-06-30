@@ -15,6 +15,10 @@ AU_KM = 149597870.7
 P_MAX = 40e6
 EXCAVATION_RHO = 3000.0
 TEMP_LIMIT_DEPTH_KM = 2.0
+EARTH_LEO_ALT_KM = 400.0
+EARTH_LEO_RADIUS_KM = 6371.0 + EARTH_LEO_ALT_KM
+TRANSFER_MARGIN_KM_S = 0.3
+EARTH_MASS_KG = 5.97237e24
 
 
 def read_definitions(path: Path) -> list[dict[str, str]]:
@@ -99,6 +103,49 @@ def escape_velocity_km_s(mass_kg: float, radius_km: float) -> float:
     return math.sqrt(2.0 * G * mass_kg / radius_m) / 1000.0
 
 
+def circular_speed_km_s(mu_km3_s2: float, radius_km: float) -> float:
+    return math.sqrt(mu_km3_s2 / radius_km)
+
+
+def hohmann_departure_burn_km_s(mu_km3_s2: float, r1_km: float, r2_km: float) -> float:
+    a_trans = 0.5 * (r1_km + r2_km)
+    v1 = circular_speed_km_s(mu_km3_s2, r1_km)
+    v_tp = math.sqrt(mu_km3_s2 * (2.0 / r1_km - 1.0 / a_trans))
+    return abs(v_tp - v1)
+
+
+def heliocentric_departure_from_leo_km_s(row: dict[str, str]) -> float:
+    a_km = float(row["orbit_a_km"])
+    e = float(row["orbit_e"])
+    inc = math.radians(float(row["orbit_i_deg"]))
+    q = a_km * (1.0 - e)
+    Q = a_km * (1.0 + e)
+    r2 = q if abs(q - AU_KM) <= abs(Q - AU_KM) else Q
+    a_trans = 0.5 * (AU_KM + r2)
+    v1 = math.sqrt(MU_SUN / AU_KM)
+    v_tp = math.sqrt(MU_SUN * (2.0 / AU_KM - 1.0 / a_trans))
+    v_ta = math.sqrt(MU_SUN * (2.0 / r2 - 1.0 / a_trans))
+    v_inf = abs(v_tp - v1) + 2.0 * min(v_tp, v_ta) * math.sin(inc / 2.0)
+    mu_earth = G_KM3_S2 * EARTH_MASS_KG
+    v_circ_leo = circular_speed_km_s(mu_earth, EARTH_LEO_RADIUS_KM)
+    v_esc_leo = math.sqrt(2.0 * mu_earth / EARTH_LEO_RADIUS_KM)
+    return math.sqrt(v_inf * v_inf + v_esc_leo * v_esc_leo) - v_circ_leo + TRANSFER_MARGIN_KM_S
+
+
+def earth_moon_departure_from_leo_km_s(row: dict[str, str], by_id: dict[str, dict[str, str]]) -> float:
+    # A simple LEO-to-lunar-transfer baseline plus a small margin gives the
+    # range expected for a Moon surface arrival with no aerobraking.
+    return 3.2 + TRANSFER_MARGIN_KM_S
+
+
+def landing_bonus_km_s(row: dict[str, str]) -> float:
+    mass_kg = float(row["mass_kg"])
+    radius_km = float(row["radius_km"])
+    if row["name"] in {"Mercury", "Moon"}:
+        return escape_velocity_km_s(mass_kg, radius_km)
+    return 0.5 * escape_velocity_km_s(mass_kg, radius_km)
+
+
 def build_rows(defs: list[dict[str, str]]) -> list[dict[str, str]]:
     orbit_refs = read_orbit_refs(Path("data/origin/orbital_elements.csv"))
     asteroid_refs = read_asteroid_orbit_refs(Path("data/origin/asteroids_dastcom5_reference.csv"))
@@ -175,18 +222,22 @@ def build_rows(defs: list[dict[str, str]]) -> list[dict[str, str]]:
             r["leo_delta_v_is_computed"] = "1"
             continue
 
-        orbit_dv = float(r["orbit_delta_v_km_s"]) if r["orbit_delta_v_km_s"] else 0.0
-        arrival_bonus = 0.5 * escape_velocity_km_s(float(r["mass_kg"]), float(r["radius_km"]))
+        arrival_bonus = landing_bonus_km_s(r)
 
-        if r["kind"] == "moon":
+        if r["name"] == "Mars" or r["parent"] == "Mars":
+            leo_dv = heliocentric_departure_from_leo_km_s(by_id["mars"])
+            arrival_bonus = 0.0
+        elif r["name"] == "Moon":
+            leo_dv = earth_moon_departure_from_leo_km_s(r, by_id) + arrival_bonus
+        elif r["orbit_kind"] == "heliocentric":
+            leo_dv = heliocentric_departure_from_leo_km_s(r) + arrival_bonus
+        elif r["kind"] == "moon":
+            orbit_dv = float(r["orbit_delta_v_km_s"]) if r["orbit_delta_v_km_s"] else 0.0
             parent = by_id.get(slugify(r["parent"]))
             parent_orbit_dv = float(parent["orbit_delta_v_km_s"]) if parent and parent["orbit_delta_v_km_s"] else 0.0
-            if r["parent"] == "Earth":
-                leo_dv = orbit_dv + arrival_bonus
-            else:
-                leo_dv = parent_orbit_dv + orbit_dv + arrival_bonus
+            leo_dv = parent_orbit_dv + orbit_dv + arrival_bonus
         else:
-            leo_dv = 3.2 + orbit_dv + arrival_bonus
+            leo_dv = arrival_bonus
 
         r["leo_delta_v_km_s"] = f"{leo_dv:.6g}"
         r["leo_delta_v_is_computed"] = "1"

@@ -28,6 +28,16 @@ d_use = min(d_pressure, d_temperature, R)
 
 where `R` is the body's mean radius.
 
+In practice this project uses three closely related scenarios:
+
+1. Reachable mass: the main shell model with pressure, temperature, and radius limits, used for the first set of mass tables and charts.
+2. Strip-mining mass: a much shallower version of the same shell model, with a low pressure cap calibrated to about 100 m of Earth depth. This is meant to show the easily skimmed outer shell rather than deeper mining.
+3. Usable strip-mining mass: the same shallow strip-mining case, but with unusable surface removed from the accessible area. In this version Earth only counts its land fraction and Venus is treated as completely unusable.
+
+The pressure limit written below is the main calibration for the first and
+second scenarios. The third scenario adds a separate usability factor on top of
+that pressure-limited shell.
+
 ## Simplified Depth Model
 
 Assume constant bulk density `rho` and near-surface gravity `g`.
@@ -48,7 +58,9 @@ d_pressure = P_max / (rho * g)
 
 This is the calibration knob that should land Earth near the mining depths
 that existing deep mines suggest, on the order of 1 mile when `P_max` is set
-conservatively.
+conservatively. It is the shared pressure calibration for both the reachable
+mass and strip-mining scenarios; the usable strip-mining variant layers a
+surface-availability assumption on top of the same shell model.
 
 Important: `rho` in the depth model is the local excavation density, not always
 the global bulk density of the body. For Earth and other differentiated worlds,
@@ -134,7 +146,9 @@ The `orbit_delta_v_km_s` column is an orbit-only transfer proxy, while
 approximate travel from low Earth orbit:
 
 - heliocentric bodies use a Hohmann-style transfer from Earth’s orbit plus a plane-change term, then a LEO departure term and a small arrival bonus
-- moons add the parent-system transfer leg when needed, then the local moon transfer and arrival bonus
+- Mars and the Mars moons use the Mars transfer proxy plus LEO departure, with perfect aerobraking assumed at Mars arrival
+- Mercury and Earth's Moon use a full no-aerobraking landing term instead of the smaller conservative arrival bonus; the Moon case uses a simple LEO-to-lunar-transfer baseline first
+- other moons add the parent-system transfer leg when needed, then the local moon transfer and arrival bonus
 - Earth is fixed to `0 km/s` as the local reference body
 
 It is a comparison metric, not a full mission-design solution.
@@ -182,6 +196,9 @@ For readability, the wheel charts use color-only wedges and a side legend.
 Small asteroids are grouped into compact `Asteroids < ...` buckets in each
 wheel. Each scatter uses the same grouped inputs as its matching wheel. The
 usable strip-mining scatter omits zero-mass rows so the log scale stays valid.
+Open dashed markers in the scatter plots mark the Mars-system no-aerobraking
+references. Those markers are derived from a simple propulsive Mars capture
+and descent estimate from LEO, not from a fixed visual offset.
 
 At the moment only 17 asteroid records in the local dump have both `GM` and
 `RAD` populated, so the asteroid preview table is intentionally small.

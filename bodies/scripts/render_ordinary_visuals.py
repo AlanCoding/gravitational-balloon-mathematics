@@ -14,6 +14,10 @@ ASTEROID_DETAIL_THRESHOLD_KG = 1e17
 ASTEROID_DETAIL_THRESHOLD_AREA_KM2 = 1e5
 STRIP_P_MAX = 2.95e6
 EXCAVATION_RHO = 3000.0
+MARS_PARKING_ALT_KM = 300.0
+G_KM3_S2 = 6.67430e-20
+MU_SUN = 1.32712440018e11
+AU_KM = 149597870.7
 BODY_COLOR_OVERRIDES = {
     "Mercury": "#b45309",
     "Venus": "#d97706",
@@ -100,6 +104,56 @@ def leo_dv(row: dict[str, str]) -> float:
     return float(row["leo_delta_v_km_s"] or 0.0)
 
 
+def circular_speed_km_s(mu_km3_s2: float, radius_km: float) -> float:
+    return math.sqrt(mu_km3_s2 / radius_km)
+
+
+def heliocentric_arrival_vinf_km_s(row: dict[str, str]) -> float:
+    a_km = float(row["orbit_a_km"])
+    e = float(row["orbit_e"])
+    q = a_km * (1.0 - e)
+    Q = a_km * (1.0 + e)
+    r2 = q if abs(q - AU_KM) <= abs(Q - AU_KM) else Q
+    a_trans = 0.5 * (AU_KM + r2)
+    v2 = math.sqrt(MU_SUN / r2)
+    v_ta = math.sqrt(MU_SUN * (2.0 / r2 - 1.0 / a_trans))
+    return abs(v2 - v_ta)
+
+
+def capture_to_circular_orbit_dv(mu_km3_s2: float, radius_km: float, v_inf_km_s: float) -> float:
+    v_circ = circular_speed_km_s(mu_km3_s2, radius_km)
+    v_esc = math.sqrt(2.0 * mu_km3_s2 / radius_km)
+    return math.sqrt(v_inf_km_s * v_inf_km_s + v_esc * v_esc) - v_circ
+
+
+def circular_orbit_to_surface_dv(mu_km3_s2: float, orbit_radius_km: float, surface_radius_km: float) -> float:
+    a_trans = 0.5 * (orbit_radius_km + surface_radius_km)
+    v_orbit = circular_speed_km_s(mu_km3_s2, orbit_radius_km)
+    v_apogee = math.sqrt(mu_km3_s2 * (2.0 / orbit_radius_km - 1.0 / a_trans))
+    v_perigee = math.sqrt(mu_km3_s2 * (2.0 / surface_radius_km - 1.0 / a_trans))
+    return (v_orbit - v_apogee) + v_perigee
+
+
+def no_aerobrake_dv(row: dict[str, str], base_dv: float, mars_row: dict[str, str] | None) -> float | None:
+    name = row["name"]
+    if name == "Mars":
+        v_inf = heliocentric_arrival_vinf_km_s(row)
+        mu_mars = G_KM3_S2 * float(row["mass_kg"])
+        radius_km = float(row["radius_km"])
+        parking_radius_km = radius_km + MARS_PARKING_ALT_KM
+        capture_dv = capture_to_circular_orbit_dv(mu_mars, parking_radius_km, v_inf)
+        landing_dv = circular_orbit_to_surface_dv(mu_mars, parking_radius_km, radius_km)
+        return base_dv + capture_dv + landing_dv
+    if name in {"Phobos", "Deimos"} and mars_row is not None:
+        v_inf = heliocentric_arrival_vinf_km_s(mars_row)
+        mu_mars = G_KM3_S2 * float(mars_row["mass_kg"])
+        parking_radius_km = float(row["orbit_a_km"])
+        capture_dv = capture_to_circular_orbit_dv(mu_mars, parking_radius_km, v_inf)
+        moon_escape = 0.5 * math.sqrt(2.0 * G_KM3_S2 * float(row["mass_kg"]) / float(row["radius_km"]))
+        return base_dv + capture_dv + moon_escape
+    return None
+
+
 def group_rows(
     rows: list[dict[str, str]],
     value_fn,
@@ -126,6 +180,7 @@ def group_rows(
                 "leo_dv": leo_dv(r),
                 "members": [r["name"]],
                 "color": color_for_body(r["kind"], r["name"]),
+                "source": r,
             }
         )
 
@@ -145,6 +200,7 @@ def group_rows(
                 "leo_dv": weighted_x,
                 "members": [r["name"] for r in asteroid_bucket],
                 "color": bucket_color,
+                "source": asteroid_bucket[0],
             }
         )
 
@@ -299,6 +355,7 @@ def render_scatter(groups: list[dict[str, object]], title: str, subtitle: str) -
     plot_h = height - top - bottom
 
     visible_groups = [g for g in groups if float(g["value"]) > 0.0]
+    mars_row = next((g.get("source") for g in visible_groups if str(g["label"]) == "Mars"), None)
     xs = [float(g["leo_dv"]) for g in visible_groups]
     ys = [math.log10(float(g["value"])) for g in visible_groups]
     x_min, x_max = 0.0, max(xs) * 1.08
@@ -330,11 +387,13 @@ def render_scatter(groups: list[dict[str, object]], title: str, subtitle: str) -
     parts.append(f'<text class="subtitle" x="{left + plot_w/2:.1f}" y="{height-48}" text-anchor="middle">Delta-v from LEO (km/s)</text>')
     parts.append(f'<text class="subtitle" transform="translate(36 {top + plot_h/2:.1f}) rotate(-90)" text-anchor="middle">Reachable mass (kg, log scale)</text>')
 
+    no_aero_groups = {"Mars", "Phobos", "Deimos"}
     for g in visible_groups:
-        x = sx(float(g["leo_dv"]))
+        base_x = float(g["leo_dv"])
         y = sy(math.log10(float(g["value"])))
         color = g["color"]
         radius = 9 if not str(g["label"]).startswith("Asteroids < ") else 11
+        x = sx(base_x)
         parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{radius}" fill="{color}" stroke="#2d2a26" stroke-width="1.5"/>')
         label = g["label"]
         is_bucket = str(label).startswith("Asteroids < ")
@@ -342,6 +401,19 @@ def render_scatter(groups: list[dict[str, object]], title: str, subtitle: str) -
         anchor = "end" if dx < 0 else "start"
         dy = 16 if is_bucket else -10
         parts.append(f'<text class="legend" x="{x+dx:.1f}" y="{y+dy:.1f}" text-anchor="{anchor}">{escape(label)}</text>')
+        if label in no_aero_groups:
+            source_row = g.get("source")
+            no_aero_x = no_aerobrake_dv(source_row if isinstance(source_row, dict) else {"name": str(label)}, base_x, mars_row if isinstance(mars_row, dict) else None)
+            if no_aero_x is not None:
+                x2 = sx(no_aero_x)
+                parts.append(
+                    f'<circle cx="{x2:.1f}" cy="{y:.1f}" r="{radius+1}" fill="none" stroke="#2d2a26" stroke-width="2" stroke-dasharray="4,5"/>'
+                )
+                dx2 = 12 if x2 < width * 0.56 else -12
+                anchor2 = "start" if dx2 > 0 else "end"
+                parts.append(
+                    f'<text class="legend" x="{x2+dx2:.1f}" y="{y+dy:.1f}" text-anchor="{anchor2}">{escape(str(label) + " (no aero)")}</text>'
+                )
 
     parts.append("</svg>")
     return "\n".join(parts)

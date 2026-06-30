@@ -38,3 +38,4 @@
 - Small asteroids are collapsed into compact `Asteroids < ...` buckets.
 - Each scatter uses the same grouped inputs as its matching wheel chart.
 - The usable strip-mining plots keep Earth land-only and set Venus to zero usable surface; zero-mass rows are omitted from the log scatter.
+- Open dashed markers in the scatter plots show the Mars-system points without aerobraking.

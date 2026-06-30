@@ -4,7 +4,7 @@
    height="900"
    viewBox="0 0 1400 900"
    version="1.1"
-   id="svg34"
+   id="svg35"
    sodipodi:docname="ordinary_strip_mining_mass_scatter.svg"
    inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -12,9 +12,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs34" />
+     id="defs35" />
   <sodipodi:namedview
-     id="namedview34"
+     id="namedview35"
      pagecolor="#ffffff"
      bordercolor="#000000"
      borderopacity="0.25"
@@ -30,7 +30,7 @@
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg34" />
+     inkscape:current-layer="svg35" />
   <title
      id="title1">Strip-mining mass versus delta-v</title>
   <rect
@@ -73,159 +73,133 @@ text { font-family: "Georgia", "Times New Roman", serif; fill: #2d2a26; }
      id="text3">0</text>
   <line
      class="grid"
-     x1="366.2"
+     x1="612.9"
      y1="110"
-     x2="366.2"
+     x2="612.9"
      y2="760"
      id="line3" />
   <text
      class="tick"
-     x="366.2"
+     x="612.9"
      y="788"
      text-anchor="middle"
      id="text4">5</text>
   <line
      class="grid"
-     x1="612.4"
+     x1="1105.9"
      y1="110"
-     x2="612.4"
+     x2="1105.9"
      y2="760"
      id="line4" />
   <text
      class="tick"
-     x="612.4"
+     x="1105.9"
      y="788"
      text-anchor="middle"
      id="text5">10</text>
-  <line
-     class="grid"
-     x1="858.6"
-     y1="110"
-     x2="858.6"
-     y2="760"
-     id="line5" />
-  <text
-     class="tick"
-     x="858.6"
-     y="788"
-     text-anchor="middle"
-     id="text6">15</text>
-  <line
-     class="grid"
-     x1="1104.8"
-     y1="110"
-     x2="1104.8"
-     y2="760"
-     id="line6" />
-  <text
-     class="tick"
-     x="1104.8"
-     y="788"
-     text-anchor="middle"
-     id="text7">20</text>
   <line
      class="grid"
      x1="120"
      y1="781.6"
      x2="1300"
      y2="781.6"
-     id="line7" />
+     id="line5" />
   <text
      class="tick"
      x="106"
      y="787.6"
      text-anchor="end"
-     id="text8">1e15</text>
+     id="text6">1e15</text>
   <line
      class="grid"
      x1="120"
      y1="659.2"
      x2="1300"
      y2="659.2"
-     id="line8" />
+     id="line6" />
   <text
      class="tick"
      x="106"
      y="665.2"
      text-anchor="end"
-     id="text9">1e16</text>
+     id="text7">1e16</text>
   <line
      class="grid"
      x1="120"
      y1="536.7"
      x2="1300"
      y2="536.7"
-     id="line9" />
+     id="line7" />
   <text
      class="tick"
      x="106"
      y="542.7"
      text-anchor="end"
-     id="text10">1e17</text>
+     id="text8">1e17</text>
   <line
      class="grid"
      x1="120"
      y1="414.3"
      x2="1300"
      y2="414.3"
-     id="line10" />
+     id="line8" />
   <text
      class="tick"
      x="106"
      y="420.3"
      text-anchor="end"
-     id="text11">1e18</text>
+     id="text9">1e18</text>
   <line
      class="grid"
      x1="120"
      y1="291.9"
      x2="1300"
      y2="291.9"
-     id="line11" />
+     id="line9" />
   <text
      class="tick"
      x="106"
      y="297.9"
      text-anchor="end"
-     id="text12">1e19</text>
+     id="text10">1e19</text>
   <line
      class="grid"
      x1="120"
      y1="169.4"
      x2="1300"
      y2="169.4"
-     id="line12" />
+     id="line10" />
   <text
      class="tick"
      x="106"
      y="175.4"
      text-anchor="end"
-     id="text13">1e20</text>
+     id="text11">1e20</text>
   <line
      class="axis"
      x1="120"
      y1="760"
      x2="1300"
      y2="760"
-     id="line14" />
+     id="line12" />
   <line
      class="axis"
      x1="120"
      y1="110"
      x2="120"
      y2="760"
-     id="line15" />
+     id="line13" />
   <text
      class="subtitle"
      x="710.0"
      y="852"
      text-anchor="middle"
-     id="text15">Delta-v from LEO (km/s)</text>
+     id="text13">Delta-v from LEO (km/s)</text>
   <text
      class="subtitle"
      transform="translate(36 435.0) rotate(-90)"
      text-anchor="middle"
-     id="text16">Reachable mass (kg, log scale)</text>
+     id="text14">Reachable mass (kg, log scale)</text>
   <circle
      cx="120.0"
      cy="146.7"
@@ -233,83 +207,98 @@ text { font-family: "Georgia", "Times New Roman", serif; fill: #2d2a26; }
      fill="#2563eb"
      stroke="#2d2a26"
      stroke-width="1.5"
-     id="circle16" />
+     id="circle14" />
   <text
      class="legend"
-     x="138.03448"
-     y="156.52759"
+     x="132.0"
+     y="136.7"
      text-anchor="start"
-     id="text17">Earth</text>
+     id="text15">Earth</text>
   <circle
-     cx="862.9"
+     cx="1046.2"
      cy="146.8"
      r="9"
      fill="#d97706"
      stroke="#2d2a26"
      stroke-width="1.5"
-     id="circle17" />
+     id="circle15" />
   <text
      class="legend"
-     x="850.03796"
-     y="166.11035"
+     x="1034.2"
+     y="136.8"
      text-anchor="end"
-     id="text18">Venus</text>
+     id="text16">Venus</text>
   <circle
-     cx="655.6"
+     cx="504.3"
      cy="162.3"
      r="9"
      fill="#dc2626"
      stroke="#2d2a26"
      stroke-width="1.5"
-     id="circle18" />
+     id="circle16" />
   <text
      class="legend"
-     x="574.49652"
-     y="191.95517"
+     x="516.3"
+     y="152.3"
      text-anchor="start"
-     id="text19">Mars</text>
+     id="text17">Mars</text>
   <circle
-     cx="377.2"
+     cx="1052.2"
+     cy="162.3"
+     r="10"
+     fill="none"
+     stroke="#2d2a26"
+     stroke-width="2"
+     stroke-dasharray="4,5"
+     id="circle17" />
+  <text
+     class="legend"
+     x="1111.7517"
+     y="196.26552"
+     text-anchor="end"
+     id="text18">Mars (no aero)</text>
+  <circle
+     cx="699.2"
      cy="189.2"
      r="9"
      fill="#6b7280"
      stroke="#2d2a26"
      stroke-width="1.5"
-     id="circle19" />
+     id="circle18" />
   <text
      class="legend"
-     x="389.2"
+     x="711.2"
      y="179.2"
      text-anchor="start"
-     id="text20">Moon</text>
+     id="text19">Moon</text>
   <circle
-     cx="1181.9"
+     cx="1197.4"
      cy="196.9"
      r="9"
      fill="#b45309"
      stroke="#2d2a26"
      stroke-width="1.5"
-     id="circle20" />
+     id="circle19" />
   <text
      class="legend"
-     x="1169.9"
-     y="186.9"
+     x="1262.9862"
+     y="173.96896"
      text-anchor="end"
-     id="text21">Mercury</text>
+     id="text20">Mercury</text>
   <circle
-     cx="938.5"
+     cx="777.9"
      cy="236.0"
      r="9"
      fill="#7c3aed"
      stroke="#2d2a26"
      stroke-width="1.5"
-     id="circle21" />
+     id="circle20" />
   <text
      class="legend"
-     x="954.9483"
-     y="219.96552"
-     text-anchor="end"
-     id="text22">Ceres</text>
+     x="789.9"
+     y="226.0"
+     text-anchor="start"
+     id="text21">Ceres</text>
   <circle
      cx="1212.6"
      cy="284.2"
@@ -317,155 +306,170 @@ text { font-family: "Georgia", "Times New Roman", serif; fill: #2d2a26; }
      fill="#9333ea"
      stroke="#2d2a26"
      stroke-width="1.5"
-     id="circle22" />
+     id="circle21" />
   <text
      class="legend"
-     x="1200.6"
-     y="274.2"
+     x="1247.1517"
+     y="267.30347"
      text-anchor="end"
-     id="text23">Pallas</text>
+     id="text22">Pallas</text>
   <circle
-     cx="836.4"
+     cx="686.0"
      cy="292.6"
      r="9"
      fill="#8b5cf6"
      stroke="#2d2a26"
      stroke-width="1.5"
-     id="circle23" />
+     id="circle22" />
   <text
      class="legend"
-     x="816.64142"
-     y="292.94482"
-     text-anchor="end"
-     id="text24">Vesta</text>
+     x="615.24139"
+     y="284.32416"
+     text-anchor="start"
+     id="text23">Vesta</text>
   <circle
-     cx="879.4"
+     cx="690.8"
      cy="298.4"
      r="9"
      fill="#a855f7"
      stroke="#2d2a26"
      stroke-width="1.5"
-     id="circle24" />
+     id="circle23" />
   <text
      class="legend"
-     x="941.5379"
-     y="278.91724"
-     text-anchor="end"
-     id="text25">Hygiea</text>
+     x="672.62762"
+     y="331.50345"
+     text-anchor="start"
+     id="text24">Hygiea</text>
   <circle
-     cx="981.1"
+     cx="791.1"
      cy="325.9"
      r="9"
      fill="#0ea5e9"
      stroke="#2d2a26"
      stroke-width="1.5"
-     id="circle25" />
+     id="circle24" />
   <text
      class="legend"
-     x="1047.5482"
-     y="304.69308"
+     x="853.23792"
+     y="314.17584"
      text-anchor="end"
-     id="text26">Camilla</text>
+     id="text25">Camilla</text>
   <circle
-     cx="1014.4"
+     cx="870.4"
      cy="341.1"
      r="9"
      fill="#6366f1"
      stroke="#2d2a26"
      stroke-width="1.5"
-     id="circle26" />
+     id="circle25" />
   <text
      class="legend"
-     x="1163.6069"
-     y="359.54828"
+     x="1015.2966"
+     y="358.68622"
      text-anchor="end"
-     id="text27">Interamnia</text>
+     id="text26">Interamnia</text>
   <circle
-     cx="836.3"
+     cx="655.4"
      cy="351.1"
      r="9"
      fill="#c026d3"
      stroke="#2d2a26"
      stroke-width="1.5"
-     id="circle27" />
+     id="circle26" />
   <text
      class="legend"
-     x="819.98962"
-     y="354.03104"
-     text-anchor="end"
-     id="text28">Psyche</text>
+     x="559.64142"
+     y="341.96207"
+     text-anchor="start"
+     id="text27">Psyche</text>
   <circle
-     cx="971.7"
+     cx="808.5"
      cy="353.6"
      r="9"
      fill="#4f46e5"
      stroke="#2d2a26"
      stroke-width="1.5"
-     id="circle28" />
+     id="circle27" />
   <text
      class="legend"
-     x="998.4931"
-     y="388.42758"
+     x="858.56897"
+     y="391.01379"
      text-anchor="end"
-     id="text29">Kalliope</text>
+     id="text28">Kalliope</text>
   <circle
-     cx="749.0"
+     cx="600.8"
      cy="404.7"
      r="9"
      fill="#1d4ed8"
      stroke="#2d2a26"
      stroke-width="1.5"
-     id="circle29" />
+     id="circle28" />
   <text
      class="legend"
-     x="644.62067"
-     y="414.52759"
+     x="498.14481"
+     y="415.38968"
      text-anchor="start"
-     id="text30">Lutetia</text>
+     id="text29">Lutetia</text>
   <circle
-     cx="783.4"
+     cx="641.8"
      cy="492.2"
      r="9"
      fill="#6366f1"
      stroke="#2d2a26"
      stroke-width="1.5"
-     id="circle30" />
+     id="circle29" />
   <text
      class="legend"
-     x="657.46899"
-     y="497.71725"
+     x="657.24829"
+     y="500.30347"
      text-anchor="start"
-     id="text31">Mathilde</text>
+     id="text30">Mathilde</text>
   <circle
-     cx="810.1"
+     cx="639.6"
      cy="564.8"
      r="11"
      fill="#9aa0a6"
      stroke="#2d2a26"
      stroke-width="1.5"
-     id="circle31" />
+     id="circle30" />
   <text
      class="legend"
-     x="798.1"
+     x="651.6"
      y="580.8"
-     text-anchor="end"
-     id="text32">Asteroids &lt; 1e+17 kg</text>
+     text-anchor="start"
+     id="text31">Asteroids &lt; 1e+17 kg</text>
   <circle
-     cx="441.7"
+     cx="504.3"
      cy="628.0"
      r="9"
      fill="#0f766e"
      stroke="#2d2a26"
      stroke-width="1.5"
+     id="circle31" />
+  <text
+     class="legend"
+     x="516.3"
+     y="618.0"
+     text-anchor="start"
+     id="text32">Phobos</text>
+  <circle
+     cx="657.9"
+     cy="628.0"
+     r="10"
+     fill="none"
+     stroke="#2d2a26"
+     stroke-width="2"
+     stroke-dasharray="4,5"
      id="circle32" />
   <text
      class="legend"
-     x="453.7"
+     x="669.9"
      y="618.0"
      text-anchor="start"
-     id="text33">Phobos</text>
+     id="text33">Phobos (no aero)</text>
   <circle
-     cx="464.4"
+     cx="504.3"
      cy="723.3"
      r="9"
      fill="#14b8a6"
@@ -474,8 +478,23 @@ text { font-family: "Georgia", "Times New Roman", serif; fill: #2d2a26; }
      id="circle33" />
   <text
      class="legend"
-     x="476.4"
+     x="516.3"
      y="713.3"
      text-anchor="start"
      id="text34">Deimos</text>
+  <circle
+     cx="652.5"
+     cy="723.3"
+     r="10"
+     fill="none"
+     stroke="#2d2a26"
+     stroke-width="2"
+     stroke-dasharray="4,5"
+     id="circle34" />
+  <text
+     class="legend"
+     x="664.5"
+     y="713.3"
+     text-anchor="start"
+     id="text35">Deimos (no aero)</text>
 </svg>
